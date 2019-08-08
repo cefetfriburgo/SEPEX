@@ -1,49 +1,43 @@
 <?php
+
 	class Model{
   
 	    public function validaDados($email, $senha) {
 			$pdo = new PDO('mysql:host=localhost;dbname=sepex', 'root', '');
-
-			$pos = strpos($email, '@');
+			//echo $email."--> 1";
+			//$pos = strpos($email, 'cefet-rj.br');
 			//echo $pos;
-			if($pos!= null){
-				$array = explode('@', $email);
-			
-			
-
+			//if($pos!= null){
+				$array = explode('@', $email);			
+				echo "tamanho do array =". sizeof($array);
 				$pass = md5($senha); //deve receber a variavel $senha com a criptografia
 				$ps = $pdo->query("select senha from administrador where email='" . $email . "'");
-	    	//$ps->execute();
-				$p = $ps->fetchAll();
-				//foreach($ps as $ps)
-				$ver = $p[0]['senha'];
+	    	
+				$p = $ps->fetch();
+				
+				$ver = $p['senha'];
 
- 		   	/*foreach($p as $id => $valor){
-			        echo $valor[$id];
-		    }*/
-
-			//echo $ver;
 			/* Aplica a validação ao usuário e senha passados, utilizando as regras de négocio especificas para ele. */
 			
-				if($array[1]!="cefet-rj.br"){
-						return 'Digite o usuário corretamente';
+				if(substr($array[1], -11) !="cefet-rj.br"){
+					
+					header('location:./../view/admin/login.php');//	return 'Digite o usuário corretamente';
+
 				}else if($pass != $ver){
 
-					return 'senha incorreta';
+					header('location:./../view/admin/login.php');//return 'email ou senha incorretos';
 
 				}else{
 
-					return 'Login efetuado com sucesso';			
+					header('location:./../view/admin/principal/index.php');			
 				}
-			}else{
-				return "digite corretamente";
-			}
+			//}else{
+			//	header('location:./../view/admin/login.php');//return "digite corretamente";
+			//}
 				
 		}
 	
 	}
 
-	$c = new Model();
-	echo $c->validaDados('pedro@cefet-rj.br', 'pedro');
 
 ?>
