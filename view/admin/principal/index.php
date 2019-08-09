@@ -1,3 +1,5 @@
+
+
 <?php 
 $titulo = "Página inicial";
 $categoria = "Início";
@@ -70,3 +72,11 @@ include_once("../base/header.php"); ?>
         </div>
 
 <?php include_once("../base/footer.php"); ?>
+
+
+<?php
+//}else{
+ //   header('location: ./../login.php');
+//}
+
+?>
