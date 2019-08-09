@@ -2,7 +2,7 @@
 $titulo = "Listar eventos";
 $categoria = "Eventos";
 $local = "Listar eventos";
-include_once("base/header.php"); ?>
+include_once("../base/header.php"); ?>
 
 <div class="row">
   
@@ -68,4 +68,4 @@ include_once("base/header.php"); ?>
           </div>
         </div>
 
-<?php include_once("base/footer.php"); ?>
+<?php include_once("../base/footer.php"); ?>
