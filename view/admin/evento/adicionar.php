@@ -16,9 +16,19 @@ include_once("../base/header.php"); ?>
 						<label for="titulo">Título</label>
 						<input type="text" class="form-control" id="titulo" placeholder="Título do evento" required>
 					</div>
-					<div class="form-group">
-						<label for="ano">Ano</label>
-						<input type="number" class="form-control" id="ano" placeholder="Ano do evento" value="<?php echo date("Y"); ?>" required>
+					<div class="form-group form-row">
+						<div class="col">
+							<label for="ano">Ano</label>
+							<input type="number" value="2019" class="form-control" id="ano">
+						</div>
+						<div class="col">
+							<label for="semestre">Semestre</label>
+							<select class="form-control" id="semestre">
+								<option disabled selected>Semestre do ano</option>
+								<option>Primeiro semestre</option>
+								<option>Segundo semestre</option>
+						</select>
+						</div>
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
@@ -35,6 +45,7 @@ include_once("../base/header.php"); ?>
 				<ul>
 					<li><strong>Título</strong>: escreva o nome que você deseja dar ao seu evento.</li>
 					<li><strong>Ano</strong>: selecione o ano que o evento será realizado.</li>
+					<li><strong>Semestre</strong>: selecione, dentre as opções, o semestre que o evento será realizado.</li>
 				</ul>
 				<p>Após conferir todos os campos, clique no botão <strong>Salvar</strong>.</p>
 			</div>

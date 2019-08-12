@@ -81,7 +81,7 @@
 
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -93,7 +93,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="../evento/adicionar.php">Novo evento</a>
-          <a class="dropdown-item" href="listar.html">Listar eventos</a>
+          <a class="dropdown-item" href="../evento/listar.php">Listar eventos</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -102,8 +102,8 @@
           <span>Atividades</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="adicionar.html">Nova atividade</a>
-          <a class="dropdown-item" href="listar.html">Listar atividades</a>
+          <a class="dropdown-item" href="../atividade/adicionar.php">Nova atividade</a>
+          <a class="dropdown-item" href="../atividade/listar.php">Listar atividades</a>
         </div>
       </li>
       <li class="nav-item">
