@@ -54,7 +54,7 @@
   <script src="../../../public/js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
-  <script src="../../../public/js/demo/datatables-demo.js"></script>
+  <script src="../../../public/js/datatables.js"></script>
 
 </body>
 
