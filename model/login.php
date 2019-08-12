@@ -29,12 +29,11 @@
 					header('location:./../view/admin/login.php');//return 'email ou senha incorretos';
 
 				}else{
-					/*session_start();
-  					//if (!isset($_SESSION['email']) && !isset($_SESSION['senha'])){
-    				$_SESSION['email'] = $email;
-    				$_SESSION['senha'] = $senha;*/
-
-					header('location:./../view/admin/principal/index.php');//}		
+					session_start();
+					$_SESSION['email'] = $email;
+					$_SESSION['senha'] = $senha;
+					
+					header('location:./../view/admin/principal/index.php');	
 				}
 			//}else{
 			//	header('location:./../view/admin/login.php');//return "digite corretamente";

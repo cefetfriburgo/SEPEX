@@ -1,3 +1,8 @@
+<?php session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['senha'])){
+    header('location: ./principal/index.php');
+  } else{ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,3 +60,4 @@
 </body>
 
 </html>
+  <?php }?>

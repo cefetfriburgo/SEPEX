@@ -1,3 +1,8 @@
+<?php session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['senha'])){
+
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,3 +127,6 @@
             <a href="/#"><?php echo $categoria ?></a></li>
           <li class="breadcrumb-item active"><?php echo $local ?></li>
         </ol>
+  <?php }else{
+    header('location:./../login.php');
+  } ?>
