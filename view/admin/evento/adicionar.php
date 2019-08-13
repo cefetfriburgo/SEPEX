@@ -11,19 +11,19 @@ include_once("../base/header.php"); ?>
 				<i class="fas fa-plus"></i> Novo evento
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="./../../../controller/adicionar_evento.php" method="POST">
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" placeholder="Título do evento" required>
+						<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título do evento" required>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="ano">Ano</label>
-							<input type="number" value="2019" class="form-control" id="ano">
+							<input type="number" value="2019" class="form-control" id="ano" name="ano">
 						</div>
 						<div class="col">
 							<label for="semestre">Semestre</label>
-							<select class="form-control" id="semestre">
+							<select class="form-control" id="semestre" name="semestre">
 								<option disabled selected>Semestre do ano</option>
 								<option>Primeiro semestre</option>
 								<option>Segundo semestre</option>
