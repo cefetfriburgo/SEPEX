@@ -1,7 +1,7 @@
 <?php
     require_once "./../model/evento.php";
 
-    $nome = $_POST['titulo'];
+
 
     class ControllerEvento{
         private $evento;
@@ -11,11 +11,16 @@
         }
 
         public function listar(){
-            $this->evento->listarEvento();
+            return $this->evento->listarEvento();
         }
 
     }
 
     $ctrlEvento = new ControllerEvento();
+    $lista = $ctrlEvento->listar();
 
+    /*foreach($lista as $l){
+        echo $l['nome'] . ' ' . $l['ano'] . ' ' . $l['semestre'] . "<br>";
+    }*/
+    
 ?>

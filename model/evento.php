@@ -11,9 +11,7 @@
             $pd = $this->pdo->query("SELECT * FROM evento");
             $p = $pd->fetchAll();
 
-            foreach($p as $evento){
-                echo $evento['nome'] . ', ' . $evento['ano'] . ', ' . $evento['semestre'] . '<br>';
-            }
+            return $p;            
         }
 
         public function adicionarEvento( $nome, $ano, $semestre){
@@ -33,9 +31,8 @@
             $pd = $this->pdo->query("SELECT * FROM evento WHERE nome ='$nome'");
             $p = $pd->fetchAll();
 
-            foreach($p as $evento){
-                echo $evento['nome'] . " " . $evento['ano'] . " " . $evento['semestre'] . " " . "<br>" ;// tem de lista nome, ano, semestre
-            }
+            return $p;
+            
         }
 
     }
