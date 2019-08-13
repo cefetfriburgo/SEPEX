@@ -2,7 +2,7 @@
 $titulo = "Listar eventos";
 $categoria = "Eventos";
 $local = "Listar eventos";
-include_once("../base/header.php"); ?>
+require_once("../base/header.php"); ?>
 
 <div class="row">
   

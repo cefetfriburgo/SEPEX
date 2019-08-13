@@ -18,7 +18,7 @@
 
         public function adicionarEvento( $nome, $ano, $semestre){
             $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre) VALUES('$nome ', '$ano ', '$semestre ')");
-            //echo 'ok';
+           
         }
 
         public function atualizarEvento($id, $nome, $ano, $semestre){
@@ -40,10 +40,5 @@
 
     }
 
-    //$c = new Evento();
-    //echo $c->listarEvento();
-    //$c->adicionarEvento('Bootstrap5', 2014, 'Primeiro semestre');
-    //$c->atualizarEvento(4, 'Montagem', 2015, 'Segundo semestre');
-    //$c->excluirEvento(6);
-    //$c->pesquisarEvento('Montagem');
+    
 ?>
