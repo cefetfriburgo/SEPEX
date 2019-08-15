@@ -19,6 +19,9 @@
     $ctrlAtividade = new ControllerAtividade();
     $lista = $ctrlAtividade->listar();
 
+    /*foreach($lista as $l){
+        echo '->' . $l['nome_atividade'];
+    }*/
     
     
 ?>
