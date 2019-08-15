@@ -1,5 +1,5 @@
 <?php
-    require_once "./../model/atividade.php";
+    require_once dirname(__FILE__)."./../model/atividade.php";
 
 
 

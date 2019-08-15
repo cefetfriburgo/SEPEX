@@ -28,7 +28,7 @@
 
         public function excluirAtividade($idAtividade){
             $pd = $this->pdo->query("DELETE FROM atividade WHERE idAtividade=$idAtividade");
-            $pd2 = = $this->pdo->query("DELETE FROM data_atividade WHERE data_atividade.idAtividade = atividade.$idAtividade");
+            $pd2 = $this->pdo->query("DELETE FROM data_atividade WHERE data_atividade.idAtividade = atividade.$idAtividade");
         }
 
         public function pesquisarAtividade($nome_atividade){
