@@ -2,7 +2,8 @@
 $titulo = "Listar eventos";
 $categoria = "Eventos";
 $local = "Listar eventos";
-require_once("../base/header.php"); ?>
+require_once("../base/header.php"); 
+require_once("../../../controller/listar_evento.php");?>
 
 <div class="row">
   
@@ -33,38 +34,24 @@ require_once("../base/header.php"); ?>
           </tr>
         </tfoot>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Semana de Ensino, Pesquisa e Extensão</td>
-            <td>2017</td>
-            <td>Segundo semestre</td>
-            <td>
-              <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher 
+          <?php 
+            foreach($lista as $l){
+              echo "<tr><td>".$l['idEvento']."</td><td>".$l['nome']."</td><td>".$l['ano']."</td><td>".$l['semestre']."</td><td>
+              <div class='btn-group' role='group'>
+                <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-cogs'></i> Escolher 
                 </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="editar/id">Editar</a>
-                  <a class="dropdown-item" href="#">Excluir</a>
+                <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+                  <a class='dropdown-item' href='editar/id'>Editar</a>
+                  <a class='dropdown-item' href='#'>Excluir</a>
                 </div>
               </div>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Semana Acadêmica de Sistemas de Informação</td>
-            <td>2018</td>
-            <td>Primeiro semestre</td>
-            <td>
-              <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher 
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="editar/id">Editar</a>
-                  <a class="dropdown-item" href="#">Excluir</a>
-                </div>
-              </div>
-            </td>
-          </tr>
+            </td>";
+            }
+          ?>
+          
+            
+          
+          
         </tbody>
       </table>
     </div>

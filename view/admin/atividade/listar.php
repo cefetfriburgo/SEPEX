@@ -2,7 +2,8 @@
 $titulo = "Listar atividade";
 $categoria = "Atividades";
 $local = "Listar atividades";
-require_once("../base/header.php"); ?>
+require_once ("../base/header.php");
+require_once("../../../controller/listar_atividade.php"); ?>
 
 <div class="row">
   
@@ -35,12 +36,22 @@ require_once("../base/header.php"); ?>
           </tr>
         </tfoot>
         <tbody>
+          <?php
+          foreach($lista as $l){
+
+          ?>
           <tr>
-            <td>1</td>
-            <td>Programação com Python</td>
-            <td>Oficina</td>
-            <td>Semana de Extensão</td>
-            <td>23/10/2019</td>
+            <td><?php echo $l['idAtividade'];
+            ?></td>
+
+            <td><?php echo $l['nome_atividade'];?></td>
+
+            <td><?php echo $l['tipoAtividade'];?></td>
+
+            <td><?php echo $l['nome'];?></td>
+
+            <td><?php echo $l['data'];?></td>
+
             <td>
               <div class="btn-group" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher 
@@ -52,23 +63,7 @@ require_once("../base/header.php"); ?>
               </div>
             </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Entendendo sobre Scrum</td>
-            <td>Minicurso</td>
-            <td>Semana de Extensão</td>
-            <td>24/10/2019</td>
-            <td>
-              <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher 
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a class="dropdown-item" href="editar/id">Editar</a>
-                  <a class="dropdown-item" href="#">Excluir</a>
-                </div>
-              </div>
-            </td>
-          </tr>
+        <?php } ?>
         </tbody>
       </table>
     </div>
