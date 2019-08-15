@@ -11,32 +11,32 @@ require_once("../base/header.php"); ?>
 				<i class="fas fa-plus"></i> Nova atividade
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="./../../../controller/adicionar_atividade.php" method="POST">
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" placeholder="Título da atividade" required>
+						<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título da atividade" required>
 					</div>
 					<div class="form-group">
 						<label for="descricao">Descrição</label>
-						<textarea class="form-control" id="descricao" rows="3"></textarea>
+						<textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="data">Data</label>
-							<input type="date" class="form-control" id="data">
+							<input type="date" class="form-control" id="data" name="data">
 						</div>
 						<div class="col">
 							<label for="hora_inicio">Hora de início</label>
-							<input type="time" class="form-control" id="hora_inicio">
+							<input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
 						</div>
 						<div class="col">
 							<label for="hora_termino">Hora de término</label>
-							<input type="time" class="form-control" id="hora_termino">
+							<input type="time" class="form-control" id="hora_termino" name="hora_termino">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="evento">Evento</label>
-						<select class="form-control" id="evento">
+						<select class="form-control" id="evento" name="evento">
 							<option disabled selected>Evento para esta atividade</option>
 							<option>Semana de Ensino, Pesquisa e Extensão 2019</option>
 							<option>Semana Acadêmica de Sistemas de Informação 2019</option>
@@ -45,7 +45,7 @@ require_once("../base/header.php"); ?>
 					</div>
 					<div class="form-group">
 						<label for="tipo">Tipo de Atividade</label>
-						<select class="form-control" id="tipo">
+						<select class="form-control" id="tipo" name="tipo">
 							<option disabled selected>Tipo para esta atividade</option>
 							<option>Mesa redonda</option>
 							<option>Minicurso</option>
@@ -54,7 +54,7 @@ require_once("../base/header.php"); ?>
 					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" id="etiqueta" placeholder="Palavras-chave da atividade" required>
+						<input type="text" class="form-control" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
