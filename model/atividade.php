@@ -4,21 +4,26 @@
         private $pdo;
 
         public function __construct(){
-            $this->pdo = new PDO('mysql:local=localhost;dbname=sepex', 'root', '');
+            $this->pdo = new PDO('mysql:local=localhost;dbname=sepex;charset=utf8', 'root', '');
         }
 
         public function listarAtividade(){            
             $pd = $this->pdo->query("SELECT atividade.idAtividade, nome_atividade, tipoAtividade, nome, data_atividade.data 
-            FROM atividade JOIN tipo_atividade ON atividade.idTipoAtividade=tipo_atividade.idTipoAtividade JOIN evento ON atividade.idEvento=evento.idEvento JOIN data_atividade ON atividade.idAtividade=data_atividade.idAtividade");
+            FROM atividade JOIN tipo_atividade ON atividade.idTipoAtividade=tipo_atividade.idTipoAtividade JOIN evento 
+            ON atividade.idEvento=evento.idEvento JOIN data_atividade ON atividade.idAtividade=data_atividade.idAtividade");
             $p = $pd->fetchAll();
 
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $idAtividade, $hora_inicio, $hora_fim, $data){
-            $pd = $this->pdo->query("INSERT INTO atividade(nome_atividade, descricao, capacidade, idEvento, idTipoAtividade) VALUES('$nome_atividade', '$descricao', '$capacidade', $idEvento, $idTipoAtividade)");
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+            $pd = $this->pdo->query("INSERT INTO atividade(nome_atividade, descricao, capacidade, idEvento, idTipoAtividade) 
+            VALUES('$nome_atividade', '$descricao', '$capacidade', $idEvento, $idTipoAtividade)");
+            $pd1 = $this->pdo->query("SELECT MAX(idAtividade) FROM atividade");
+            $id = $pd1->fetch();
             $pd2 = $this->pdo->query("INSERT INTO data_atividade(idAtividade, hora_inicio, hora_fim, data_atividade.data)
-            VALUES($idAtividade, $hora_inicio, $hora_fim, $data)");
+            VALUES(". $id[0] .", $hora_inicio, $hora_fim, $data)");
+            $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta.etiqueta) VALUES(" . $id[0] . ", $etiqueta");
         }
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade){
@@ -28,16 +33,29 @@
 
         public function excluirAtividade($idAtividade){
             $pd = $this->pdo->query("DELETE FROM atividade WHERE idAtividade=$idAtividade");
-            $pd2 = = $this->pdo->query("DELETE FROM data_atividade WHERE data_atividade.idAtividade = atividade.$idAtividade");
+            $pd2 = $this->pdo->query("DELETE FROM data_atividade WHERE data_atividade.idAtividade = atividade.$idAtividade");
         }
 
-        public function pesquisarAtividade($nome_atividade){
-            $pd = $this->pdo->query("SELECT * FROM atividade WHERE nome_atividade ='$nome_atividade'");
+        public function listarEvento(){
+            $pd = $this->pdo->query("SELECT idEvento, nome FROM evento");
+            $p = $pd->fetchAll();
+
+            return $p; 
+        }
+
+        public function listarTipoAtividade(){
+            $pd = $this->pdo->query("SELECT idTipoAtividade, tipoAtividade FROM tipo_atividade");
             $p = $pd->fetchAll();
 
             return $p;
-            
         }
+        /*public function pesquisarAtividade($nome_atividade){
+            $pd = $this->pdo->query("SELECT * FROM atividade WHERE nome_atividade ='$nome_atividade'");
+            $p = $pd->fetchAll();
+
+            return $p;            
+        }*/
+
 
     }
 

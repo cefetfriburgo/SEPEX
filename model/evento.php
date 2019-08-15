@@ -4,7 +4,7 @@
         private $pdo;
 
         public function __construct(){
-            $this->pdo = new PDO('mysql:local=localhost;dbname=sepex', 'root', '');
+            $this->pdo = new PDO('mysql:local=localhost;dbname=sepex;charset=utf8', 'root', '');
         }
 
         public function listarEvento(){            

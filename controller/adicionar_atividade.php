@@ -5,21 +5,25 @@
     $idEvento = $_POST['evento'];
     $idTipoAtividade = $_POST['tipo'];
     $descricao = $_POST['descricao'];
-    $capacidade = $_POST['capacidade'];
+    $capacidade = 5;//$_POST['capacidade'];
+    $hora_inicio = $_POST['hora_inicio'];
+    $hora_fim = $_POST['hora_termino'];
+    $data = $_POST['data'];
+    $etiqueta = $_POST['etiqueta'];
     
 
-    class ControllerEvento{
-        private $evento;
+    class ControllerAtividade{
+        private $atividade;
 
         public function __construct(){            
-            $this->evento = new Evento();
+            $this->atividade = new Atividade();
         }
 
-        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade){
-            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade)){
+        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta){
+            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) ){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }else{
-                $this->evento->adicionarEvento($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade);
+                $this->atividade->adicionarAtividade($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta);
                 header('location: ./../view/admin/atividade/listar.php');
             }
         }
@@ -27,8 +31,7 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
+    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta);
         
-    //$ctrlAtividade->adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade);
-    
-
+    //$ctrlAtividade->adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data);
 ?>

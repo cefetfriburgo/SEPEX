@@ -2,7 +2,8 @@
 $titulo = "Registrar atividade";
 $categoria = "Atividades";
 $local = "Registrar atividade";
-require_once("../base/header.php"); ?>
+require_once("../base/header.php"); 
+require_once("../../../model/atividade.php"); ?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -38,18 +39,26 @@ require_once("../base/header.php"); ?>
 						<label for="evento">Evento</label>
 						<select class="form-control" id="evento" name="evento">
 							<option disabled selected>Evento para esta atividade</option>
-							<option>Semana de Ensino, Pesquisa e Extensão 2019</option>
-							<option>Semana Acadêmica de Sistemas de Informação 2019</option>
-							<option>Semana Acadêmica de Turismo 2019</option>
+							<?php 
+								$c = new Atividade();
+								$lista = $c->listarEvento();
+								foreach($lista as $l){
+							?>
+									<option value = <?php echo $l['idEvento']; ?> ><?php echo $l['nome']; ?></option>
+								<?php } ?>
+							
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="tipo">Tipo de Atividade</label>
 						<select class="form-control" id="tipo" name="tipo">
 							<option disabled selected>Tipo para esta atividade</option>
-							<option>Mesa redonda</option>
-							<option>Minicurso</option>
-							<option>Oficina</option>
+							<?php 
+							$c = new Atividade();
+							$lista = $c->listarTipoAtividade();
+							foreach($lista as $l){ ?>
+							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
+							<?php } ?>
 						</select>
 					</div>
 					<div class="form-group">

@@ -3,7 +3,7 @@
 	class Model{
   
 	    public function validaDados($email, $senha) {
-			$pdo = new PDO('mysql:host=localhost;dbname=sepex', 'root', '');
+			$pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
 			//echo $email."--> 1";
 			//$pos = strpos($email, 'cefet-rj.br');
 			//echo $pos;
