@@ -21,9 +21,10 @@
             VALUES('$nome_atividade', '$descricao', '$capacidade', $idEvento, $idTipoAtividade)");
             $pd1 = $this->pdo->query("SELECT MAX(idAtividade) FROM atividade");
             $id = $pd1->fetch();
+            $id = $id[0];
             $pd2 = $this->pdo->query("INSERT INTO data_atividade(idAtividade, hora_inicio, hora_fim, data_atividade.data)
-            VALUES(". $id[0] .", $hora_inicio, $hora_fim, $data)");
-            $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta.etiqueta) VALUES(" . $id[0] . ", $etiqueta");
+            VALUES($id, '$hora_inicio', '$hora_fim', '$data')");
+            $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
         }
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade){

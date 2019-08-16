@@ -15,7 +15,7 @@
         }
 
         public function adicionarEvento( $nome, $ano, $semestre){
-            $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre) VALUES('$nome ', '$ano ', '$semestre ')");
+            $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre) VALUES('$nome ', '$ano ', '$semestre')");
            
         }
 
