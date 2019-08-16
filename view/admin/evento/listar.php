@@ -34,9 +34,13 @@ require_once("../../../controller/listar_evento.php");?>
           </tr>
         </tfoot>
         <tbody>
-          <?php 
-            foreach($lista as $l){
-              echo "<tr><td>".$l['idEvento']."</td><td>".$l['nome']."</td><td>".$l['ano']."</td><td>".$l['semestre']."</td><td>
+          <?php foreach($lista as $l){ ?>
+          <tr>
+            <td><?php echo $l['idEvento']; ?></td>
+            <td><?php echo $l['nome']; ?></td>
+            <td><?php echo $l['ano']; ?></td>
+            <td><?php echo $l['semestre']; ?></td>
+            <td>
               <div class='btn-group' role='group'>
                 <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-cogs'></i> Escolher 
                 </button>
@@ -45,13 +49,9 @@ require_once("../../../controller/listar_evento.php");?>
                   <a class='dropdown-item' href='#'>Excluir</a>
                 </div>
               </div>
-            </td>";
-            }
-          ?>
-          
-            
-          
-          
+            </td>
+          </tr>
+        <?php } ?>
         </tbody>
       </table>
     </div>
