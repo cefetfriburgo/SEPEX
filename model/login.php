@@ -12,7 +12,7 @@
 				$array = explode('@', $email);			
 				//echo "tamanho do array =". sizeof($array);
 				$pass = md5($senha); //deve receber a variavel $senha com a criptografia
-				$ps = $pdo->query("select senha from administrador where email='" . $email . "'");
+				$ps = $pdo->query("select senha from usuario where email='" . $email . "'");
 	    	
 				$p = $ps->fetch();
 				
