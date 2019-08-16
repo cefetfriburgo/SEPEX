@@ -31,8 +31,14 @@
             $pd = $this->pdo->query("SELECT * FROM evento WHERE nome ='$nome'");
             $p = $pd->fetchAll();
 
-            return $p;
+            return $p;            
+        }
+
+        public function nomeEvento($id){
+            $pd = $this->pdo->query("SELECT * FROM evento WHERE idEvento = $id");
+            $p = $pd->fetch();
             
+            return $p;
         }
 
     }

@@ -45,7 +45,7 @@ require_once("../../../controller/listar_evento.php");?>
                 <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-cogs'></i> Escolher 
                 </button>
                 <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
-                  <a class='dropdown-item' href='editar/id'>Editar</a>
+                  <a class='dropdown-item' href='editar.php?id=<?php echo $l['idEvento']; ?>'>Editar</a>
                   <a class='dropdown-item' href='#'>Excluir</a>
                 </div>
               </div>

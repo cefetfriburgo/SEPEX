@@ -1,7 +1,10 @@
 <?php
-    require_once "./../model/evento.php";
+    require_once dirname(__FILE__)."./../model/evento.php";
 
-    //$nome = $_POST['titulo'];
+    $id = $_POST['id'];
+    $nome = $_POST['titulo'];
+    $ano = $_POST['ano'];
+    $semestre = $_POST['semestre'];
 
     class ControllerEvento{
         private $evento;
@@ -12,14 +15,23 @@
 
         public function atualizar($id, $nome, $ano, $semestre){
             if(!isset($id) || !isset($nome) || !isset($ano) || !isset($semestre)){
-                header('location: ./../view/admin/evento/atualizar.php');
+                header('location: ./../view/admin/evento/editar.php');
             }else{
                 $this->evento->atualizarEvento($id, $nome, $ano, $semestre);
+                header('location: ./../view/admin/evento/listar.php');
             }
         }
+
+        /*public function nome($id){
+            return $this->evento->nomeEvento($id);            
+        }*/
 
     }
 
     $ctrlEvento = new ControllerEvento();
+    $ctrlEvento->atualizar($id, $nome, $ano, $semestre);
+    
+    //echo $lista['nome'];
+
    
 ?>

@@ -2,7 +2,13 @@
 $titulo = "Registrar evento";
 $categoria = "Eventos";
 $local = "Registrar evento";
-include_once("../base/header.php"); ?>
+$id = $_GET['id'];
+require_once("../base/header.php");
+require_once "./../../../controller/editar_evento.php";
+
+$lista = $ctrlEvento->nome($id);
+
+?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -12,21 +18,26 @@ include_once("../base/header.php"); ?>
 			</div>
 			<div class="card-body">
 				<form action="./../../../controller/atualizar_evento.php" method="POST">
+				<input type="hidden" value=<?php echo $id; ?> name = 'id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título do evento" required>
+						<input type="text" class="form-control" id="titulo" name="titulo" value=<?php echo $lista['nome']; ?> required>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="ano">Ano</label>
-							<input type="number" value="2019" class="form-control" id="ano" name="ano">
+							<input type="number" value=<?php echo $lista['ano']; ?> class="form-control" id="ano" name="ano">
 						</div>
 						<div class="col">
 							<label for="semestre">Semestre</label>
 							<select class="form-control" id="semestre" name="semestre">
-								<option disabled selected>Semestre do ano</option>
-								<option>Primeiro semestre</option>
-								<option>Segundo semestre</option>
+								<?php if($lista['semestre'] == 'Primeiro semestre'){ ?>
+									<option selected>Primeiro semestre</option>
+									<option>Segundo semestre</option>
+								<?php }else{ ?>
+									<option>Primeiro semestre</option>
+									<option selected>Segundo semestre</option>
+								<?php } ?>
 						</select>
 						</div>
 					</div>
