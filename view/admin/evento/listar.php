@@ -46,7 +46,7 @@ require_once("../../../controller/listar_evento.php");?>
                 </button>
                 <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
                   <a class='dropdown-item' href='editar.php?id=<?php echo $l['idEvento']; ?>'>Editar</a>
-                  <a class='dropdown-item' href='#'>Excluir</a>
+                  <a class='dropdown-item' href='./../../../controller/excluir_evento.php?id=<?php echo $l['idEvento']; ?>'>Excluir</a>
                 </div>
               </div>
             </td>

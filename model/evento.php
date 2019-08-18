@@ -14,13 +14,16 @@
             return $p;            
         }
 
-        public function adicionarEvento( $nome, $ano, $semestre){
-            $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre) VALUES('$nome ', '$ano ', '$semestre')");
+        public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
+            $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
+            VALUES('$nome ', '$ano ', '$semestre', '$data_inicio', '$hora_inicio', '$data_fim', '$hora_fim')");
            
         }
 
-        public function atualizarEvento($id, $nome, $ano, $semestre){
-            $pd = $this->pdo->query("UPDATE evento SET nome= '$nome', ano= '$ano', semestre='$semestre' WHERE idEvento =$id");
+        public function atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
+            $pd = $this->pdo->query("UPDATE evento SET nome= '$nome', ano= '$ano', semestre='$semestre', 
+            data_inicio = '$data_inicio' hora_inicio = '$hora_inicio', data_fim = '$data_fim', hora_fim = '$hora_fim' 
+            WHERE idEvento =$id");
         }
 
         public function excluirEvento($id){
