@@ -20,10 +20,10 @@
         }
 
         public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta){
-            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) ){
+            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data)){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }else{
-                $this->atividade->adicionarAtividade($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta);
+                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta);
                 header('location: ./../view/admin/atividade/listar.php');
             }
         }

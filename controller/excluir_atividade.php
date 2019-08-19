@@ -1,7 +1,7 @@
 <?php
     require_once "./../model/atividade.php";
 
-    $id = $_POST['id'];
+    $id = $_GET['id'];
 
     class ControllerAtividade{
         private $atividade;
@@ -12,9 +12,10 @@
 
         public function excluir($id){
             if(!isset($id)){
-                header('location: ./../view/admin/atividade/excluir.php');
+                header('location: ./../view/admin/atividade/listar.php');
             }else{
-                $this->evento->excluirAtividade($id);
+                $this->atividade->excluirAtividade($id);
+                header('location: ./../view/admin/atividade/listar.php');
             }
         }
     }
