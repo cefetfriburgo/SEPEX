@@ -20,13 +20,13 @@
 
 			/* Aplica a validação ao usuário e senha passados, utilizando as regras de négocio especificas para ele. */
 			
-				if(substr($array[1], -11) !="cefet-rj.br"){// verifica os ultimos 1
+				if(substr($array[1], -11) !="cefet-rj.br"){// verifica os ultimos 11
 					
-					header('location:./../view/admin/login.php');//	return 'Digite o usuário corretamente';
+					header('location:./../view/admin/login.php?erro=erro');//	return 'Digite o usuário corretamente';
 					
 				}else if($pass != $ver){
 					
-					header('location:./../view/admin/login.php');//return 'email ou senha incorretos';
+					header('location:./../view/admin/login.php?erro=erro');//return 'email ou senha incorretos';
 
 				}else{
 					session_start();

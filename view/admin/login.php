@@ -22,7 +22,13 @@
 </head>
 
 <body class="bg-dark">
-
+  <?php
+    if(isset($_GET['erro'])){
+      if($_GET['erro']=='erro'){
+        echo "<script> alert('Email ou senha incorreto!'); </script>";
+      }
+    } 
+  ?>
   <div class="container">
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
