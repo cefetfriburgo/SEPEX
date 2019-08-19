@@ -27,6 +27,7 @@
         }
 
         public function excluirEvento($id){
+            $pd = $this->pdo->query("DELETE FROM atividade WHERE idEvento=$id");
             $pd = $this->pdo->query("DELETE FROM evento WHERE idEvento=$id");
         }
 
