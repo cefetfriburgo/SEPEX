@@ -48,7 +48,7 @@ require_once("../../../controller/listar_atividade.php"); ?>
             			<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher
             			</button>
             			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            				<a class="dropdown-item" href="editar/id">Editar</a>
+                  <a class='dropdown-item' href='editar.php?id=<?php echo $l['idAtividade']; ?>'>Editar</a>
             				<a class="dropdown-item" href="./../../../controller/excluir_atividade.php?id=<?php echo $l['idAtividade']; ?>">Excluir</a>
             			</div>
             		</div>

@@ -41,6 +41,24 @@ $lista = $ctrlEvento->nome($id);
 						</select>
 						</div>
 					</div>
+					<div class="form-group form-row">
+						<div class="col">
+							<label for="data_inicio">Data de Início</label>
+							<input type="date" value=<?php echo $lista['data_inicio']; ?> class="form-control" id="data_inicio" name="data_inicio"/>
+						</div>
+						<div class="col">
+							<label for="hora_inicio">Hora de Início</label>
+							<input type="time" value=<?php echo $lista['hora_inicio']; ?> class="form-control" id="hora_inicio" name="hora_inicio"/>
+						</div>
+						<div class="col">
+							<label for="data_fim">Data de término</label>
+							<input type="date" value=<?php echo $lista['data_fim']; ?> class="form-control" id="data_fim" name="data_fim"/>
+						</div>
+						<div class="col">
+							<label for="hora_fim">Hora de término</label>
+							<input type="time" value=<?php echo $lista['hora_fim']; ?> class="form-control" id="hora_fim" name="hora_fim"/>
+						</div>						
+					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
 			</div>

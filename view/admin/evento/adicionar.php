@@ -30,6 +30,24 @@ include_once("../base/header.php"); ?>
 						</select>
 						</div>
 					</div>
+					<div class='form-group form-row'>
+						<div class='col'>
+							<label for='data_inicio'>Data de Início</label>
+							<input type='date' class='form-control' id='data_inicio' name='data_inicio'/>
+						</div>
+						<div class='col'>
+							<label for='hora_inicio'>Hora de Início</label>
+							<input type='time' class='form-control' id='hora_inicio' name='hora_inicio'/>
+						</div>
+						<div class='col'>
+							<label for='data_fim'>Data Final</label>
+							<input type='date' class='form-control' id='data_fim' name='data_fim'/>
+						</div>
+						<div class='col'>
+							<label for='hora_fim'>Hora Final</label>
+							<input type='time' class='form-control' id='hora_fim' name='hora_fim'/>
+						</div>
+					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
 			</div>

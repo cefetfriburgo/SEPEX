@@ -5,6 +5,10 @@
     $nome = $_POST['titulo'];
     $ano = $_POST['ano'];
     $semestre = $_POST['semestre'];
+    $data_inicio = $_POST['data_inicio'];
+    $hora_inicio = $_POST['hora_inicio'];
+    $data_fim = $_POST['data_fim'];
+    $hora_fim = $_POST['hora_fim'];
 
     class ControllerEvento{
         private $evento;
@@ -13,11 +17,11 @@
             $this->evento = new Evento();
         }
 
-        public function atualizar($id, $nome, $ano, $semestre){
-            if(!isset($id) || !isset($nome) || !isset($ano) || !isset($semestre)){
+        public function atualizar($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
+            if(!isset($id) || !isset($nome) || !isset($ano) || !isset($semestre) || !isset($data_inicio) || !isset($hora_inicio) || !isset($data_fim) || !isset($hora_fim)){
                 header('location: ./../view/admin/evento/editar.php');
             }else{
-                $this->evento->atualizarEvento($id, $nome, $ano, $semestre);
+                $this->evento->atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim);
                 header('location: ./../view/admin/evento/listar.php');
             }
         }
@@ -29,7 +33,7 @@
     }
 
     $ctrlEvento = new ControllerEvento();
-    $ctrlEvento->atualizar($id, $nome, $ano, $semestre);
+    $ctrlEvento->atualizar($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim);
     
     //echo $lista['nome'];
 

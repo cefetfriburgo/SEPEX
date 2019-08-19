@@ -5,7 +5,7 @@
     $idEvento = $_POST['evento'];
     $idTipoAtividade = $_POST['tipo'];
     $descricao = $_POST['descricao'];
-    $capacidade = 5;//$_POST['capacidade'];
+    $capacidade = $_POST['capacidade'];
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_termino'];
     $data = $_POST['data'];

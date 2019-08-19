@@ -48,6 +48,23 @@
 
             return $p;
         }
+        
+        public function nomeAtividade($id){
+            $pd = $this->pdo->query("SELECT * FROM atividade a, etiqueta e WHERE a.idAtividade = $id AND e.idAtividade=$id");
+            $p = $pd->fetch();
+            
+            return $p;
+        }
+
+        /*public function nomeEtiqueta($id){
+            $pd = $this->pdo->query("SELECT * FROM etiqueta WHERE idAtividade = $id");
+            $p = $pd->fetch();
+            
+            return $p;
+        }*/
+
+
+
         /*public function pesquisarAtividade($nome_atividade){
             $pd = $this->pdo->query("SELECT * FROM atividade WHERE nome_atividade ='$nome_atividade'");
             $p = $pd->fetchAll();
