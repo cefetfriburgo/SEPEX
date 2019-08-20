@@ -1,7 +1,7 @@
 <?php
     require_once "./../model/atividade.php";
 
-    
+    $idAtividade = $_POST['id'];
     $nome_atividade = $_POST['titulo'];
     $idEvento = $_POST['evento'];
     $idTipoAtividade = $_POST['tipo'];
@@ -24,6 +24,7 @@
             }else{
                 $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data);
                 header('location: ./../view/admin/atividade/listar.php');
+                
             }
         }
     }

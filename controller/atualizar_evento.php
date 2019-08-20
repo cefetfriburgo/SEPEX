@@ -25,17 +25,10 @@
                 header('location: ./../view/admin/evento/listar.php');
             }
         }
-
-        /*public function nome($id){
-            return $this->evento->nomeEvento($id);            
-        }*/
-
     }
 
     $ctrlEvento = new ControllerEvento();
     $ctrlEvento->atualizar($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim);
     
-    //echo $lista['nome'];
-
    
 ?>
