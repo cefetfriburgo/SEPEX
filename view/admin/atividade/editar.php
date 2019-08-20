@@ -9,7 +9,7 @@ require_once("./../../../controller/editar_atividade.php");
 $id = $_GET['id'];
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
-$etiqueta = 'barr';//$lista['etiqueta'];
+$etiqueta = $lista['etiqueta'];
 $idEvento = $lista['idEvento'];
 $ida = $lista['idTipoAtividade'];
 

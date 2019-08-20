@@ -25,11 +25,11 @@
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data){
+        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
             capacidade='$capacidade', idEvento='$idEvento', idTipoAtividade='$idTipoAtividade', hora_inicio = '$hora_inicio', 
             hora_fim = '$hora_fim', atividade.data = '$data' WHERE idAtividade = '$idAtividade'");
-            
+            $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE idAtividade = '$idAtividade'");            
         }
 
         public function excluirAtividade($idAtividade){
@@ -51,7 +51,7 @@
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade WHERE idAtividade = $id ");
+            $pd = $this->pdo->query("SELECT * FROM atividade a, etiqueta e WHERE a.idAtividade = $id AND e.idAtividade = $id");
             $p = $pd->fetch();
             
             return $p;
