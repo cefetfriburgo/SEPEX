@@ -83,7 +83,7 @@ require_once("../../../model/atividade.php"); ?>
 							<?php } ?>
 						</select>
 						<label for='capacidade'>Vagas</label>
-						<input type="number" class="form-control" id="capacidade" name="capacidade">
+						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
 					<div id='vagas' class="form-group">
 						<label for="ncolaborador">Colaborador</label>

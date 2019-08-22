@@ -24,7 +24,7 @@
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
             foreach($array as $a){
-                $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')");
+                $pd4 = $this->pdo->query("INSERT INTO colaborador(nome, sobre) VALUES('$a', '$id')");
         
             }
         }
