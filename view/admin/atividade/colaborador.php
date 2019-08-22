@@ -5,27 +5,25 @@
     require_once("../base/header.php"); 
     require_once("../../../model/atividade.php"); 
 ?>
-<script>
-	
-	function adicionar(){
-		let $tamanho = document.getElementById('ncolaborador').value;
-		for(var $id=1; $id <= $tamanho; $id++){
-			let $vagas = document.getElementById('vagas');
-			let $input = document.createElement('input');		
-			let $br = document.createElement('br');
-			let $label = document.createElement('label');
-			$input.type='text';
-			$input.id='colaborador' + $id;
-			$input.name='colaborador' + $id;
-			$input.class='form-control';
-			//$label.value='colaborador' + $id;
-			
-			$vagas.append('colaborador ' + $id + ' ');
-			
-			$vagas.append($input);
-			$vagas.append($br);
-		}
-	}
+<script >
+
+    $d = document;
+    id = 1;
+    function adicionar(){
+        bloco = $d.getElementById('bloco');
+        input = $d.createElement('input');
+
+        input.type = 'text';
+        input.name = 'nome' + id;
+        input.id = 'nome' + id;
+        input.classList.add('form-control');
+
+        bloco.append('Nome do colaborador');
+        bloco.append(input);
+        id++;
+        
+    }
+
 </script>
 <div class="row">
 	<div class="col-md-8">
@@ -33,14 +31,12 @@
 			<div class="card-header">
 				<i class="fas fa-plus"></i> Novo colaborador
 			</div>
-			<div class="card-body">
+			<div class="card-body">               
 				<form action="./../../../controller/adicionar_colaborador.php" method="POST">
-					<div class="form-group">
-						<label for="titulo">Nome</label>
-						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do colaborador" required><br>
-                        <button class="btn btn-primary btn-block" type="submit">Adicionar colaborador</button>
-					</div>
-                    
+                    <div id='bloco' class = "form-group">
+					    <label for="titulo">Nome</label>
+					    <input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
+				    </div>                    
 					<div class="form-group">
 						<label for="evento">Colaboradores</label>
                         <select class="form-control" id="colaborador" name="colaborador">

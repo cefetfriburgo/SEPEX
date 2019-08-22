@@ -72,10 +72,14 @@
        public function listarColaborador(){
             $pd = $this->pdo->query("SELECT * FROM colaborador");
             $p = $pd->fetchAll();
-            return $p;
-           
+            return $p;           
        }
 
+       public function adicionarColaborador($array){
+            foreach($array as $nome){
+                $pd = $this->pdo->query("INSERT INTO colaborador(nome) VALUE('$nome')");
+            }           
+       }
 
     }
 
