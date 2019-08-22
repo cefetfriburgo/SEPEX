@@ -9,7 +9,7 @@ require_once("./../../../controller/editar_atividade.php");
 $id = $_GET['id'];
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
-$etiqueta = 'barr';//$lista['etiqueta'];
+$etiqueta = $lista['etiqueta'];
 $idEvento = $lista['idEvento'];
 $ida = $lista['idTipoAtividade'];
 
@@ -81,6 +81,7 @@ $ida = $lista['idTipoAtividade'];
 						</select>
 						<label for='capacidade'>Vagas</label>
 						<input type="number" class="form-control" value='<?php echo $capacidade;?>' id="capacidade" name="capacidade">
+						<?php  ?>
 					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>

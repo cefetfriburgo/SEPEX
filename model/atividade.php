@@ -15,7 +15,7 @@
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array){
             $pd = $this->pdo->query("INSERT INTO atividade (idEvento, idTipoAtividade, nome_atividade, descricao, atividade.data, 
             hora_inicio, hora_fim, capacidade) VALUES ($idEvento, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
             '$hora_inicio', '$hora_fim', '$capacidade')");
@@ -23,13 +23,17 @@
             $id = $pd1->fetch();
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
+            foreach($array as $a){
+                $pd4 = $this->pdo->query("INSERT INTO colaborador(nome, sobre) VALUES('$a', '$id')");
+        
+            }
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data){
+        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
             capacidade='$capacidade', idEvento='$idEvento', idTipoAtividade='$idTipoAtividade', hora_inicio = '$hora_inicio', 
             hora_fim = '$hora_fim', atividade.data = '$data' WHERE idAtividade = '$idAtividade'");
-            
+            $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE idAtividade = '$idAtividade'");            
         }
 
         public function excluirAtividade($idAtividade){
@@ -51,7 +55,7 @@
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade WHERE idAtividade = $id ");
+            $pd = $this->pdo->query("SELECT * FROM atividade a, etiqueta e WHERE a.idAtividade = $id AND e.idAtividade = $id");
             $p = $pd->fetch();
             
             return $p;

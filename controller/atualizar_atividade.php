@@ -10,6 +10,7 @@
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_fim'];
     $data = $_POST['data'];
+    $etiqueta = $_POST['etiqueta'];
 
     class ControllerAtividade{
         private $atividade;
@@ -18,11 +19,11 @@
             $this->atividade = new Atividade();
         }
 
-        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data){
+        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             if(!isset($idAtividade) || !isset($nome_atividade) || !isset($descricao) || !isset($capacidade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data)){
                 header('location: ./../view/admin/atividade/editar.php');
             }else{
-                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data);
+                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta);
                 header('location: ./../view/admin/atividade/listar.php');
                 
             }
@@ -30,6 +31,6 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data);
+    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta);
 
 ?>

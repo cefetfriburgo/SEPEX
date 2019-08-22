@@ -5,6 +5,28 @@ $local = "Registrar atividade";
 require_once("../base/header.php"); 
 require_once("../../../model/atividade.php"); ?>
 
+<script>
+	
+	function adicionar(){
+		let $tamanho = document.getElementById('ncolaborador').value;
+		for(var $id=1; $id <= $tamanho; $id++){
+			let $vagas = document.getElementById('vagas');
+			let $input = document.createElement('input');		
+			let $br = document.createElement('br');
+			let $label = document.createElement('label');
+			$input.type='text';
+			$input.id='colaborador' + $id;
+			$input.name='colaborador' + $id;
+			$input.class='form-control';
+			//$label.value='colaborador' + $id;
+			
+			$vagas.append('colaborador ' + $id + ' ');
+			
+			$vagas.append($input);
+			$vagas.append($br);
+		}
+	}
+</script>
 <div class="row">
 	<div class="col-md-8">
 		<div class="card mb-3">
@@ -61,7 +83,12 @@ require_once("../../../model/atividade.php"); ?>
 							<?php } ?>
 						</select>
 						<label for='capacidade'>Vagas</label>
-						<input type="number" class="form-control" id="capacidade" name="capacidade">
+						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
+					</div>
+					<div id='vagas' class="form-group">
+						<label for="ncolaborador">Colaborador</label>
+						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
+						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
 					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
