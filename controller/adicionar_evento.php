@@ -1,5 +1,5 @@
 <?php
-    require_once "./../model/evento.php";
+    require_once dirname(__FILE__)."./../model/evento.php";
 
     $nome = $_POST['titulo'];
     $ano = $_POST['ano'];
@@ -25,6 +25,10 @@
 
             if (!isset($_POST) || empty($_POST)){
                 $erro = 'Por favor, preencha corretamente os campos<br>';
+            }
+
+            if(($semestre != 'Primeiro semestre') || ($semestre != 'Segundo semestre')){
+                $erro = 'Por favor, selecione um semestre<br>';
             }
            
             foreach ($_POST as $campo => $valor){
