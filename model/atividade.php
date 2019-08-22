@@ -15,7 +15,7 @@
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array){
             $pd = $this->pdo->query("INSERT INTO atividade (idEvento, idTipoAtividade, nome_atividade, descricao, atividade.data, 
             hora_inicio, hora_fim, capacidade) VALUES ($idEvento, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
             '$hora_inicio', '$hora_fim', '$capacidade')");
@@ -23,6 +23,10 @@
             $id = $pd1->fetch();
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
+            foreach($array as $a){
+                $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')");
+        
+            }
         }
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
