@@ -83,6 +83,11 @@ $ida = $lista['idTipoAtividade'];
 						<input type="number" class="form-control" value='<?php echo $capacidade;?>' id="capacidade" name="capacidade">
 						<?php  ?>
 					</div>
+					<div id='vagas' class="form-group">
+						<label for="ncolaborador">Número de colaboradores</label>
+						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
+						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
+					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
 						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>

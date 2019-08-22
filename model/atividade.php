@@ -23,10 +23,18 @@
             $id = $pd1->fetch();
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
-            foreach($array as $a){
-                $pd4 = $this->pdo->query("INSERT INTO colaborador(nome, sobre) VALUES('$a', '$id')");
-        
-            }
+            // $t = 0;
+            // foreach($array as $a){
+            //     $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')"); 
+            //     $t++;  
+            // }
+            // echo $t;
+            // $pd5 = $this->pdo->query("SELECT idColaborador FROM colaborador order by idColaborador desc limit $t");
+            // $col_atividade = $pd5->fetchAll();
+            // foreach($col_atividade as $ca){
+            //     $c = $ca['idColaborador'];
+            //     $pd6 = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade) VALUES('$c', '$id')");
+            // }
         }
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
@@ -61,21 +69,12 @@
             return $p;
         }
 
-        /*public function nomeEtiqueta($id){
-            $pd = $this->pdo->query("SELECT * FROM etiqueta WHERE idAtividade = $id");
-            $p = $pd->fetch();
-            
-            return $p;
-        }*/
-
-
-
-        /*public function pesquisarAtividade($nome_atividade){
-            $pd = $this->pdo->query("SELECT * FROM atividade WHERE nome_atividade ='$nome_atividade'");
+       public function listarColaborador(){
+            $pd = $this->pdo->query("SELECT * FROM colaborador");
             $p = $pd->fetchAll();
-
-            return $p;            
-        }*/
+            return $p;
+           
+       }
 
 
     }
