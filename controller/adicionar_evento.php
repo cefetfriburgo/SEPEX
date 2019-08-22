@@ -23,27 +23,49 @@
                 header('location: ./../view/admin/evento/adicionar.php');
             }
 
-            if(!isset($_POST) || empty($_POST)){
-                $erro = 'Nada foi preenchido.';
+            if (!isset($_POST) || empty($_POST)){
+                $erro = 'Por favor, preencha corretamente os campos<br>';
             }
-
-            foreach ($_POST as $key => $value) {
-                $key = trim(strip_tags($value));
-                if(empty($value)){
-                    $erro = 'Existem campos em branco.';
+           
+            foreach ($_POST as $campo => $valor){
+                $campo = trim(strip_tags($valor));
+                if (empty($valor)){
+                    $erro = 'Por favor, preencha todos os campos<br>';
                 }
             }
 
-            if (!is_string($nome)) {
-                $erro = 'Nome deve ser um texto.';
+            if ((!isset($nome) || is_numeric($nome)) && !$erro){
+                $erro = 'O título não pode conter apenas números, por favor, preencha-o corretamente!<br>';
             }
 
-            if ((!isset($ano) || !is_numeric($ano)) && !$erro ) {
-                $erro = 'O ano deve ser um valor numérico.';
+            if ((!isset($ano) || !is_numeric($ano)) && !$erro){
+                $erro = 'O ano deve ser um valor numérico, por favor, preencha-o corretamente!<br>';
             }
 
-            if($erro){
-                echo $erro;
+                $data = explode("-","$data_inicio"); 
+                $d = $data[2];
+                $m = $data[1];
+                $y = $data[0];
+
+                if ($y < 2019){
+                    $erro = 'A data de início é inválida, por favor, preencha-a corretamente!<br>'; 
+               }
+
+               $dataf = explode("-","$data_fim"); 
+                $df = $dataf[2];
+                $mf = $dataf[1];
+                $yf = $dataf[0];
+
+                if ($yf < 2019){
+                    $erro = 'A data de término é inválida, por favor, preencha-a corretamente!<br>'; 
+               }
+
+               if(($ano < 2019) || ($ano > 3000)) {
+                $erro = 'Ano é inválido';
+               }
+                                   
+            if ($erro) {
+                echo $erro. "<br>";
             }
 
             else{
