@@ -25,43 +25,48 @@
             }
 
             if (!isset($_POST) || empty($_POST)){
-                $erro = 'Nada foi postado';
+                $erro = 'Por favor, preencha corretamente os campos<br>';
             }
            
             foreach ($_POST as $campo => $valor){
                 $campo = trim(strip_tags($valor));
                 if (empty($valor)){
-                    $erro = 'Existem campos em branco';
+                    $erro = 'Por favor, preencha todos os campos<br>';
                 }
             }
 
             if ((!isset($nome) || is_numeric($nome)) && !$erro){
-                $erro = 'Nome não deve ser numérico';
+                $erro = 'O título não pode conter apenas números, por favor, preencha-o corretamente!<br>';
             }
 
             if ((!isset($ano) || !is_numeric($ano)) && !$erro){
-                $erro = 'Ano deve ser um valor numérico';
+                $erro = 'O ano deve ser um valor numérico, por favor, preencha-o corretamente!<br>';
             }
 
-            function ValidaData($data_inicio){
+            if ($ano < 2019 || $ano >3000){
+                $erro = 'O ano é inválido, por favor, preencha-o corretamente!<br>';
+            }
+
                 $data = explode("-","$data_inicio"); 
                 $d = $data[2];
                 $m = $data[1];
                 $y = $data[0];
-             
-                $res = checkdate($m,$d,$y);
-                if ($res == 0){
-                   echo "Data inválida";
-                }
 
-                if ($y < 2019){
-                    echo "Ano da data inválido";
-                }
-            }
-            //validacao nao esta funcionando
-                       
+                if ($y < 2019 || $y > 2050){
+                    $erro = 'A data de início é inválida, por favor, preencha-a corretamente!<br>'; 
+               }
+
+               $dataf = explode("-","$data_fim"); 
+                $df = $dataf[2];
+                $mf = $dataf[1];
+                $yf = $dataf[0];
+
+                if ($yf < 2019 || $yf > 2050){
+                    $erro = 'A data de término é inválida, por favor, preencha-a corretamente!<br>'; 
+               }
+                                   
             if ($erro) {
-                echo $erro;
+                echo $erro. "<br>";
             } else{
                 $this->evento->atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim);
                 header('location: ./../view/admin/evento/listar.php');
