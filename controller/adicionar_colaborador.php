@@ -1,7 +1,12 @@
 <?php
     require_once dirname(__FILE__)."./../model/atividade.php";
 
-   
+    $array = [];
+    
+    for($i = 1; $i <= sizeof($_POST); $i++){
+        if(isset($_POST['nome'.$i]))
+            $array[] = $_POST['nome'.$i]; 
+    }
 
     class ControllerColaborador{
         private $colaborador;
@@ -10,9 +15,9 @@
             $this->colaborador = new Atividade();
         }
 
-        public function adicionar($array){
-            return $this->colaborador->adicionarColaborador($array);
-            header('location:./../view/admin/atividade/colaborador.php');
+        public function adicionar($array){            
+            $this->colaborador->adicionarColaborador($array);
+            header('location:./../view\admin\atividade\colaborador.php');
         }
 
     }
