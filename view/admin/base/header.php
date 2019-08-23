@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
 
-  <title><?php echo $titulo ?> - Sistema de Gerenciamento de Eventos</title>
+  <title><?php echo $titulo ?> • Sistema de Gerenciamento de Eventos</title>
 
   <link href="../../../public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="../../../public/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
