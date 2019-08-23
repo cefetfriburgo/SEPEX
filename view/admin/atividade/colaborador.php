@@ -17,6 +17,7 @@
         input.name = 'nome' + id;
         input.id = 'nome' + id;
         input.classList.add('form-control');
+		input.setAttribute('require', 'require');
 
         bloco.append('Nome do colaborador');
         bloco.append(input);
@@ -33,9 +34,10 @@
 			</div>
 			<div class="card-body">               
 				<form action="./../../../controller/adicionar_colaborador.php" method="POST">
-                    <div id='bloco' class = "form-group">
-					    <label for="titulo">Nome</label>
-					    <input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
+					<div id='bloco' class='form-group'>
+					</div>
+					<div  class = "form-group">
+						<input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
 				    </div>                    
 					<div class="form-group">
 						<label for="evento">Colaboradores</label>
