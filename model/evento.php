@@ -22,7 +22,7 @@
 
         public function atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
             $pd = $this->pdo->query("UPDATE evento SET nome= '$nome', ano= '$ano', semestre='$semestre', 
-            data_inicio = '$data_inicio' hora_inicio = '$hora_inicio', data_fim = '$data_fim', hora_fim = '$hora_fim' 
+            data_inicio = '$data_inicio', hora_inicio = '$hora_inicio', data_fim = '$data_fim', hora_fim = '$hora_fim' 
             WHERE idEvento =$id");
         }
 

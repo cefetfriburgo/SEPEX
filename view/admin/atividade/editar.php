@@ -2,9 +2,18 @@
 $titulo = "Registrar atividade";
 $categoria = "Atividades";
 $local = "Registrar atividade";
-require_once("../base/header.php"); 
-require_once("../../../model/atividade.php"); ?>
 
+require_once("../base/header.php"); 
+require_once("./../../../controller/editar_atividade.php"); 
+
+$id = $_GET['id'];
+$lista = $ctrlAtividade->nome($id);
+$capacidade = $lista['capacidade'];
+$etiqueta = $lista['etiqueta'];
+$idEvento = $lista['idEvento'];
+$ida = $lista['idTipoAtividade'];
+
+?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -13,40 +22,44 @@ require_once("../../../model/atividade.php"); ?>
 				<i class="fas fa-plus"></i> Nova atividade
 			</div>
 			<div class="card-body">
-				<form action="./../../../controller/adicionar_atividade.php" method="POST">
+				<form action="./../../../controller/atualizar_atividade.php" method="POST">
+				<input type="hidden" value=<?php echo $id; ?> id='id' name = 'id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título da atividade" required>
+						<input type="text" class="form-control" value='<?php echo $lista['nome_atividade'];?>' id="titulo" name="titulo" placeholder="Título da atividade" required>
 					</div>
 					<div class="form-group">
 						<label for="descricao">Descrição</label>
-						<textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+						<textarea class="form-control"  id="descricao" name="descricao" rows="3"><?php echo $lista['descricao'];?></textarea>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="data">Data</label>
-							<input type="date" class="form-control" id="data" name="data">
+							<input type="date" class="form-control" value='<?php echo $lista['data'];?>' id="data" name="data">
 						</div>
 						<div class="col">
 							<label for="hora_inicio">Hora de início</label>
-							<input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
+							<input type="time" class="form-control" value='<?php echo $lista['hora_inicio'];?>' id="hora_inicio" name="hora_inicio">
 						</div>
 						<div class="col">
-							<label for="hora_termino">Hora de término</label>
-							<input type="time" class="form-control" id="hora_termino" name="hora_termino">
+							<label for="hora_fim">Hora de término</label>
+							<input type="time" class="form-control" value='<?php echo $lista['hora_fim'];?>' id="hora_fim" name="hora_fim">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="evento">Evento</label>
-						<select class="form-control" id="evento" name="evento">
-							<option disabled selected>Evento para esta atividade</option>
+						<select class="form-control" id="evento" name="evento" required>
+							<option disabled >Evento para esta atividade</option>
 							<?php 
 								$c = new Atividade();
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
-							?>
+									if($idEvento == $l['idEvento']){
+
+							?>		<option value = <?php echo $l['idEvento']; ?> selected ><?php echo $l['nome']; ?></option>
+							<?php }else{ ?>
 									<option value = <?php echo $l['idEvento']; ?> ><?php echo $l['nome']; ?></option>
-								<?php } ?>
+								<?php } }?>
 							
 						</select>
 					</div>
@@ -55,28 +68,29 @@ require_once("../../../model/atividade.php"); ?>
 						<select class="form-control" id="tipo" name="tipo">
 							<option disabled selected>Tipo para esta atividade</option>
 							<?php 
-							$c = new Atividade();
-							$lista = $c->listarTipoAtividade();
-							foreach($lista as $l){ ?>
+								$c = new Atividade();
+								$lista = $c->listarTipoAtividade();
+								foreach($lista as $l){
+									if($ida == $l['idTipoAtividade']){
+							 ?>
+							<option value = <?php echo $l['idTipoAtividade'];?> selected><?php echo $l['tipoAtividade']; ?></option>
+									<?php }else{ ?>				
 							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
-							<?php } ?>
+							
+							<?php } } ?>
 						</select>
 						<label for='capacidade'>Vagas</label>
-						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
+						<input type="number" class="form-control" value='<?php echo $capacidade;?>' id="capacidade" name="capacidade">
+						<?php  ?>
 					</div>
-					<div class='form-group'>
-						<a href='./colaborador.php'>
-							<input type='button' value='add colaborador' id='colaborador' name='colaborador'/>
-						</a>
-					</div>
-					<!-- <div id='vagas' class="form-group">
+					<div id='vagas' class="form-group">
 						<label for="ncolaborador">Número de colaboradores</label>
 						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
 						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
-					</div> -->
+					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
+						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
