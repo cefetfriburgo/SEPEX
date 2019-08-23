@@ -17,13 +17,29 @@
         input.name = 'nome' + id;
         input.id = 'nome' + id;
         input.classList.add('form-control');
-		input.setAttribute('require', 'require');
 
         bloco.append('Nome do colaborador');
         bloco.append(input);
-        id++;
-        
+        id++;        
     }
+
+	// function cadastrado(){
+    //     bloco = $d.getElementById('bloco');
+	// 	e = $d.getElementById('colaborador');
+	// 	nome = e.selectedOptions[0].text;
+    //     input = $d.createElement('input');
+
+    //     input.type = 'text';
+    //     input.name = 'nome' + id;
+    //     input.id = 'nome' + id;
+    //     input.classList.add('form-control');
+	// 	input.value = nome;
+		
+
+    //     bloco.append('Nome do colaborador');
+    //     bloco.append(input);
+    //     id++;        
+    // }
 
 </script>
 <div class="row">
@@ -34,24 +50,24 @@
 			</div>
 			<div class="card-body">               
 				<form action="./../../../controller/adicionar_colaborador.php" method="POST">
-					<div id='bloco' class='form-group'>
-					</div>
-					<div  class = "form-group">
-						<input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
+                    <div id='bloco' class = "form-group">
+					    <label for="titulo">Nome</label>
+					    <input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
 				    </div>                    
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="evento">Colaboradores</label>
                         <select class="form-control" id="colaborador" name="colaborador">
 							<option disabled selected>colaboradores já cadastrados</option>
 							<?php 
-								$c = new Atividade();
+								/*$c = new Atividade();
 								$lista = $c->listarColaborador();
-								foreach($lista as $l){
+								foreach($lista as $l){*/
 							?>
-									<option value = <?php echo $l['idColaborador']; ?> ><?php echo $l['nome']; ?></option>
-								<?php } ?>							
+									<option id='cadastrado' name='pedro22' value = <?php// echo $l['idColaborador']; ?> ><?php// echo $l['nome']; ?></option>
+								<?php //} ?>							
 						</select>
-					</div>
+						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
+					</div> -->
 					<!-- <div id='vagas' class="form-group">
 						<label for="ncolaborador">Número de colaboradores</label>
 						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">

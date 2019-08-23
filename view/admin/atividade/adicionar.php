@@ -5,6 +5,52 @@ $local = "Registrar atividade";
 require_once("../base/header.php"); 
 require_once("../../../model/atividade.php"); ?>
 
+<script >
+
+    $d = document;
+    id = 1;
+    // function adicionar(){
+    //     bloco = $d.getElementById('bloco');
+    //     input = $d.createElement('input');
+
+    //     input.type = 'text';
+    //     input.name = 'nome' + id;
+    //     input.id = 'nome' + id;
+    //     input.classList.add('form-control');
+
+    //     bloco.append('Nome do colaborador');
+    //     bloco.append(input);
+    //     id++;        
+    // }
+
+	function cadastrado(){
+        bloco = $d.getElementById('bloco');
+		e = $d.getElementById('colaborador');
+		nome = e.selectedOptions[0].text;
+        input = $d.createElement('input');
+		select = $d.createElement('select');
+
+        input.type = 'text';
+        input.name = 'colaborador' + id;
+        input.id = 'colaborador' + id;
+        input.classList.add('form-control');
+		input.value = nome;
+
+		select.id="papel" + id;
+		select.name ="papel" + id;		
+		select.classList.add('form-control');
+
+		select.innerHTML = "<option disabled selected>Evento para esta atividade</option>";
+		select.innerHTML = "<?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['idPapel']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+		
+
+        bloco.append('Nome do colaborador');
+        bloco.append(input);
+		//bloco.append(select);
+        id++;        
+    }
+
+</script>
 
 <div class="row">
 	<div class="col-md-8">
@@ -64,15 +110,31 @@ require_once("../../../model/atividade.php"); ?>
 						<label for='capacidade'>Vagas</label>
 						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
+					<div class="form-group">
+						<div id='bloco' class='form-group'>
+						</div>
+						<label for="evento">Colaboradores</label>
+                        <select class="form-control" id="colaborador" name="colaborador">
+							<option disabled selected>colaboradores já cadastrados</option>
+							<?php 
+								$c = new Atividade();
+								$lista = $c->listarColaborador();
+								foreach($lista as $l){
+							?>
+									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['idColaborador']; ?> ><?php echo $l['nome']; ?></option>
+								<?php } ?>							
+						</select>
+						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
+					</div>
 					<div class='form-group'>
 						<a href='./colaborador.php'>
-							<input type='button' value='add colaborador' id='colaborador' name='colaborador'/>
+							<input type='button' value='Cadastrar colaborador' id='colaborador' name='colaborador'/>
 						</a>
 					</div>
 					<!-- <div id='vagas' class="form-group">
 						<label for="ncolaborador">Número de colaboradores</label>
 						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
-						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
+						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/>
 					</div> -->
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>

@@ -12,11 +12,13 @@
     $etiqueta = $_POST['etiqueta'];
     //$tamanho = $_POST['ncolaborador'];
     $array = [];
-    if(isset($tamanho)){
-        for($i=1; $i<=$tamanho; $i++){
+
+    for($i=1; $i<= sizeof($_POST); $i++){
+        if(isset($_POST['colaborador'.$i])){
             $array[$i] = $_POST['colaborador'.$i];
-        }
+        }        
     }
+    
     
     class ControllerAtividade{
         private $atividade;

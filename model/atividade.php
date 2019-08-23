@@ -23,7 +23,14 @@
             $id = $pd1->fetch();
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
-            // $t = 0;
+            $t = 0;
+            $nome = [];
+            foreach($array as $a){
+                $pd = $this->pdo->query("SELECT idColaborador FROM colaborador WHERE nome='$a'");
+                $p = $pd->fetch();
+                $n = $p[0];
+                $p = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade) VALUES('$n', '$id')");
+            }
             // foreach($array as $a){
             //     $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')"); 
             //     $t++;  
@@ -79,6 +86,10 @@
             foreach($array as $nome){
                 $pd = $this->pdo->query("INSERT INTO colaborador(nome) VALUE('$nome')");
             }           
+       }
+
+       public function listarPapel(){
+           $pd = $this->pdo->query("SELECT * FROM papel");
        }
 
     }
