@@ -40,13 +40,12 @@ require_once("../../../model/atividade.php"); ?>
 		select.name ="papel" + id;		
 		select.classList.add('form-control');
 
-		select.innerHTML = "<option disabled selected>Evento para esta atividade</option>";
-		select.innerHTML = "<?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['idPapel']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+		select.innerHTML = "<option disabled selected>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['idPapel']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
 		
 
         bloco.append('Nome do colaborador');
         bloco.append(input);
-		//bloco.append(select);
+		bloco.append(select);
         id++;        
     }
 
@@ -113,7 +112,7 @@ require_once("../../../model/atividade.php"); ?>
 					<div class="form-group">
 						<div id='bloco' class='form-group'>
 						</div>
-						<label for="evento">Colaboradores</label>
+						<label for="colaborador">Colaboradores</label>
                         <select class="form-control" id="colaborador" name="colaborador">
 							<option disabled selected>colaboradores já cadastrados</option>
 							<?php 

@@ -15,7 +15,7 @@
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array){
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
             $pd = $this->pdo->query("INSERT INTO atividade (idEvento, idTipoAtividade, nome_atividade, descricao, atividade.data, 
             hora_inicio, hora_fim, capacidade) VALUES ($idEvento, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
             '$hora_inicio', '$hora_fim', '$capacidade')");
@@ -24,13 +24,16 @@
             $id = $id[0];
             $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
             $t = 0;
-            $nome = [];
+
             foreach($array as $a){
                 $pd = $this->pdo->query("SELECT idColaborador FROM colaborador WHERE nome='$a'");
                 $p = $pd->fetch();
                 $n = $p[0];
-                $p = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade) VALUES('$n', '$id')");
-            }
+                $paper = $papel[$t];
+                $p = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade, IdPapel) VALUES('$n', '$id', $paper)");
+                $t++;
+                
+            }//
             // foreach($array as $a){
             //     $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')"); 
             //     $t++;  
@@ -90,6 +93,8 @@
 
        public function listarPapel(){
            $pd = $this->pdo->query("SELECT * FROM papel");
+           $p = $pd->fetchAll();
+           return $p;
        }
 
     }
