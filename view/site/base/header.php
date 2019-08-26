@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <title>Eventos • CEFET-RJ campus Nova Friburgo</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/et-line.css" rel="stylesheet">
-    <link href="assets/css/ionicons.min.css" rel="stylesheet">
-    <link href="assets/css/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="../../public/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../public/assets/css/et-line.css" rel="stylesheet">
+    <link href="../../public/assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="../../public/assets/css/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../public/assets/css/owl.theme.default.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/assets/css/animate.min.css">
+    <link href="../../public/assets/css/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="loader">
