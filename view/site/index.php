@@ -1,4 +1,7 @@
-<?php require_once("./base/header.php"); ?>
+<?php 
+
+$titulo = "Página inicial";
+require_once("./base/header.php"); ?>
 
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
@@ -58,13 +61,13 @@
 
             <div class="col-6 col-md-3  ">
                 <div class="icon_box_two">
-                    <i class="ion-ios-person-outline"></i>
+                    <i class="ion-ios-box-outline"></i>
                     <div class="content">
                         <h5 class="box_title">
-                            Palestrantes
+                            Atividades
                         </h5>
                         <p>
-                            +60 convidados
+                            +60 apresentações
                         </p>
                     </div>
                 </div>
