@@ -40,7 +40,7 @@ require_once("../../../model/atividade.php"); ?>
 		select.name ="papel" + id;		
 		select.classList.add('form-control');
 
-		select.innerHTML = "<option disabled selected>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['idPapel']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+		select.innerHTML = "<option disabled selected>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
 		
 
         bloco.append('Nome do colaborador');
@@ -120,7 +120,7 @@ require_once("../../../model/atividade.php"); ?>
 								$lista = $c->listarColaborador();
 								foreach($lista as $l){
 							?>
-									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['idColaborador']; ?> ><?php echo $l['nome']; ?></option>
+									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['colaborador_id']; ?> ><?php echo $l['nome']; ?></option>
 								<?php } ?>							
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>

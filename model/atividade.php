@@ -26,11 +26,11 @@
             $t = 0;
 
             foreach($array as $a){
-                $pd = $this->pdo->query("SELECT idColaborador FROM colaborador WHERE nome='$a'");
+                $pd = $this->pdo->query("SELECT colaborador_id FROM colaborador WHERE nome='$a'");
                 $p = $pd->fetch();
                 $n = $p[0];
                 $paper = $papel[$t];
-                $p = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade, IdPapel) VALUES('$n', '$id', $paper)");
+                $p = $this->pdo->query("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES('$n', '$id', $paper)");
                 $t++;
                 
             }//
