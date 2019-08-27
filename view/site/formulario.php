@@ -1,4 +1,6 @@
-<?php require_once("./base/header.php"); ?>
+<?php 
+$titulo = "Inscrição";
+require_once("./base/header.php"); ?>
 
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="https://images.even3.com.br/m43YapikFZxhrn6d8dvqK78-ez8=/1300x536/smart/even3.blob.core.windows.net/banner/DSCN0552.9de0b944d18c464d9f43.JPG">
     <div class="overlay_dark"></div>
