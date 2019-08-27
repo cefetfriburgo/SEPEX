@@ -22,14 +22,26 @@ class Publico{
         return $p;
     }
 
-    public function exibirDetalhesAtividade($id){
-        $pd = $this->pdo->query("SELECT a.nome_atividade, a.descricao, a.data, a.hora_inicio, a.hora_fim, a.capacidade, c.nome 
-        FROM colaborador_atividade ca join atividade a on ca.atividade_id=a.idAtividade join colaborador c 
-        on ca.colaborador_id=c.colaborador_id WHERE a.idAtividade=ca.atividade_id AND c.colaborador_id=ca.colaborador_id 
-        AND a.idAtividade='$id'");
+    public function exibirColaboradoresAtividade($id){
+        $pd = $this->pdo->query("SELECT c.nome FROM colaborador_atividade ca join atividade a on ca.atividade_id=a.idAtividade 
+        join colaborador c on ca.colaborador_id=c.colaborador_id WHERE a.idAtividade=ca.atividade_id 
+        AND c.colaborador_id=ca.colaborador_id AND a.idAtividade='$id'");
         $p = $pd->fetchAll();
 
         return $p;
+    }
+
+
+    public function exibirDetalhesAtividade($id){
+        $pd2 = $this->pdo->query("SELECT idEvento, idTipoAtividade, nome_atividade, descricao, atividade.data, hora_inicio,
+        hora_fim, capacidade FROM atividade WHERE idAtividade='$id'");
+        $p2 = $pd2->fetchAll();
+
+        return $p2;
+    }
+
+    public function registrarInscricao($atividade_id, $nome_aluno, $email){
+        $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_aluno, email) VALUES('$atividade_id', '$nome_aluno', '$email')");
     }
 
 }

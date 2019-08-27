@@ -43,9 +43,22 @@ require_once("./base/header.php"); ?>
             </div>
         </div>
         <div class="row justify-content-center mt50">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-3">
+                <p><strong>Colaboradores</strong></p>
+                <p>Mariclédia da Silva, Jupetônio Azeredo e Claudereza Duarte</p>
+                <p><strong>Tipo de atividade</strong></p>
+                <p>Minicurso</p>
+            </div>
+            <div class="col-12 col-md-3">
+                <p><strong>Data e hora</strong></p>
+                <p>22 de outubro de 2019 <br> 13:00 às 18:00</p>
+                <p><strong>Capacidade</strong></p>
+                <p>40 pessoas</p>
             </div>
             <div class="col-12 col-md-6">
+                <p>Inscreva-se nesta atividade clicando no botão abaixo. As inscrições estarão disponíveis apenas enquanto houver vagas e após atingir o limite, não será mais possível se inscrever para esta atividade.</p>
+                <p>A emissão do certificado estará sujeita a confirmação de presença, mediante assinatura do participante.</p>
+                <a href="#" class="btn btn-rounded btn-primary">Inscrever-se</a>
             </div>
         </div>
     </div>
