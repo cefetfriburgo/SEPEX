@@ -34,16 +34,16 @@
         <div class="collapse navbar-collapse flex-sm-row-reverse" id="headernav">
             <ul class=" nav navbar-nav menu">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">Início</a>
+                    <a class="nav-link active" href="./#home">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#info">Informações</a>
+                    <a class="nav-link " href="./#info">Informações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#sobre">Sobre</a>
+                    <a class="nav-link " href="./#sobre">Sobre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#atividade">Atividades</a>
+                    <a class="nav-link " href="./#atividade">Atividades</a>
                 </li>
             </ul>
         </div>
