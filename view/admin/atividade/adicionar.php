@@ -40,7 +40,7 @@ require_once("../../../model/atividade.php"); ?>
 		select.name ="papel" + id;		
 		select.classList.add('form-control');
 
-		select.innerHTML = "<option disabled selected>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+		select.innerHTML = "<option selected value='xxx'>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
 		
 
         bloco.append('Nome do colaborador');
@@ -84,7 +84,7 @@ require_once("../../../model/atividade.php"); ?>
 					<div class="form-group">
 						<label for="evento">Evento</label>
 						<select class="form-control" id="evento" name="evento">
-							<option disabled selected>Evento para esta atividade</option>
+							<option value='xxx' selected>Evento para esta atividade</option>
 							<?php 
 								$c = new Atividade();
 								$lista = $c->listarEvento();
@@ -98,7 +98,7 @@ require_once("../../../model/atividade.php"); ?>
 					<div class="form-group">
 						<label for="tipo">Tipo de Atividade</label>
 						<select class="form-control" id="tipo" name="tipo">
-							<option disabled selected>Tipo para esta atividade</option>
+							<option value='xxx' selected>Tipo para esta atividade</option>
 							<?php 
 							$c = new Atividade();
 							$lista = $c->listarTipoAtividade();
@@ -120,7 +120,7 @@ require_once("../../../model/atividade.php"); ?>
 								$lista = $c->listarColaborador();
 								foreach($lista as $l){
 							?>
-									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['colaborador_id']; ?> ><?php echo $l['nome']; ?></option>
+									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['nome']; ?> ><?php echo $l['nome']; ?></option>
 								<?php } ?>							
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>

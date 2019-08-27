@@ -94,7 +94,14 @@
                 if ($y < 2019){
                     $erro = 'A data é inválida. Por favor, preencha-a corretamente!<br>'; 
                }
-                                   
+            if($idEvento == "xxx"){
+                $erro = 'Selecione um evento que já esteja disponível.<br>';
+            }
+
+            if($idTipoAtividade == "xxx"){
+                $erro = 'Selecione um tipo de atividade que já esteja disponível.<br>';
+            }
+                       
             if ($erro) {
                 echo $erro. "<br>";
             } else{
