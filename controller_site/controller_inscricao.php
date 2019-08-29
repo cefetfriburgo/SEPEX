@@ -13,7 +13,7 @@ require('../model/publico.php');
         }
     }
 
-    $c = new ControllerInscricao();
-    $c->inscricao(1, 'Pedro', 'pedro@cefet-rj.br');
+    // $c = new ControllerInscricao();
+    // $c->inscricao(1, 'Pedreiro', 'pedreiro@cefet-rj.br');
 
 ?>

@@ -8,8 +8,9 @@
         }
 
         public function listarAtividade(){            
-            $pd = $this->pdo->query("SELECT * FROM atividade a, tipo_atividade t, evento e WHERE a.idEvento = e.idEvento 
-            AND t.idTipoAtividade = a.idTipoAtividade");
+            $pd = $this->pdo->query("SELECT a.idAtividade, a.nome_atividade, t.tipoAtividade, e.nome, 
+            a.data FROM atividade a JOIN tipo_atividade t ON a.idTipoAtividade=t.idTipoAtividade
+            JOIN evento e ON a.idEvento = e.idEvento WHERE t.idTipoAtividade = a.idTipoAtividade");
             $p = $pd->fetchAll();
 
             return $p;            
@@ -73,7 +74,7 @@
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade a, etiqueta e WHERE a.idAtividade = $id AND e.idAtividade = $id");
+            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN etiqueta e ON a.idAtividade=e.idAtividade WHERE a.idAtividade = $id");
             $p = $pd->fetch();
             
             return $p;

@@ -41,7 +41,15 @@ class Publico{
     }
 
     public function registrarInscricao($atividade_id, $nome_aluno, $email){
-        $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_aluno, email) VALUES('$atividade_id', '$nome_aluno', '$email')");
+        $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_aluno, email) 
+        VALUES('$atividade_id', '$nome_aluno', '$email')");
+    }
+
+    public function consultarAtividade($email){
+        $pd = $this->pdo->query("SELECT a.nome_atividade, date_format(a.data, '%d/%m/%Y') as 'data', a.hora_inicio, a.hora_fim 
+              FROM atividade a JOIN inscricao i ON a.idAtividade=i.atividade_id WHERE i.email='$email'");
+
+        return $pd->fetchAll();
     }
 
 }
