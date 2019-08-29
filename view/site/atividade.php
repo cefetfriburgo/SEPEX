@@ -2,13 +2,12 @@
 
 $titulo = "Atividades";
 $id = $_GET['id'];
-$nome = $_GET['nome_atividade'];
+
 require_once("./base/header.php"); 
-
-
-//require_once("../../controller_site/controller_detalhes_atividade.php");
-
-//$c->detalhesAtividade($id);
+require_once("../../controller_site/controller_detalhes_atividade.php");
+//  foreach ($atividade as $atv){
+    
+// // }
 
 ?>
 
@@ -38,14 +37,14 @@ require_once("./base/header.php");
     <div class="container">
         <div class="section_title">
             <h3 class="title">
-                 <?php echo $nome; ?>
+                 <?php #echo $nome; ?>
             </h3>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-12">
                 <p>
-                    <?php echo "aqui será exibido a descrição do evento em questão"; ?>
+                    <?php #echo $descricao; ?>
                 </p>
             </div>
         </div>

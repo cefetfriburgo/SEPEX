@@ -1,5 +1,5 @@
 <?php
-    require('../model/publico.php');
+    require dirname(__FILE__).'./../model/publico.php';
 
     class ControllerDetalhesAtividade{
         private $detalhesAtividade;
