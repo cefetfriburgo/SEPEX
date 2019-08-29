@@ -178,7 +178,7 @@ date_default_timezone_set('America/Sao_Paulo');
                         </div>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-primary btn-rounded">Ver mais</a>
+                        <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['idAtividade']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
                         <a href="#">Inscrever-se</a>
