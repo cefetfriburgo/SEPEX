@@ -106,6 +106,8 @@ require_once("../../../model/atividade.php"); ?>
 							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
 							<?php } ?>
 						</select>
+					</div>
+					<div class="form-group">
 						<label for='capacidade'>Vagas</label>
 						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
