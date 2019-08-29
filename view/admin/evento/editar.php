@@ -1,8 +1,12 @@
-<?php 
+<?php
+$id = $_GET['id'];
+if(!isset($id) || $id==null){
+	header('location: ./listar.php');
+}
 $titulo = "Registrar evento";
 $categoria = "Eventos";
 $local = "Registrar evento";
-$id = $_GET['id'];
+
 require_once("../base/header.php");
 require_once "./../../../controller/editar_evento.php";
 
