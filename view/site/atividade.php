@@ -4,6 +4,8 @@ $titulo = "Atividades";
 $id = $_GET['id'];
 $nome = $_GET['nome_atividade'];
 require_once("./base/header.php"); 
+
+
 //require_once("../../controller_site/controller_detalhes_atividade.php");
 
 //$c->detalhesAtividade($id);
