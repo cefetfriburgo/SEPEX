@@ -1,5 +1,6 @@
 <?php 
 $id = $_GET['id'];
+
 if(!isset($id) || $id==null){
 	header('location: ./listar.php');
 }
