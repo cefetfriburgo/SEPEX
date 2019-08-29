@@ -1,7 +1,10 @@
 <?php 
 
 $titulo = "Página inicial";
-require_once("./base/header.php"); ?>
+require_once("./base/header.php");
+require_once("../../controller/listar_atividade.php"); 
+date_default_timezone_set('America/Sao_Paulo');
+?>
 
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
@@ -15,7 +18,7 @@ require_once("./base/header.php"); ?>
                             </h2> -->
                             <strong class="cover-xl-text" style="color: white">SEPEX 2019</strong>
                             <p class="cover-date">
-                                22 e 23 de outrubro
+                                22 e 23 de outubro
                             </p>
                             <a href="#" class=" btn btn-primary btn-rounded" >
                                 Inscrições abertas
@@ -131,18 +134,47 @@ require_once("./base/header.php"); ?>
                 </tr>
                 </thead>
                 <tbody>
+            <?php foreach ($lista as $l) { 
+                $dt = explode("-",$l['data']); 
+                $d = $dt[2];
+                $m = $dt[1];
+                $y = $dt[0]; 
+
+                $hora1 = explode(":", $l['hora_inicio']);
+                $hr = $hora1[0];
+                $mn = $hora1[1];
+
+                $hora2 = explode(":", $l['hora_fim']);
+                $hr2 = $hora2[0];
+                $mn2 = $hora2[1];
+            ?>
                 <tr>
                     <td>
                         <img src="assets/img/cleander/c1.png" alt="event">
                     </td>
                     <td class="event_date">
-                        22
-                        <span>Outubro</span>
+                        <?php echo $d; ?>
+                        <span><?php switch (date("$m")) {
+                                case "01":    $mes = "Janeiro";     break;
+                                case "02":    $mes = "Fevereiro";   break;
+                                case "03":    $mes = "Março";       break;
+                                case "04":    $mes = "Abril";       break;
+                                case "05":    $mes = "Maio";        break;
+                                case "06":    $mes = "Junho";       break;
+                                case "07":    $mes = "Julho";       break;
+                                case "08":    $mes = "Agosto";      break;
+                                case "09":    $mes = "Setembro";    break;
+                                case "10":    $mes = "Outubro";     break;
+                                case "11":    $mes = "Novembro";    break;
+                                case "12":    $mes = "Dezembro";    break; 
+                         }
+                         
+                         echo $mes; ?></span>
                     </td>
                     <td>
                         <div class="event_place">
-                            <h5>Scrum: Vivenciando práticas ágeis da "Fabrica de Software do CEFET/RJ - Campus Nova Friburgo</h5>
-                            <h6>13h às 17h</h6>
+                            <h5><?php echo $l['nome_atividade']; ?></h5>
+                            <h6><?php echo $hr. ":". $mn. " às ". $hr2. ":". $mn2; ?></h6>
                         </div>
                     </td>
                     <td>
@@ -152,48 +184,7 @@ require_once("./base/header.php"); ?>
                         <a href="#">Inscrever-se</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="assets/img/cleander/c2.png" alt="event">
-                    </td>
-                    <td class="event_date">
-                        22
-                        <span>Outubro</span>
-                    </td>
-                    <td>
-                        <div class="event_place">
-                            <h5>Scrum: Vivenciando práticas ágeis da "Fabrica de Software do CEFET/RJ - Campus Nova Friburgo</h5>
-                            <h6>13h às 17h</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-rounded">Ver mais</a>
-                    </td>
-                    <td class="buy_link">
-                        <a href="#">Inscrever-se</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="assets/img/cleander/c3.png" alt="event">
-                    </td>
-                    <td class="event_date">
-                        22
-                        <span>Outubro</span>
-                    </td>
-                    <td>
-                        <div class="event_place">
-                            <h5>Scrum: Vivenciando práticas ágeis da "Fabrica de Software do CEFET/RJ - Campus Nova Friburgo</h5>
-                            <h6>13h às 17h</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-rounded">Ver mais</a>
-                    </td>
-                    <td class="buy_link">
-                        <a href="#">Inscrever-se</a>
-                    </td>
-                </tr>
+            <?php } ?>
                 </tbody>
             </table>
         </div>
