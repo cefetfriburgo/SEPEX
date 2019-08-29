@@ -8,7 +8,8 @@ $titulo = "Registrar evento";
 $categoria = "Eventos";
 $local = "Registrar evento";
 
-require_once("../base/header.php");
+require_on
+ce("../base/header.php");
 require_once "./../../../controller/editar_evento.php";
 
 $lista = $ctrlEvento->nome($id);
