@@ -20,15 +20,12 @@
         }
 
         public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+
             if(!isset($idAtividade) || !isset($nome_atividade) || !isset($descricao) || !isset($capacidade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data)){
                 header('location: ./../view/admin/atividade/editar.php');
             }
             $erro = false;
-            if(!isset($id) || !isset($nome_atividade) || !isset($ano) || !isset($semestre) || !isset($data) || !isset($hora_inicio) || !isset($hora_fim)){
-                header('location: ./../view/admin/atividade/editar.php');
-            }
-
-            if (!isset($_POST) || empty($_POST)){
+            /*if (!isset($_POST) || empty($_POST)){
                 $erro = 'Por favor, preencha corretamente os campos<br>';
             }
            
@@ -37,29 +34,53 @@
                 if (empty($valor)){
                     $erro = 'Por favor, preencha todos os campos<br>';
                 }
-            }
+            }*/
 
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O título não pode conter apenas números, por favor, preencha-o corretamente!<br>';
             }
 
-            if ((!isset($ano) || !is_numeric($ano)) && !$erro){
-                $erro = 'O ano deve ser um valor numérico, por favor, preencha-o corretamente!<br>';
+            if ((!isset($descricao) || is_numeric($descricao)) && !$erro){
+                $erro = 'A descrição não pode conter apenas números. Por favor, preencha-a corretamente!<br>';
             }
 
-            if ($ano < 2019 || $ano >3000){
-                $erro = 'O ano é inválido, por favor, preencha-o corretamente!<br>';
+            if($capacidade <= 0 || !is_numeric($capacidade)) {
+                $erro = 'A quantidade de vagas deve ser numérica. Por favor, preencha-a corretamente!<br>';
             }
 
-                $data = explode("-","$data"); 
-                $d = $data[2];
-                $m = $data[1];
-                $y = $data[0];
+            $horai = explode(":","$hora_inicio"); 
+                $h = $horai[0];
+                $m = $horai[1];
+
+            if ($h > 23 || $h < 0){
+                    $erro = 'A hora de início é inválida. Por favor, preencha-a corretamente!<br>'; 
+                }
+
+                if ($m > 59 || $m < 0){
+                    $erro = 'A hora de início é inválida. Por favor, preencha-a corretamente!<br>';
+                }
+
+            $horaf = explode(":","$hora_fim"); 
+                $hf = $horaf[0];
+                $mf = $horaf[1];
+                
+
+                if ($hf > 23 || $hf < 0){
+                    $erro = 'A hora de término é inválida. Por favor, preencha-a corretamente!<br>'; 
+                }
+
+                if ($mf > 59 || $mf < 0){
+                    $erro = 'A hora de término é inválida. Por favor, preencha-a corretamente!<br>';
+                }
+
+                $dat = explode("-","$data"); 
+                $d = $dat[2];
+                $m = $dat[1];
+                $y = $dat[0];
 
                 if ($y < 2019 || $y > 2050){
-                    $erro = 'A data é inválida, por favor, preencha-a corretamente!<br>'; 
+                    $erro = 'A data é inválida. Por favor, preencha-a corretamente!<br>'; 
                }
-
 
                                    
             if ($erro) {

@@ -90,7 +90,7 @@ $ida = $lista['idTipoAtividade'];
 					</div> -->
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
+						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>

@@ -37,7 +37,7 @@
             }
             
             $erro = false;
-            if (!isset($_POST) || empty($_POST)){
+            /*if (!isset($_POST) || empty($_POST)){
                 $erro = 'Por favor, preencha corretamente os campos<br>';
             }
 
@@ -46,7 +46,7 @@
                 if (empty($valor)){
                     $erro = 'Por favor, preencha todos os campos<br>';
                 }
-            }
+            }*/
 
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O nome da atividade não pode conter apenas números. Por favor, preencha-o corretamente!<br>';
