@@ -3,7 +3,7 @@
 $titulo = "Atividades";
 require_once("./base/header.php"); ?>
 
-<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="https://images.even3.com.br/m43YapikFZxhrn6d8dvqK78-ez8=/1300x536/smart/even3.blob.core.windows.net/banner/DSCN0552.9de0b944d18c464d9f43.JPG">
+<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
     <div class="overlay_dark"></div>
     <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -24,9 +24,7 @@ require_once("./base/header.php"); ?>
         </div>
     </div>
 </section>
-<!--page title section end-->
 
-<!--about section -->
 <section class="pt100 pb100">
     <div class="container">
         <div class="section_title">
@@ -58,7 +56,7 @@ require_once("./base/header.php"); ?>
             <div class="col-12 col-md-6">
                 <p>Inscreva-se nesta atividade clicando no botão abaixo. As inscrições estarão disponíveis apenas enquanto houver vagas e após atingir o limite, não será mais possível se inscrever para esta atividade.</p>
                 <p>A emissão do certificado estará sujeita a confirmação de presença, mediante assinatura do participante.</p>
-                <a href="#" class="btn btn-rounded btn-primary">Inscrever-se</a>
+                <button href="#" class="btn btn-rounded btn-primary" type="submit">Inscrever-se</button>
             </div>
         </div>
     </div>

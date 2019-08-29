@@ -2,7 +2,7 @@
 $titulo = "Inscrição";
 require_once("./base/header.php"); ?>
 
-<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="https://images.even3.com.br/m43YapikFZxhrn6d8dvqK78-ez8=/1300x536/smart/even3.blob.core.windows.net/banner/DSCN0552.9de0b944d18c464d9f43.JPG">
+<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
     <div class="overlay_dark"></div>
     <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -23,9 +23,7 @@ require_once("./base/header.php"); ?>
         </div>
     </div>
 </section>
-<!--page title section end-->
 
-<!--about section -->
 <section class="pt100 pb100">
     <div class="container">
         <div class="section_title">
@@ -45,7 +43,7 @@ require_once("./base/header.php"); ?>
                 <p><strong>Observação</strong>: se a sua atividade ocorrer em dois ou mais dias, basta inscrever-se apenas uma única vez.</p>
             </div>
             <div class="col-12 col-md-6">
-                <div class="contact_form">
+                <form class="contact_form">
                     <label for="nome">Nome</label>
                     <div class="form-group">
                         <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo">
@@ -70,7 +68,7 @@ require_once("./base/header.php"); ?>
                     <div class="form-group text-right">
                         <button class="btn btn-rounded btn-primary">Enviar</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

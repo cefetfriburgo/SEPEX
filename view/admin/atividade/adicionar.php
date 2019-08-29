@@ -106,6 +106,8 @@ require_once("../../../model/atividade.php"); ?>
 							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
 							<?php } ?>
 						</select>
+					</div>
+					<div class="form-group">
 						<label for='capacidade'>Vagas</label>
 						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
@@ -137,7 +139,7 @@ require_once("../../../model/atividade.php"); ?>
 					</div> -->
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
+						<input type="text" class="form-control" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>

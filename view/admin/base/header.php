@@ -48,7 +48,7 @@
 
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="../principal">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Página inicial</span>
         </a>
@@ -73,11 +73,11 @@
           <a class="dropdown-item" href="../atividade/listar.php">Listar atividades</a>
         </div>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
-      </li>
+      </li> -->
     </ul>
 
     <div id="content-wrapper">
@@ -89,6 +89,6 @@
             <a href="/#"><?php echo $categoria ?></a></li>
           <li class="breadcrumb-item active"><?php echo $local ?></li>
         </ol>
-  <?php }else{
+  <?php } else {
     header('location:./../login.php');
   } ?>

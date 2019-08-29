@@ -79,9 +79,10 @@ $ida = $lista['idTipoAtividade'];
 							
 							<?php } } ?>
 						</select>
+					</div>
+					<div class="form-group">
 						<label for='capacidade'>Vagas</label>
-						<input type="number" class="form-control" value='<?php echo $capacidade;?>' id="capacidade" name="capacidade">
-						<?php  ?>
+						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
 					<!-- <div id='vagas' class="form-group">
 						<label for="ncolaborador">Número de colaboradores</label>
@@ -90,7 +91,7 @@ $ida = $lista['idTipoAtividade'];
 					</div> -->
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade" required>
+						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
