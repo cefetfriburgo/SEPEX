@@ -2,7 +2,9 @@
 
 $titulo = "Página inicial";
 require_once("./base/header.php");
-require_once("../../controller/listar_atividade.php"); ?>
+require_once("../../controller/listar_atividade.php"); 
+date_default_timezone_set('America/Sao_Paulo');
+?>
 
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
@@ -138,7 +140,13 @@ require_once("../../controller/listar_atividade.php"); ?>
                 $m = $dt[1];
                 $y = $dt[0]; 
 
-                $hi = $l['hora_inicio'];
+                $hora1 = explode(":", $l['hora_inicio']);
+                $hr = $hora1[0];
+                $mn = $hora1[1];
+
+                $hora2 = explode(":", $l['hora_fim']);
+                $hr2 = $hora2[0];
+                $mn2 = $hora2[1];
             ?>
                 <tr>
                     <td>
@@ -146,12 +154,27 @@ require_once("../../controller/listar_atividade.php"); ?>
                     </td>
                     <td class="event_date">
                         <?php echo $d; ?>
-                        <span>Outubro</span>
+                        <span><?php switch (date("$m")) {
+                                case "01":    $mes = "Janeiro";     break;
+                                case "02":    $mes = "Fevereiro";   break;
+                                case "03":    $mes = "Março";       break;
+                                case "04":    $mes = "Abril";       break;
+                                case "05":    $mes = "Maio";        break;
+                                case "06":    $mes = "Junho";       break;
+                                case "07":    $mes = "Julho";       break;
+                                case "08":    $mes = "Agosto";      break;
+                                case "09":    $mes = "Setembro";    break;
+                                case "10":    $mes = "Outubro";     break;
+                                case "11":    $mes = "Novembro";    break;
+                                case "12":    $mes = "Dezembro";    break; 
+                         }
+                         
+                         echo $mes; ?></span>
                     </td>
                     <td>
                         <div class="event_place">
                             <h5><?php echo $l['nome_atividade']; ?></h5>
-                            <h6><?php echo $hi. " às ". $l['hora_fim']; ?></h6>
+                            <h6><?php echo $hr. ":". $mn. " às ". $hr2. ":". $mn2; ?></h6>
                         </div>
                     </td>
                     <td>
