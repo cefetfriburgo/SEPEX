@@ -11,7 +11,8 @@
         }
 
         public function listar(){
-            return $this->atividade->listarAtividade();
+             return $this->atividade->listarAtividade();
+            
         }
 
     }
@@ -19,9 +20,12 @@
     $ctrlAtividade = new ControllerAtividade();
     $lista = $ctrlAtividade->listar();
 
-    // foreach($lista as $id => $l){
-    //     echo '->' . $l['nome_atividade'] . '<br>';
-    // }
+    foreach($lista as $l){
+        echo '->' . $l['nome_atividade'] . '<br>';
+        echo '->' . $l['hora_inicio'] . '<br>';
+        echo '->' . $l['hora_fim'] . '<br>';
+        
+    }
     
     
 ?>

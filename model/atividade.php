@@ -9,7 +9,7 @@
 
         public function listarAtividade(){            
             $pd = $this->pdo->query("SELECT a.idAtividade, a.nome_atividade, t.tipoAtividade, e.nome, 
-            a.data FROM atividade a JOIN tipo_atividade t ON a.idTipoAtividade=t.idTipoAtividade
+            a.data, a.hora_inicio, a.hora_fim FROM atividade a JOIN tipo_atividade t ON a.idTipoAtividade=t.idTipoAtividade
             JOIN evento e ON a.idEvento = e.idEvento WHERE t.idTipoAtividade = a.idTipoAtividade");
             $p = $pd->fetchAll();
 
