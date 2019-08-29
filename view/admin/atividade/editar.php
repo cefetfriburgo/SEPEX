@@ -1,4 +1,9 @@
 <?php 
+$id = $_GET['id'];
+
+if(!isset($id) || $id==null){
+	header('location: ./listar.php');
+}
 $titulo = "Editar atividade";
 $categoria = "Atividades";
 $local = "Editar atividade";
@@ -6,12 +11,13 @@ $local = "Editar atividade";
 require_once("../base/header.php"); 
 require_once("./../../../controller/editar_atividade.php"); 
 
-$id = $_GET['id'];
+
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
 $etiqueta = $lista['etiqueta'];
 $idEvento = $lista['idEvento'];
 $ida = $lista['idTipoAtividade'];
+
 
 ?>
 
@@ -23,7 +29,7 @@ $ida = $lista['idTipoAtividade'];
 			</div>
 			<div class="card-body">
 				<form action="./../../../controller/atualizar_atividade.php" method="POST">
-				<input type="hidden" value=<?php echo $id; ?> id='id' name = 'id'>
+				<input type="hidden" value='<?php echo $id; ?>' id='id' name='id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
 						<input type="text" class="form-control" value='<?php echo $lista['nome_atividade'];?>' id="titulo" name="titulo" placeholder="Título da atividade" required>
