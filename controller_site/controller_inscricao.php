@@ -7,8 +7,8 @@ require('../model/publico.php');
             $this->inscricao = new Publico();
         }
 
-        public function inscricao($atividade_id, $nome_aluno, $email){
-            $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email);
+        public function inscricao($atividade_id, $nome_aluno, $email, $cpf){
+            $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf);
             
         }
     }
