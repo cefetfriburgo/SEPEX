@@ -1,5 +1,5 @@
 <?php
-    require('../model/publico.php');
+    require dirname(__FILE__).'./../model/publico.php';
 
     class ControllerAtividade{
         private $atividade;
@@ -9,16 +9,18 @@
         }
 
         public function atividade(){
-            return $this->atividade->exibirAtividade();
+           return $this->atividade->exibirAtividade();
+            
             // $p = $this->atividade->exibirAtividade();
 
             // foreach($p as $pb){
-            //     echo $pb['nome_atividade'] . '-->' . $pb['hora_fim'] . '<br>';
+            //     echo $pb['nome_atividade'] . ' -->' . $pb['hora_fim'] . ' -->' . $pb['atividade_id'] . ' -->' . $pb['data'] . '<br>';
             // }
         }
     }
 
-    // $c = new ControllerAtividade();
-    // $c->atividade();
+    //  $c = new ControllerAtividade();
+    //  $c->atividade();
+    $pedro = 'pedrones';
 ?>
 

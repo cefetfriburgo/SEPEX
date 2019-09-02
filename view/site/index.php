@@ -2,8 +2,12 @@
 
 $titulo = "Página inicial";
 require_once("./base/header.php");
-require_once("../../controller/listar_atividade.php"); 
+require_once("../../controller_site/controller_atividade.php"); 
 date_default_timezone_set('America/Sao_Paulo');
+  
+$c = new ControllerAtividade();
+$lista = $c->atividade();
+       
 ?>
 
 <section id="home" class="home-cover">
@@ -21,7 +25,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                 22 e 23 de outubro
                             </p>
                             <a href="#" class=" btn btn-primary btn-rounded" >
-                                Inscrições abertas
+                                Inscrições abertas 
                             </a>
                         </div>
                     </div>
@@ -85,6 +89,7 @@ date_default_timezone_set('America/Sao_Paulo');
                         </h5>
                         <p>
                             Gratuita
+                            
                         </p>
                     </div>
                 </div>
@@ -116,7 +121,6 @@ date_default_timezone_set('America/Sao_Paulo');
         </div>
     </div>
 </section>
-
 <section id="atividade" class="pb100">
     <div class="container">
         <div class="table-responsive">
@@ -134,7 +138,7 @@ date_default_timezone_set('America/Sao_Paulo');
                 </tr>
                 </thead>
                 <tbody>
-            <?php foreach ($lista as $l) { 
+            <?php foreach ($lista as $l) {
                 $dt = explode("-",$l['data']); 
                 $d = $dt[2];
                 $m = $dt[1];
@@ -178,7 +182,7 @@ date_default_timezone_set('America/Sao_Paulo');
                         </div>
                     </td>
                     <td>
-                        <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['idAtividade']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
+                        <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
                         <a href="#">Inscrever-se</a>
@@ -192,4 +196,3 @@ date_default_timezone_set('America/Sao_Paulo');
 </section>
 
 <?php require_once("./base/footer.php"); ?>
-
