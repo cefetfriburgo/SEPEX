@@ -74,7 +74,7 @@
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN etiqueta e ON a.atividade_id=e.idAtividade WHERE a.idAtividade = $id");
+            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN etiqueta e ON a.atividade_id=e.atividade_id WHERE a.atividade_id = $id");
             $p = $pd->fetch();
             
             return $p;

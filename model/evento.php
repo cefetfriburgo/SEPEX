@@ -32,14 +32,14 @@
         }
 
         public function pesquisarEvento($nome){
-            $pd = $this->pdo->query("SELECT * FROM evento WHERE nome ='$nome'");
+            $pd = $this->pdo->query("SELECT * FROM evento WHERE nome_evento ='$nome'");
             $p = $pd->fetchAll();
 
             return $p;            
         }
 
         public function nomeEvento($id){
-            $pd = $this->pdo->query("SELECT * FROM evento WHERE idEvento = $id");
+            $pd = $this->pdo->query("SELECT * FROM evento WHERE evento_id = $id");
             $p = $pd->fetch();
             
             return $p;
