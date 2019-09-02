@@ -16,10 +16,7 @@
     }
 
     $ctrlEvento = new ControllerEvento();
-    
 
-    
-    //echo $lista['nome'];
 
    
 ?>

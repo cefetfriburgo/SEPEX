@@ -8,8 +8,7 @@ $titulo = "Registrar evento";
 $categoria = "Eventos";
 $local = "Registrar evento";
 
-require_on
-ce("../base/header.php");
+require_once("../base/header.php");
 require_once "./../../../controller/editar_evento.php";
 
 $lista = $ctrlEvento->nome($id);
@@ -27,7 +26,7 @@ $lista = $ctrlEvento->nome($id);
 				<input type="hidden" value=<?php echo $id; ?> name = 'id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" name="titulo" value=<?php echo $lista['nome']; ?> required>
+						<input type="text" class="form-control" id="titulo" name="titulo" value=<?php echo $lista['nome_evento']; ?> required>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">

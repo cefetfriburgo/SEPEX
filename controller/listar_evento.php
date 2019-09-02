@@ -18,9 +18,5 @@
 
     $ctrlEvento = new ControllerEvento();
     $lista = $ctrlEvento->listar();
-
-    /*foreach($lista as $l){
-        echo $l['nome'] . ' ' . $l['ano'] . ' ' . $l['semestre'] . "<br>";
-    }*/
     
 ?>
