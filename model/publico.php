@@ -57,6 +57,7 @@ class Publico{
         a.atividade_id=i.atividade_id  WHERE email='$email'");
 
         return $pd->fetchAll();
+        
     }
 
 }
