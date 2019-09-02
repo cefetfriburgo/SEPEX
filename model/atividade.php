@@ -8,22 +8,22 @@
         }
 
         public function listarAtividade(){            
-            $pd = $this->pdo->query("SELECT a.idAtividade, a.nome_atividade, t.tipoAtividade, e.nome, 
-            a.data, a.hora_inicio, a.hora_fim FROM atividade a JOIN tipo_atividade t ON a.idTipoAtividade=t.idTipoAtividade
-            JOIN evento e ON a.idEvento = e.idEvento WHERE t.idTipoAtividade = a.idTipoAtividade");
+            $pd = $this->pdo->query("SELECT a.atividade_id, a.nome_atividade, t.nome_tipo_atividade, e.nome_evento, 
+            a.data, a.hora_inicio, a.hora_fim FROM atividade a JOIN tipo_atividade t ON a.tipo_atividade_id=t.tipo_atividade_id
+            JOIN evento e ON a.evento_id = e.evento_id WHERE t.tipo_atividade_id = a.tipo_atividade_id");
             $p = $pd->fetchAll();
 
             return $p;            
         }
 
         public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
-            $pd = $this->pdo->query("INSERT INTO atividade (idEvento, idTipoAtividade, nome_atividade, descricao, atividade.data, 
+            $pd = $this->pdo->query("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, 
             hora_inicio, hora_fim, capacidade) VALUES ($idEvento, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
             '$hora_inicio', '$hora_fim', '$capacidade')");
-            $pd1 = $this->pdo->query("SELECT MAX(idAtividade) FROM atividade");
+            $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
             $id = $pd1->fetch();
             $id = $id[0];
-            $pd3 = $this->pdo->query("INSERT INTO etiqueta(idAtividade, etiqueta) VALUES($id, '$etiqueta')");
+            $pd3 = $this->pdo->query("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES($id, '$etiqueta')");
             $t = 0;
 
             foreach($array as $a){
@@ -51,30 +51,30 @@
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
             capacidade='$capacidade', idEvento='$idEvento', idTipoAtividade='$idTipoAtividade', hora_inicio = '$hora_inicio', 
-            hora_fim = '$hora_fim', atividade.data = '$data' WHERE idAtividade = '$idAtividade'");
-            $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE idAtividade = '$idAtividade'");            
+            hora_fim = '$hora_fim', atividade.data = '$data' WHERE atividade_id = '$idAtividade'");
+            $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE atividade_id = '$idAtividade'");            
         }
 
         public function excluirAtividade($idAtividade){
-            $pd = $this->pdo->query("DELETE FROM atividade WHERE idAtividade=$idAtividade");
+            $pd = $this->pdo->query("DELETE FROM atividade WHERE atividade_id=$idAtividade");
         }
 
         public function listarEvento(){
-            $pd = $this->pdo->query("SELECT idEvento, nome FROM evento");
+            $pd = $this->pdo->query("SELECT evento_id, nome_evento FROM evento");
             $p = $pd->fetchAll();
 
             return $p; 
         }
 
         public function listarTipoAtividade(){
-            $pd = $this->pdo->query("SELECT idTipoAtividade, tipoAtividade FROM tipo_atividade");
+            $pd = $this->pdo->query("SELECT tipo_atividade_id, nome_tipo_atividade FROM tipo_atividade");
             $p = $pd->fetchAll();
 
             return $p;
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN etiqueta e ON a.idAtividade=e.idAtividade WHERE a.idAtividade = $id");
+            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN etiqueta e ON a.atividade_id=e.idAtividade WHERE a.idAtividade = $id");
             $p = $pd->fetch();
             
             return $p;
