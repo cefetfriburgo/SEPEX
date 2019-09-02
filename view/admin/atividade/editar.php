@@ -15,8 +15,8 @@ require_once("./../../../controller/editar_atividade.php");
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
 $etiqueta = $lista['etiqueta'];
-$idEvento = $lista['idEvento'];
-$ida = $lista['idTipoAtividade'];
+$idEvento = $lista['evento_id'];
+$ida = $lista['tipo_atividade_id'];
 
 
 ?>
@@ -62,9 +62,9 @@ $ida = $lista['idTipoAtividade'];
 								foreach($lista as $l){
 									if($idEvento == $l['idEvento']){
 
-							?>		<option value = <?php echo $l['idEvento']; ?> selected ><?php echo $l['nome']; ?></option>
+							?>		<option value = <?php echo $l['evento_id']; ?> selected ><?php echo $l['nome_evento']; ?></option>
 							<?php }else{ ?>
-									<option value = <?php echo $l['idEvento']; ?> ><?php echo $l['nome']; ?></option>
+									<option value = <?php echo $l['evento_id']; ?> ><?php echo $l['nome_evento']; ?></option>
 								<?php } }?>
 							
 						</select>
@@ -77,11 +77,11 @@ $ida = $lista['idTipoAtividade'];
 								$c = new Atividade();
 								$lista = $c->listarTipoAtividade();
 								foreach($lista as $l){
-									if($ida == $l['idTipoAtividade']){
+									if($ida == $l['tipo_atividade_id']){
 							 ?>
-							<option value = <?php echo $l['idTipoAtividade'];?> selected><?php echo $l['tipoAtividade']; ?></option>
+							<option value = <?php echo $l['tipo_atividade_id'];?> selected><?php echo $l['nome_tipo_atividade']; ?></option>
 									<?php }else{ ?>				
-							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
+							<option value = <?php echo $l['tipo_atividade_id'];?> ><?php echo $l['nome_tipo_atividade']; ?></option>
 							
 							<?php } } ?>
 						</select>
