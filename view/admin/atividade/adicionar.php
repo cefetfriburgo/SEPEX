@@ -90,7 +90,7 @@ require_once("../../../model/atividade.php"); ?>
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
 							?>
-									<option value = <?php echo $l['idEvento']; ?> ><?php echo $l['nome']; ?></option>
+									<option value = <?php echo $l['evento_id']; ?> ><?php echo $l['nome_evento']; ?></option>
 								<?php } ?>
 							
 						</select>
@@ -103,7 +103,7 @@ require_once("../../../model/atividade.php"); ?>
 							$c = new Atividade();
 							$lista = $c->listarTipoAtividade();
 							foreach($lista as $l){ ?>
-							<option value = <?php echo $l['idTipoAtividade'];?> ><?php echo $l['tipoAtividade']; ?></option>
+							<option value = <?php echo $l['tipo_atividade_id'];?> ><?php echo $l['nome_tipo_atividade']; ?></option>
 							<?php } ?>
 						</select>
 					</div>
