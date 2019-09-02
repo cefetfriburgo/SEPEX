@@ -40,14 +40,21 @@ class Publico{
         return $p2;
     }
 
-    public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf){
-        $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_aluno, email, cpf) 
-        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf')");
+    public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
+        $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade) 
+        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf', $comunidade)");
     }
 
     public function consultarAtividade($email){
         $pd = $this->pdo->query("SELECT a.nome_atividade, date_format(a.data, '%d/%m/%Y') as 'data', a.hora_inicio, a.hora_fim 
               FROM atividade a JOIN inscricao i ON a.atividade_id=i.atividade_id WHERE i.email='$email'");
+
+        return $pd->fetchAll();
+    }
+
+    public function exibirRelatorio($email){
+        $pd = $this->pdo->query("SELECT a.nome_atividade, a.data, a.hora_inicio, a.hora_fim FROM inscricao i JOIN atividade a ON 
+        a.atividade_id=i.atividade_id  WHERE email='$email'");
 
         return $pd->fetchAll();
     }

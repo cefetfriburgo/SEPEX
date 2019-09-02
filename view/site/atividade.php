@@ -4,10 +4,10 @@ $titulo = "Atividades";
 $id = $_GET['id'];
 
 require_once("./base/header.php"); 
-require_once("../../controller_site/controller_detalhes_atividade.php");
-//  foreach ($atividade as $atv){
-    
-// // }
+require_once "../../controller_site/controller_detalhes_atividade.php" ;
+
+$lista1 = $c->detalhesAtividade($id);
+$lista2 = $c->colaboradoresAtividade($id);
 
 ?>
 

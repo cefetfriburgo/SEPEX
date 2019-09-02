@@ -10,10 +10,10 @@
 
         public function detalhesAtividade($id){
             return $this->detalhesAtividade->exibirDetalhesAtividade($id);
-            //$p = $this->detalhesAtividade->exibirDetalhesAtividade($id);
 
+            // $p = $this->detalhesAtividade->exibirDetalhesAtividade($id);
             // foreach($p as $i => $pb){
-            //     echo $pb['nome_atividade'] . ' - '. $pb['idEvento'] . ' - '. $pb['idTipoAtividade'] 
+            //     echo $pb['nome_atividade'] . ' - '. $pb['evento_id'] . ' - '. $pb['tipo_atividade_id'] 
             //     . ' - '. $pb['descricao'] . ' - '. $pb['data'] . ' - '. $pb['hora_inicio']
             //     . ' - '. $pb['hora_fim'] . ' - '. $pb['capacidade'] . '<br>';
             // }
@@ -23,8 +23,8 @@
 
         public function colaboradoresAtividade($id){
             return $this->detalhesAtividade->exibirColaboradoresAtividade($id);
-            //$p = $this->detalhesAtividade->exibirColaboradoresAtividade($id);
 
+            // $p = $this->detalhesAtividade->exibirColaboradoresAtividade($id);
             // foreach($p as $pb){
             //     echo $pb['nome'] . '<br>';
             // }
@@ -33,9 +33,9 @@
         }
     }
 
-    $c = new ControllerDetalhesAtividade();
-    $c->detalhesAtividade(4);
-    $c->colaboradoresAtividade(4);
+     $c = new ControllerDetalhesAtividade();
+    // $c->detalhesAtividade(4);
+    // $c->colaboradoresAtividade(4);
     
 ?>
 

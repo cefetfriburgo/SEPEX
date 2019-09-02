@@ -39,7 +39,7 @@ require_once("./base/header.php"); ?>
                 <p>Ao clicar em <strong>Pesquisar</strong>, será exibido na tela a lista de atividades inscritas por este endereço de e-mail, se houver.</p>
             </div>
             <div class="col-12 col-md-6">
-                <form class="contact_form">
+                <form class="contact_form" action="../../controller_site/controller_inscricao.php" method="POST">
                     <label for="nome">Endereço de e-mail</label>
                     <div class="form-group">
                         <input id="email" name="email" type="email" class="form-control" placeholder="Endereço de e-mail utilizado na inscrição">
