@@ -15,20 +15,20 @@
         }
 
         public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
-            $pd = $this->pdo->query("INSERT INTO evento(nome, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
+            $pd = $this->pdo->query("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
             VALUES('$nome ', '$ano ', '$semestre', '$data_inicio', '$hora_inicio', '$data_fim', '$hora_fim')");
            
         }
 
         public function atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
-            $pd = $this->pdo->query("UPDATE evento SET nome= '$nome', ano= '$ano', semestre='$semestre', 
+            $pd = $this->pdo->query("UPDATE evento SET nome_evento= '$nome', ano= '$ano', semestre='$semestre', 
             data_inicio = '$data_inicio', hora_inicio = '$hora_inicio', data_fim = '$data_fim', hora_fim = '$hora_fim' 
-            WHERE idEvento =$id");
+            WHERE evento_id =$id");
         }
 
         public function excluirEvento($id){
-            $pd = $this->pdo->query("DELETE FROM atividade WHERE idEvento=$id");
-            $pd = $this->pdo->query("DELETE FROM evento WHERE idEvento=$id");
+            $pd = $this->pdo->query("DELETE FROM atividade WHERE evento_id=$id");
+            $pd = $this->pdo->query("DELETE FROM evento WHERE evento_id=$id");
         }
 
         public function pesquisarEvento($nome){
