@@ -1,5 +1,5 @@
 <?php
-require('../model/publico.php');
+require dirname(__FILE__).'./../model/publico.php';
 
     class ControllerInscricao{
         private $inscricao;
@@ -12,9 +12,9 @@ require('../model/publico.php');
             
         }
 
-        public function relatorio(){
-            $email = $_POST['email'];
-            return $this->inscricao->exibirRelatorio($email);
+        public function relatorio($email){
+            // $email = $_POST['email'];
+             return $this->inscricao->exibirRelatorio($email);
         }
     }
 
