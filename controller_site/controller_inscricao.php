@@ -63,13 +63,13 @@ $comunidade = $_POST['comunidade'];
         
         for ($t = 9; $t < 11; $t++) {
             
-                for ($d = 0, $c = 0; $c < $t; $c++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
                 $d += $cpf{$c} * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
                 if ($cpf{$c} != $d) {
-                    return false;
-                }
+                return false;
+            }
         }
 
         return true;
@@ -82,9 +82,9 @@ $comunidade = $_POST['comunidade'];
         $extensao = "([a-zA-Z]{2,4})$";
         $pattern = $conta.$domino.$extensao;
         if (preg_match($pattern, $email))
-            return true;
-        else
             return false;
+        else
+            return true;
     }
 
 $valida_cpf = validaCPF($cpf);
