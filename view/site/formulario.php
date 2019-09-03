@@ -1,6 +1,9 @@
 <?php 
 $titulo = "Inscrição";
-require_once("./base/header.php"); ?>
+require_once("./base/header.php");
+require_once("../../controller/listar_atividade.php");
+$id = $_GET['id'];
+?>
 
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
     <div class="overlay_dark"></div>
@@ -42,8 +45,16 @@ require_once("./base/header.php"); ?>
                 </p>
                 <p><strong>Observação</strong>: se a sua atividade ocorrer em dois ou mais dias, basta inscrever-se apenas uma única vez.</p>
             </div>
+            <?php
+                if(isset($_GET['erro'])){
+                  if($_GET['erro']=='erro'){
+                    echo "<script> alert('CPF ou email incorreto!'); </script>";
+                  }
+                } 
+            ?>
             <div class="col-12 col-md-6">
-                <form class="contact_form">
+                <form action="../../controller_site/controller_inscricao.php" method="POST" class="contact_form">
+                    <input type="hidden" value="<?php echo $id; ?>" name="id" id="id">
                     <label for="nome">Nome</label>
                     <div class="form-group">
                         <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo">
@@ -59,14 +70,14 @@ require_once("./base/header.php"); ?>
                     <label for="comunidade">Em relação ao CEFET, eu faço parte da comunidade:</label>
                     <div class="form-group">
                         <div class="radio">
-                            <label><input type="radio" name="optradio" checked> Interna</label>
+                            <label><input type="radio" name="comunidade" value="1" checked> Interna</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="optradio"> Externa</label>
+                            <label><input type="radio" name="comunidade" value="2"> Externa</label>
                         </div>
                     </div>
                     <div class="form-group text-right">
-                        <button class="btn btn-rounded btn-primary">Enviar</button>
+                        <button type="submit" class="btn btn-rounded btn-primary">Enviar</button>
                     </div>
                 </form>
             </div>
