@@ -8,8 +8,8 @@ class Publico{
     }
 
     public function exibirEvento(){
-        $pd = $this->pdo->query("SELECT e.nome, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
-        COUNT(atividade_id) as 'total' FROM evento e, atividade a WHERE e.publicado=1");
+        $pd = $this->pdo->query("SELECT e.nome_evento, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
+        COUNT(atividade_id) as 'total', e.gratuito FROM evento e, atividade a WHERE e.publicado=1");
         $p = $pd->fetchAll();
 
         return $p;
@@ -33,8 +33,7 @@ class Publico{
 
 
     public function exibirDetalhesAtividade($id){
-        $pd2 = $this->pdo->query("SELECT evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, hora_inicio,
-        hora_fim, capacidade FROM atividade WHERE atividade_id='$id'");
+        $pd2 = $this->pdo->query("SELECT * FROM  listar_atividades_disponiveis WHERE id=$id");
         $p2 = $pd2->fetchAll();
 
         return $p2;
@@ -42,7 +41,7 @@ class Publico{
 
     public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
         $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade) 
-        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf', $comunidade)");
+        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf', '$comunidade')");
     }
 
     public function consultarAtividade($email){

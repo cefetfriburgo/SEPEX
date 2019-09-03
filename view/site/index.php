@@ -3,11 +3,17 @@
 $titulo = "Página inicial";
 require_once("./base/header.php");
 require_once("../../controller_site/controller_atividade.php"); 
+require_once("../../controller_site/controller_evento.php");
 date_default_timezone_set('America/Sao_Paulo');
   
 $c = new ControllerAtividade();
 $lista = $c->atividade();
-       
+
+$e = new ControllerEvento();
+$lista2 = $e->evento();
+
+foreach ($lista2 as $l2) {
+
 ?>
 
 <section id="home" class="home-cover">
@@ -20,9 +26,36 @@ $lista = $c->atividade();
                             <!-- <h2 class="cover-title">
                                 CEFET-RJ campus Nova Friburgo apresenta
                             </h2> -->
-                            <strong class="cover-xl-text" style="color: white">SEPEX 2019</strong>
+
+                            <strong class="cover-xl-text" style="color: white"><?php echo $l2['nome_evento']; ?></strong>
                             <p class="cover-date">
-                                22 e 23 de outubro
+                                <?php
+                                $data_inicio = explode("-",$l2['data_inicio']); 
+                                    $d = $data_inicio[2];
+                                    $m = $data_inicio[1];
+                                    $y = $data_inicio[0];
+                                $data_fim = explode("-",$l2['data_fim']); 
+                                    $d2 = $data_fim[2];
+                                    $m2 = $data_fim[1];
+                                    $y2 = $data_fim[0];
+
+                                switch (date("$m")) {
+                                    case "01":    $mes = "Janeiro";     break;
+                                    case "02":    $mes = "Fevereiro";   break;
+                                    case "03":    $mes = "Março";       break;
+                                    case "04":    $mes = "Abril";       break;
+                                    case "05":    $mes = "Maio";        break;
+                                    case "06":    $mes = "Junho";       break;
+                                    case "07":    $mes = "Julho";       break;
+                                    case "08":    $mes = "Agosto";      break;
+                                    case "09":    $mes = "Setembro";    break;
+                                    case "10":    $mes = "Outubro";     break;
+                                    case "11":    $mes = "Novembro";    break;
+                                    case "12":    $mes = "Dezembro";    break; 
+                                }
+
+                                echo "$d - $d2 de $mes";
+                                ?>
                             </p>
                             <a href="#" class=" btn btn-primary btn-rounded" >
                                 Inscrições abertas 
@@ -46,7 +79,7 @@ $lista = $c->atividade();
                             Data
                         </h5>
                         <p>
-                            22 e 23 de outubro 2019
+                           <?php echo "$d - $d2 de $mes"; ?>
                         </p>
                     </div>
                 </div>
@@ -74,7 +107,7 @@ $lista = $c->atividade();
                             Atividades
                         </h5>
                         <p>
-                            +60 apresentações
+                            <?php echo $l2['total']. " atividades"; ?>
                         </p>
                     </div>
                 </div>
@@ -88,8 +121,13 @@ $lista = $c->atividade();
                             Inscrições
                         </h5>
                         <p>
-                            Gratuita
-                            
+                            <?php 
+                                if($l2['gratuito'] == 1){
+                                    echo "Gratuita";
+                                } else {
+                                    echo "Paga";
+                                }
+                            ?> 
                         </p>
                     </div>
                 </div>
@@ -97,6 +135,7 @@ $lista = $c->atividade();
         </div>
     </div>
 </section>
+<?php } ?>
 <!--event info end -->
 
 <!--about the event -->
@@ -185,7 +224,7 @@ $lista = $c->atividade();
                         <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
-                        <a href="#">Inscrever-se</a>
+                        <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>
                     </td>
                 </tr>
             <?php } ?>
