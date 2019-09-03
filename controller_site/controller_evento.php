@@ -1,5 +1,5 @@
 <?php
-    require('../model/publico.php');
+    require_once dirname(__FILE__).'./../model/publico.php';
 
     class ControllerEvento{
         private $evento;

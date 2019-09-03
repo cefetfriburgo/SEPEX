@@ -8,8 +8,8 @@ class Publico{
     }
 
     public function exibirEvento(){
-        $pd = $this->pdo->query("SELECT e.nome, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
-        COUNT(atividade_id) as 'total' FROM evento e, atividade a WHERE e.publicado=1");
+        $pd = $this->pdo->query("SELECT e.nome_evento, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
+        COUNT(atividade_id) as 'total', e.gratuito FROM evento e, atividade a WHERE e.publicado=1");
         $p = $pd->fetchAll();
 
         return $p;
@@ -33,7 +33,7 @@ class Publico{
 
 
     public function exibirDetalhesAtividade($id){
-        $pd2 = $this->pdo->query("SELECT * FROM  listar_atividades WHERE id=$id");
+        $pd2 = $this->pdo->query("SELECT * FROM  listar_atividades_disponiveis WHERE id=$id");
         $p2 = $pd2->fetchAll();
 
         return $p2;
