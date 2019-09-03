@@ -41,7 +41,7 @@ class Publico{
 
     public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
         $pd = $this->pdo->query("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade) 
-        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf', $comunidade)");
+        VALUES('$atividade_id', '$nome_aluno', '$email', '$cpf', '$comunidade')");
     }
 
     public function consultarAtividade($email){

@@ -224,7 +224,7 @@ foreach ($lista2 as $l2) {
                         <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
-                        <a href="#">Inscrever-se</a>
+                        <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>
                     </td>
                 </tr>
             <?php } ?>
