@@ -48,7 +48,7 @@ $id = $_GET['id'];
             <?php
                 if(isset($_GET['erro'])){
                   if($_GET['erro']=='erro'){
-                    echo "<script> alert('CPF ou email incorreto!'); </script>";
+                      echo "<script> alert('CPF ou email incorreto!'); </script>";
                   }
                 } 
             ?>

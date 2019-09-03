@@ -63,29 +63,29 @@ $comunidade = $_POST['comunidade'];
         
         for ($t = 9; $t < 11; $t++) {
             
-            for ($d = 0, $c = 0; $c < $t; $c++) {
+                for ($d = 0, $c = 0; $c < $t; $c++) {
                 $d += $cpf{$c} * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
-            if ($cpf{$c} != $d) {
-                return false;
-            }
+                if ($cpf{$c} != $d) {
+                    return false;
+                }
         }
 
         return true;
         }
     }
 
-function validaEmail($email) {
-    $conta = "^[a-zA-Z0-9\._-]+@";
-    $domino = "[a-zA-Z0-9\._-]+.";
-    $extensao = "([a-zA-Z]{2,4})$";
-    $pattern = $conta.$domino.$extensao;
-    if (preg_match($pattern, $email))
-        return true;
-    else
-        return false;
-}
+    function validaEmail($email) {
+        $conta = "^[a-zA-Z0-9\._-]+@";
+        $domino = "[a-zA-Z0-9\._-]+.";
+        $extensao = "([a-zA-Z]{2,4})$";
+        $pattern = $conta.$domino.$extensao;
+        if (preg_match($pattern, $email))
+            return true;
+        else
+            return false;
+    }
 
 $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
