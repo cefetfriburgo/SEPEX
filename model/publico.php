@@ -33,8 +33,7 @@ class Publico{
 
 
     public function exibirDetalhesAtividade($id){
-        $pd2 = $this->pdo->query("SELECT evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, hora_inicio,
-        hora_fim, capacidade FROM atividade WHERE atividade_id='$id'");
+        $pd2 = $this->pdo->query("SELECT * FROM  listar_atividades WHERE id=$id");
         $p2 = $pd2->fetchAll();
 
         return $p2;
