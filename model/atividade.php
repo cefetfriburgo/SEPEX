@@ -48,7 +48,7 @@
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
-            capacidade='$capacidade', idEvento='$idEvento', idTipoAtividade='$idTipoAtividade', hora_inicio = '$hora_inicio', 
+            capacidade='$capacidade', evento_id='$idEvento', tipo_atividade_id='$idTipoAtividade', hora_inicio = '$hora_inicio', 
             hora_fim = '$hora_fim', atividade.data = '$data' WHERE atividade_id = '$idAtividade'");
             $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE atividade_id = '$idAtividade'");            
         }

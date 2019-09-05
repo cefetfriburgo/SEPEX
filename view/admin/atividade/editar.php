@@ -88,7 +88,7 @@ $ida = $lista['tipo_atividade_id'];
 					</div>
 					<div class="form-group">
 						<label for='capacidade'>Vagas</label>
-						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
+						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade" value='<?php echo $capacidade;?>'>
 					</div>
 					<!-- <div id='vagas' class="form-group">
 						<label for="ncolaborador">Número de colaboradores</label>
