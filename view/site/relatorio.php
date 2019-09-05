@@ -2,23 +2,12 @@
 
 $titulo = "Registro de Inscrição";
 require_once("./base/header.php"); 
-require_once "../../controller_site/controller_inscricao.php" ;
+require_once "../../controller_site/controller_relatorio.php" ;
 
+
+if(isset($_POST['email']) && !empty($_POST['email'])){ $email = $_POST['email']; }
 ?>
 <script>
-    $d = document;
-
-    function gerar_relatorio(){
-        tabela = $d.getElementById('tabela');
-        email = $d.getElementById('email').value;
-        
-        <?php $email ?>
-        
-        thead = "<thead><tr><th>Atividade</th><th>data</th><th>Início</th><th>Término</th></tr></thead><tbody><?php $lista = $c->relatorio($email); foreach($lista as $l){ ?><tr><td><?php echo $l['nome_atividade'];?><td><td><?php echo $l['data'];?></td><td><?php echo $l['hora_inicio'];?></td><td><?php echo $l['hora_fim'];?></td></tr></tbody><?php } ?></tbody>";
-        tabela.innerHTML = thead;
-        
-        
-    }
     
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
@@ -57,21 +46,32 @@ require_once "../../controller_site/controller_inscricao.php" ;
                 <p>Ao clicar em <strong>Pesquisar</strong>, será exibido na tela a lista de atividades inscritas por este endereço de e-mail, se houver.</p>
             </div>
             <div class="col-12 col-md-6">
-                <!-- <form class="contact_form" action="../../controller_site/controller_inscricao.php" method="POST"> -->
-                
+                <form class="contact_form" action="relatorio.php" method="POST">                
                     <label for="nome">Endereço de e-mail</label>
                     <div class="form-group">
+                    <?php if(isset($email) && !empty($email)){ ?>
+                        <input id="email" name="email" type="email" class="form-control" value="<?php echo $email;?>">
+                    <?php }else{ ?>
                         <input id="email" name="email" type="email" class="form-control" placeholder="Endereço de e-mail utilizado na inscrição">
+                    <?php } ?>
                     </div>
-                    <!-- <button href="#" onclick="gerar_relatorio()" class="btn btn-rounded btn-primary" type="submit">Pesquisar</button> -->
-                
-                <input type="button" href="#" onclick="gerar_relatorio()" class="btn btn-rounded btn-primary" value="Pesquisar">                
-            </div>
-            <div class="col-12 col-md-12" id="relatorio">
-                <table id="tabela">
-
-                </table>
-            </div>
+                    <button href="#" class="btn btn-rounded btn-primary" type="submit">Pesquisar</button>
+                 </div>
+            <?php if(isset($email) && !empty($email)){ ?>                 
+                    <div class="col-12 col-md-12 table-responsive" id="relatorio"  >
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead><tr><th>Atividade</th><th>data</th><th>Início</th><th>Término</th></tr></thead>
+                        <tbody>
+                        <?php $c = new ControllerRelatorio(); $lista = $c->relatorio($email); foreach($lista as $l){?>
+                            <tr><td><?php echo $l['nome_atividade']; ?></td>
+                            <td><?php echo $l['data']; ?></td>
+                            <td><?php echo $l['hora_inicio']; ?></td>
+                            <td><?php echo $l['hora_fim']; ?></td></tr>                            
+                        <?php } ?>
+                        </tbody>
+                        </table>
+                </div>               
+            <?php } ?>
         </div>
     </div>
 </section>
