@@ -8,6 +8,7 @@ require_once "../../controller_site/controller_detalhes_atividade.php";
 
 $lista1 = $c->detalhesAtividade($id);
 $lista2 = $c->colaboradoresAtividade($id);
+$lista3 = $c->inscritosAtividade($id);
 
 foreach($lista1 as $l){
     $dt = explode("/",$l['data']); 
@@ -107,7 +108,13 @@ foreach($lista1 as $l){
             <div class="col-12 col-md-6">
                 <p>Inscreva-se nesta atividade clicando no botão abaixo. As inscrições estarão disponíveis apenas enquanto houver vagas e após atingir o limite, não será mais possível se inscrever para esta atividade.</p>
                 <p>A emissão do certificado estará sujeita a confirmação de presença, mediante assinatura do participante.</p>
+                <?php if($lista3['total'] < $l['capacidade']){
+
+                ?>
                 <a href="./formulario.php?id=<?php echo $id; ?>" class="btn btn-rounded btn-primary">Inscrever-se</a>
+                <?php } else{
+                    echo "<br><strong>Capacidade de inscritos esgotada.</strong>";
+                }?>
             </div>
         </div>
     </div>

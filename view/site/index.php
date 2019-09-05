@@ -1,10 +1,10 @@
 <?php 
-
+date_default_timezone_set('America/Sao_Paulo');
 $titulo = "Página inicial";
 require_once("./base/header.php");
 require_once("../../controller_site/controller_atividade.php"); 
 require_once("../../controller_site/controller_evento.php");
-date_default_timezone_set('America/Sao_Paulo');
+require_once("../../controller_site/controller_detalhes_atividade.php");
   
 $c = new ControllerAtividade();
 $lista = $c->atividade();
@@ -12,10 +12,11 @@ $lista = $c->atividade();
 $e = new ControllerEvento();
 $lista2 = $e->evento();
 
+$i = new ControllerDetalhesAtividade();
+
 foreach ($lista2 as $l2) {
 
 ?>
-
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
         <div class="cover_item" style="background: url('../../public/images/capa.jpg');">
@@ -66,6 +67,7 @@ foreach ($lista2 as $l2) {
         </div>
     </div>
 </section>
+<a href="../../controller_site/controller_detalhes_atividade.php">teste</a>
 
 <section id="info" class="pt100 pb100">
     <div class="container">
@@ -217,7 +219,14 @@ foreach ($lista2 as $l2) {
                         <a href="./atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
+                        <?php $i->inscritosAtividade($l['atividade_id']);
+                        if($i['total'] < $l['capacidade']){
+
+                        ?>
                         <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>
+                        <?php } else{
+                            echo "<br><strong>Capacidade de inscritos esgotada.</strong>";
+                        }?>
                     </td>
                 </tr>
             <?php } ?>
