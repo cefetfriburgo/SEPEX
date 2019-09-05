@@ -1,8 +1,42 @@
 <?php 
 $titulo = "Inscrição";
+
 require_once("./base/header.php");
-require_once("../../controller/listar_atividade.php");
+//require_once("../../controller/listar_atividade.php");
+require_once "../../controller_site/controller_detalhes_atividade.php";
+
 $id = $_GET['id'];
+
+$lista = $c->detalhesAtividade($id);
+
+foreach($lista as $l){
+    $data = explode("/",$l['data']); 
+        $a = $data[2];
+        $m = $data[1];
+        $d = $data[0];
+
+        switch (date("$m")) {
+            case "01":    $mes = "Janeiro";     break;
+            case "02":    $mes = "Fevereiro";   break;
+            case "03":    $mes = "Março";       break;
+            case "04":    $mes = "Abril";       break;
+            case "05":    $mes = "Maio";        break;
+            case "06":    $mes = "Junho";       break;
+            case "07":    $mes = "Julho";       break;
+            case "08":    $mes = "Agosto";      break;
+            case "09":    $mes = "Setembro";    break;
+            case "10":    $mes = "Outubro";     break;
+            case "11":    $mes = "Novembro";    break;
+            case "12":    $mes = "Dezembro";    break; 
+        }
+
+        $hora_inicio = explode(":", $l['inicio']);
+            $hora = $hora_inicio[0];
+            $min = $hora_inicio[1];
+
+        $hora_fim = explode(":", $l['termino']);
+            $hora2 = $hora_fim[0];
+            $min2 = $hora_fim[1];
 ?>
 
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
@@ -31,14 +65,14 @@ $id = $_GET['id'];
     <div class="container">
         <div class="section_title">
             <h3 class="title">
-                 <?php echo "Scrum: Vivenciando práticas ágeis da \"Fabrica de Software do CEFET/RJ - Campus Nova Friburgo" ?> 
+                 <?php echo $l['nome']; ?> 
             </h3>
         </div>
 
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-6">
                 <p>
-                    Você está na página de formulário de inscrição para a atividade <strong>Scrum: Vivenciando práticas ágeis da "Fabrica de Software do CEFET/RJ - Campus Nova Friburgo</strong> que ocorrerá em 22 de outubro de 13 às 17 horas.
+                    Você está na página de formulário de inscrição para a atividade <strong>"<?php echo $l['nome']; ?>"</strong> que ocorrerá em<?php echo " $d de $mes de $hora:$min às $hora2:$min2." ?>
                 </p>
                 <p>
                     Preencha ao lado suas informações pessoais para inscrever-se no evento. Antes de submeter o formulário, confira se todos os campos foram preenchidos corretamente. Estas informações serão utilizadas para emissão do certificado. Sua inscrição, apenas, não garante a emissão do formulário.
@@ -85,4 +119,4 @@ $id = $_GET['id'];
     </div>
 </section>
 
-<?php require_once("./base/footer.php"); ?>
+<?php } require_once("./base/footer.php"); ?>
