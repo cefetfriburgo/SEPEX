@@ -127,15 +127,10 @@ require_once("../../../model/atividade.php"); ?>
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
 					</div>
-					<div class='form-group'>
+					<!-- <div class='form-group'>
 						<a href='./colaborador.php'>
 							<input type='button' value='Cadastrar colaborador' id='colaborador' name='colaborador'/>
 						</a>
-					</div>
-					<!-- <div id='vagas' class="form-group">
-						<label for="ncolaborador">Número de colaboradores</label>
-						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
-						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/>
 					</div> -->
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
@@ -159,6 +154,7 @@ require_once("../../../model/atividade.php"); ?>
 					<li><strong>Data e horas</strong>: selecione a data de início, incluindo o dia, mês e ano e as horas de início e término da atividade, incluindo os minutos.</li>
 					<li><strong>Evento</strong>: selecione dentre a lista o evento no qual esta atividade associada. Se você ainda não registrou o evento, faça-o <a href="#">aqui</a>.</li>
 					<li><strong>Tipo</strong>: selecione dentre a lista de opções o tipo desta atividade.</li>
+					<li><strong>Vagas</strong>: escreva o número para definir a quantidade máxima de pessoas inscritas para esta atividade.</li>
 					<li><strong>Palavras-chave</strong>: escreva, separado por vírgulas, as palavras-chave que correspondem a esta atividade.</li>
 				</ul>
 				<p>Após conferir todos os campos, clique no botão <strong>Salvar</strong>.</p>

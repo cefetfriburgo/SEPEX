@@ -63,6 +63,8 @@ include_once("../base/header.php"); ?>
 					<li><strong>Título</strong>: escreva o nome que você deseja dar ao seu evento.</li>
 					<li><strong>Ano</strong>: selecione o ano que o evento será realizado.</li>
 					<li><strong>Semestre</strong>: selecione, dentre as opções, o semestre que o evento será realizado.</li>
+					<li><strong>Data e hora de início</strong>: selecione a data e hora que o evento será iniciado.</li>
+					<li><strong>Data e hora de término</strong>: selecione a data e hora que o evento será encerrado.</li>
 				</ul>
 				<p>Após conferir todos os campos, clique no botão <strong>Salvar</strong>.</p>
 			</div>

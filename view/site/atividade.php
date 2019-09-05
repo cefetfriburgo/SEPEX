@@ -79,12 +79,22 @@ foreach($lista1 as $l){
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-3">
                 <p><strong>Colaboradores</strong></p>
-                <p><?php 
-                    foreach ($lista2 as $l2){
-                        echo $l2['nome']."<br>";
-                    }
-
-                ?></p>
+                <p>
+                	<?php if(count($lista2) > 1){
+                		$colaboradores = [];
+                    	foreach ($lista2 as $l2){
+                        	array_push($colaboradores, $l2['nome']);
+                    	}
+                    	$la = array_pop($colaboradores);
+                		echo implode( ', ', $colaboradores ) . ' e ' . $la;
+                	} else {
+                		foreach ($lista2 as $l2){
+                        	echo $l2['nome'];
+                    	}
+                	}
+                	?>
+                	
+                </p>
                 <p><strong>Tipo de atividade</strong></p>
                 <p><?php echo $l['tipo']; ?></p>
             </div>
