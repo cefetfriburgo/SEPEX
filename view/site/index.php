@@ -54,9 +54,11 @@ foreach ($lista2 as $l2) {
                                 echo "$d - $d2 de $mes";
                                 ?>
                             </p>
+                            <?php if(date("Y-m-d") <= $l2['data_fim']){  ?>
                             <a href="#" class=" btn btn-primary btn-rounded" >
-                                Inscrições abertas 
+                                Inscrições abertas
                             </a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
