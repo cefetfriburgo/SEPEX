@@ -18,14 +18,11 @@ foreach ($lista2 as $l2) {
 
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
-        <div class="cover_item" style="background: url('https://images.even3.com.br/m43YapikFZxhrn6d8dvqK78-ez8=/1300x536/smart/even3.blob.core.windows.net/banner/DSCN0552.9de0b944d18c464d9f43.JPG');">
+        <div class="cover_item" style="background: url('../../public/images/capa.jpg');">
              <div class="slider_content">
                 <div class="slider-content-inner">
                     <div class="container">
                         <div class="slider-content-center">
-                            <!-- <h2 class="cover-title">
-                                CEFET-RJ campus Nova Friburgo apresenta
-                            </h2> -->
 
                             <strong class="cover-xl-text" style="color: white"><?php echo $l2['nome_evento']; ?></strong>
                             <p class="cover-date">
@@ -136,9 +133,7 @@ foreach ($lista2 as $l2) {
     </div>
 </section>
 <?php } ?>
-<!--event info end -->
 
-<!--about the event -->
 <section id="sobre" class="pt100 pb100">
     <div class="container">
         <div class="section_title">
@@ -173,7 +168,6 @@ foreach ($lista2 as $l2) {
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -192,9 +186,6 @@ foreach ($lista2 as $l2) {
                 $mn2 = $hora2[1];
             ?>
                 <tr>
-                    <td>
-                        <img src="assets/img/cleander/c1.png" alt="event">
-                    </td>
                     <td class="event_date">
                         <?php echo $d; ?>
                         <span><?php switch (date("$m")) {
@@ -221,7 +212,7 @@ foreach ($lista2 as $l2) {
                         </div>
                     </td>
                     <td>
-                        <a href="http://localhost/SEPEX/view/site/atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
+                        <a href="./atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
                         <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>

@@ -26,7 +26,7 @@
 <header class="header navbar fixed-top navbar-expand-md sticky_header">
     <div class="container">
         <a class="navbar-brand logo" href="#">
-            <img src="https://i.imgur.com/XDVsXXX.png" alt="Evento"/>
+            <img src="../../public/images/logo.png" alt="Evento"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#headernav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="lnr lnr-text-align-right"></span>
