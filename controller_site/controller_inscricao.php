@@ -23,10 +23,10 @@ $comunidade = $_POST['comunidade'];
             
         }
 
-        public function relatorio($email){
-            // $email = $_POST['email'];
-             return $this->inscricao->exibirRelatorio($email);
-        }
+        // public function relatorio($email){
+        //     // $email = $_POST['email'];
+        //      return $this->inscricao->exibirRelatorio($email);
+        // }
     }
 
     function validaCPF($cpf = null) {
