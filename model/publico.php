@@ -10,7 +10,7 @@ class Publico{
     public function exibirEvento(){
         $pd = $this->pdo->query("SELECT e.nome_evento, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
         COUNT(atividade_id) as 'total', e.gratuito FROM evento e, atividade a WHERE e.publicado=1");
-        $p = $pd->fetchAll();
+        $p = $pd->fetch();
 
         return $p;
     }
