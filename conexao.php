@@ -7,7 +7,7 @@ class Conexao{
             $pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
         }
         catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
+            print "Error: " . $e->getMessage() . "<br/>";
             die();
         }
     }
