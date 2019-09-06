@@ -59,6 +59,13 @@ class Publico{
         
     }
 
+    public function quantidadeInscritos($id){
+        $pd = $this->pdo->query("SELECT count(*) as total from inscricao join atividade on inscricao.atividade_id = atividade.atividade_id where atividade.atividade_id = $id");
+
+        return $pd->fetch();
+    }
+
+
 }
 
 

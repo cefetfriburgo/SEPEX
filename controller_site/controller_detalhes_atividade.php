@@ -1,5 +1,5 @@
 <?php
-    require dirname(__FILE__).'./../model/publico.php';
+    require_once dirname(__FILE__).'./../model/publico.php';
 
     class ControllerDetalhesAtividade{
         private $detalhesAtividade;
@@ -31,11 +31,14 @@
             
             //var_dump($p);
         }
+
+        public function inscritosAtividade($id){
+            return $this->detalhesAtividade->quantidadeInscritos($id);
+        }
     }
 
      $c = new ControllerDetalhesAtividade();
-    // $c->detalhesAtividade(4);
-    // $c->colaboradoresAtividade(4);
+
     
 ?>
 
