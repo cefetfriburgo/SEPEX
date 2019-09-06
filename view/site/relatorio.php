@@ -4,11 +4,28 @@ $titulo = "Registro de Inscrição";
 require_once("./base/header.php"); 
 require_once "../../controller_site/controller_relatorio.php" ;
 
-
-if(isset($_POST['email']) && !empty($_POST['email'])){ $email = $_POST['email']; }
 ?>
 <script>
+    $d = document;
     
+    function gerarRelatorio(){
+        email = $d.getElementById('email').value;
+        var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
+        $('thead').append(hd);
+        //console.log(email);
+        $.post('http://localhost/sepex/banco.php', {"email": email}, function($atividades){
+            //console.log($atividades);
+            var obj = JSON.parse($atividades);
+            for(var atividade of obj.atividades){
+                var actv = $('<tr><td>'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+                '</td><td>'+atividade.termino+'</td></tr>');
+                $('tbody').append(actv);
+
+                //console.log(atividade.nome_atividade, atividade.data);
+            }
+        });
+    }
+
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
     <div class="overlay_dark"></div>
@@ -46,32 +63,22 @@ if(isset($_POST['email']) && !empty($_POST['email'])){ $email = $_POST['email'];
                 <p>Ao clicar em <strong>Pesquisar</strong>, será exibido na tela a lista de atividades inscritas por este endereço de e-mail, se houver.</p>
             </div>
             <div class="col-12 col-md-6">
-                <form class="contact_form" action="relatorio.php" method="POST">                
+                <form class="contact_form" onsubmit='return false;'>                
                     <label for="nome">Endereço de e-mail</label>
                     <div class="form-group">
-                    <?php if(isset($email) && !empty($email)){ ?>
-                        <input id="email" name="email" type="email" class="form-control" value="<?php echo $email;?>">
-                    <?php }else{ ?>
                         <input id="email" name="email" type="email" class="form-control" placeholder="Endereço de e-mail utilizado na inscrição">
-                    <?php } ?>
                     </div>
-                    <button href="#" class="btn btn-rounded btn-primary" type="submit">Pesquisar</button>
-                 </div>
-            <?php if(isset($email) && !empty($email)){ ?>                 
-                    <div class="col-12 col-md-12 table-responsive" id="relatorio"  >
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead><tr><th>Atividade</th><th>data</th><th>Início</th><th>Término</th></tr></thead>
-                        <tbody>
-                        <?php $c = new ControllerRelatorio(); $lista = $c->relatorio($email); foreach($lista as $l){?>
-                            <tr><td><?php echo $l['nome_atividade']; ?></td>
-                            <td><?php echo $l['data']; ?></td>
-                            <td><?php echo $l['hora_inicio']; ?></td>
-                            <td><?php echo $l['hora_fim']; ?></td></tr>                            
-                        <?php } ?>
-                        </tbody>
-                        </table>
-                </div>               
-            <?php } ?>
+                    <button href="#" class="btn btn-rounded btn-primary" onclick='gerarRelatorio()' >Pesquisar</button>
+                </form>
+            </div>                        
+        </div>
+        <div>
+            <table id='tabela'>
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>    
         </div>
     </div>
 </section>
