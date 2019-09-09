@@ -44,4 +44,4 @@ require_once("./base/header.php");
     </div>
 </section>
 
-<?php } require_once("./base/footer.php"); ?>
+<?php require_once("./base/footer.php"); ?>
