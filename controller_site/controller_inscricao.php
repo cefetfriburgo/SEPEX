@@ -19,7 +19,7 @@ $comunidade = $_POST['comunidade'];
         public function inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
             $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
             //echo $comunidade;
-            header("location: ../view/site/");
+            header("location: ../view/site/sucesso.php");
             
         }
 
@@ -95,10 +95,6 @@ if(($valida_cpf == false) || ($valida_email == false)) {
 }else{
     $c = new ControllerInscricao();
     $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
-    //  $lista = $c->relatorio();
 
-    //  foreach($lista as $l){
-    //      echo $l['nome_atividade'];
-    //  }
     }
 ?>
