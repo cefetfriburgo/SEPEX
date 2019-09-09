@@ -30,15 +30,16 @@ require_once("./base/header.php");
     <div class="container">
         <div class="section_title">
             <h3 class="title">
-                 Obrigado por inscrever-se 
+                 Inscrição confirmada
             </h3>
         </div>
 
         <div class="row justify-content-center mt50">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-12">
                 <p>
-                    Sua inscrição foi confirmada. Para consultar todas as atividades que você se inscreveu, emita o seu relatório de inscrição <a href="/relatorio.php">clicando aqui</a>.
+                    Sua participação para a atividade está confirmada. Para consultar todas as atividades que você se inscreveu, emita o seu relatório de inscrição <a href="">clicando aqui</a>.
                 </p>
+
             </div>
         </div>
     </div>

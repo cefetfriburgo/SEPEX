@@ -71,13 +71,19 @@ require_once "../../controller_site/controller_relatorio.php" ;
                 </form>
             </div>                        
         </div>
-        <div class="table-responsive row justify-content-center mt50">
-            <table id='tabela' class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>    
+        <div class="row justify-content-center mt50">
+            <div class="col-12 col-md-12">
+                <div class="table-responsive">
+                    <table id='tabela' class="table table-bordered" width="100%" cellspacing="0">
+                        <thead>
+                            
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

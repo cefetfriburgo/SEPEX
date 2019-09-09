@@ -8,7 +8,7 @@ require dirname(__FILE__).'./../model/publico.php';
         }
 
         public function relatorio($email){
-            // $email = $_POST['email'];
+            
              return $this->relatorio->exibirRelatorio($email);
         }
 
@@ -18,11 +18,4 @@ require dirname(__FILE__).'./../model/publico.php';
 
 
     }
-
-    // $c = new ControllerRelatorio(); $lista = $c->relatorio("pedro@cefet-rj.br"); foreach($lista as $l){
-    //     echo $l['nome_atividade'];
-    //      echo $l['data'];
-    //     echo $l['hora_inicio']; 
-    //      echo $l['hora_fim'];                       
-    //  }
 ?>

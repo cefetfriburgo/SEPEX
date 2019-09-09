@@ -9,13 +9,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             <div class="col-12 col-md-6 ">
                 <ul class="footer_menu">
                     <li>
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Speakers</a>
-                    </li>
-                    <li>
-                        <a href="#">Events</a>
+                        <a href="#">Relatar problema</a>
                     </li>
                 </ul>
             </div>
