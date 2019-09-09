@@ -7,7 +7,6 @@ require_once("../../controller_site/controller_evento.php");
   
 $c = new ControllerAtividade();
 $lista = $c->atividade();
-
 ?>
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">

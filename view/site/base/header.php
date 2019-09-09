@@ -37,13 +37,10 @@
                     <a class="nav-link active" href="./#home">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./#info">Informações</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="./#sobre">Sobre</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link " href="./#atividade">Atividades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="./relatorio.php">Minhas Inscrições</a>
                 </li>
             </ul>
         </div>
