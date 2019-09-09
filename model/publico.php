@@ -65,6 +65,15 @@ class Publico{
         return $pd->fetch();
     }
 
+    public function exibirDatasAtividade($id){
+        $pd2 = $this->pdo->query("SELECT nome FROM  listar_atividades_disponiveis WHERE id=$id");
+        $pd3 = $pd2->fetch();
+        $nome = $pd3[0];
+        $p3 = $this->pdo->query("SELECT * FROM  listar_atividades_disponiveis WHERE nome='$nome'");
+        $p2 = $p3->fetchAll();
+
+        return $p2;
+    }
 
 }
 

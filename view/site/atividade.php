@@ -9,35 +9,36 @@ require_once "../../controller_site/controller_detalhes_atividade.php";
 $lista1 = $c->detalhesAtividade($id);
 $lista2 = $c->colaboradoresAtividade($id);
 $lista3 = $c->inscritosAtividade($id);
+$lista4 = $c->datasAtividade($id);
 
 foreach($lista1 as $l){
-    $dt = explode("/",$l['data']); 
-        $y = $dt[2];
-        $m = $dt[1];
-        $d = $dt[0];
+    // $dt = explode("/",$l['data']); 
+    //     $y = $dt[2];
+    //     $m = $dt[1];
+    //     $d = $dt[0];
 
-        switch (date("$m")) {
-            case "01":    $mes = "Janeiro";     break;
-            case "02":    $mes = "Fevereiro";   break;
-            case "03":    $mes = "Março";       break;
-            case "04":    $mes = "Abril";       break;
-            case "05":    $mes = "Maio";        break;
-            case "06":    $mes = "Junho";       break;
-            case "07":    $mes = "Julho";       break;
-            case "08":    $mes = "Agosto";      break;
-            case "09":    $mes = "Setembro";    break;
-            case "10":    $mes = "Outubro";     break;
-            case "11":    $mes = "Novembro";    break;
-            case "12":    $mes = "Dezembro";    break; 
-        }
+    //     switch (date("$m")) {
+    //         case "01":    $mes = "Janeiro";     break;
+    //         case "02":    $mes = "Fevereiro";   break;
+    //         case "03":    $mes = "Março";       break;
+    //         case "04":    $mes = "Abril";       break;
+    //         case "05":    $mes = "Maio";        break;
+    //         case "06":    $mes = "Junho";       break;
+    //         case "07":    $mes = "Julho";       break;
+    //         case "08":    $mes = "Agosto";      break;
+    //         case "09":    $mes = "Setembro";    break;
+    //         case "10":    $mes = "Outubro";     break;
+    //         case "11":    $mes = "Novembro";    break;
+    //         case "12":    $mes = "Dezembro";    break; 
+    //     }
 
-        $hora_inicio = explode(":", $l['inicio']);
-            $hr = $hora_inicio[0];
-            $mn = $hora_inicio[1];
+    //     $hora_inicio = explode(":", $l['inicio']);
+    //         $hr = $hora_inicio[0];
+    //         $mn = $hora_inicio[1];
 
-        $hora_fim = explode(":", $l['termino']);
-            $hr2 = $hora_fim[0];
-            $mn2 = $hora_fim[1];
+    //     $hora_fim = explode(":", $l['termino']);
+    //         $hr2 = $hora_fim[0];
+    //         $mn2 = $hora_fim[1];
 ?>
 
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
@@ -101,7 +102,36 @@ foreach($lista1 as $l){
             </div>
             <div class="col-12 col-md-3">
                 <p><strong>Data e hora</strong></p>
+                <?php foreach($lista4 as $l2){
+                $dt = explode("/",$l2['data']); 
+        $y = $dt[2];
+        $m = $dt[1];
+        $d = $dt[0];
+
+        switch (date("$m")) {
+            case "01":    $mes = "Janeiro";     break;
+            case "02":    $mes = "Fevereiro";   break;
+            case "03":    $mes = "Março";       break;
+            case "04":    $mes = "Abril";       break;
+            case "05":    $mes = "Maio";        break;
+            case "06":    $mes = "Junho";       break;
+            case "07":    $mes = "Julho";       break;
+            case "08":    $mes = "Agosto";      break;
+            case "09":    $mes = "Setembro";    break;
+            case "10":    $mes = "Outubro";     break;
+            case "11":    $mes = "Novembro";    break;
+            case "12":    $mes = "Dezembro";    break; 
+        }
+
+        $hora_inicio = explode(":", $l2['inicio']);
+            $hr = $hora_inicio[0];
+            $mn = $hora_inicio[1];
+
+        $hora_fim = explode(":", $l2['termino']);
+            $hr2 = $hora_fim[0];
+            $mn2 = $hora_fim[1];?>
                 <p><?php echo "$d de $mes de $y"; ?> <br> <?php echo "$hr:$mn às $hr2:$mn2"; ?></p>
+            <?php } ?>
                 <p><strong>Capacidade</strong></p>
                 <p><?php echo $l['capacidade']; ?></p>
             </div>

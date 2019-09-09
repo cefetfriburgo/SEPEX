@@ -2,7 +2,8 @@
 
 $titulo = "Registro de Inscrição";
 require_once("./base/header.php"); 
-require_once "../../controller_site/controller_relatorio.php" ;
+require_once "../../controller_site/controller_relatorio.php";
+
 
 ?>
 <script>
@@ -58,8 +59,10 @@ require_once "../../controller_site/controller_relatorio.php" ;
 
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-6">
-                <p>Para emitir o relatório de atividades inscritas no evento <strong><?php echo "Semana de Extensão 2019"; ?></strong>, preencha no campo ao lado o endereço de e-mail utilizado por você no ato da inscrição.</p>
+            <?php $c = new ControllerRelatorio(); $lista = $c->evento(); $nome = $lista[0]; ?>
+                <p>Para emitir o relatório de atividades inscritas no evento <strong><?php echo $nome; ?></strong>, preencha no campo ao lado o endereço de e-mail utilizado por você no ato da inscrição.</p>
                 <p>Ao clicar em <strong>Pesquisar</strong>, será exibido na tela a lista de atividades inscritas por este endereço de e-mail, se houver.</p>
+            <?php// } ?>
             </div>
             <div class="col-12 col-md-6">
                 <form class="contact_form" onsubmit='return false;'>                

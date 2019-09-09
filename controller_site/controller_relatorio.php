@@ -11,6 +11,12 @@ require dirname(__FILE__).'./../model/publico.php';
             // $email = $_POST['email'];
              return $this->relatorio->exibirRelatorio($email);
         }
+
+        public function evento(){
+            return $this->relatorio->exibirEvento();
+        }
+
+
     }
 
     // $c = new ControllerRelatorio(); $lista = $c->relatorio("pedro@cefet-rj.br"); foreach($lista as $l){
