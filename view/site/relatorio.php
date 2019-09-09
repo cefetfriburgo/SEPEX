@@ -10,18 +10,17 @@ require_once "../../controller_site/controller_relatorio.php" ;
     
     function gerarRelatorio(){
         email = $d.getElementById('email').value;
+        $('tr').remove();
         var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
         $('thead').append(hd);
-        //console.log(email);
-        $.post('http://localhost/sepex/banco.php', {"email": email}, function($atividades){
-            //console.log($atividades);
+        
+        $.post('../../api/inscricao/relatorio.php', {"email": email}, function($atividades){
             var obj = JSON.parse($atividades);
+            
             for(var atividade of obj.atividades){
                 var actv = $('<tr><td>'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
                 '</td><td>'+atividade.termino+'</td></tr>');
                 $('tbody').append(actv);
-
-                //console.log(atividade.nome_atividade, atividade.data);
             }
         });
     }
@@ -72,8 +71,8 @@ require_once "../../controller_site/controller_relatorio.php" ;
                 </form>
             </div>                        
         </div>
-        <div>
-            <table id='tabela'>
+        <div class="table-responsive row justify-content-center mt50">
+            <table id='tabela' class="table table-bordered" width="100%" cellspacing="0">
                 <thead>
                 </thead>
                 <tbody>

@@ -38,6 +38,18 @@ foreach($lista as $l){
             $hora2 = $hora_fim[0];
             $min2 = $hora_fim[1];
 ?>
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+  
+}
+</script>
 
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
     <div class="overlay_dark"></div>
@@ -99,7 +111,7 @@ foreach($lista as $l){
                     </div>
                     <label for="cpf">CPF</label>
                     <div class="form-group">
-                        <input id="cpf" name="cpf" type="text" class="form-control" placeholder="Cadastro de Pessoa Física">
+                        <input id="cpf" name="cpf" type="text" maxlength='14' class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Cadastro de Pessoa Física">
                     </div>
                     <label for="comunidade">Em relação ao CEFET, eu faço parte da comunidade:</label>
                     <div class="form-group">
