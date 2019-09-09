@@ -53,7 +53,7 @@ class Publico{
 
     public function exibirRelatorio($email){
         $pd = $this->pdo->query("SELECT a.nome_atividade, a.data, a.hora_inicio, a.hora_fim FROM inscricao i JOIN atividade a ON 
-        a.atividade_id=i.atividade_id  WHERE email='$email'");
+        a.atividade_id=i.atividade_id WHERE email='$email'");
 
         return $pd->fetchAll();
         
