@@ -23,10 +23,10 @@ $lista = $ctrlEvento->nome($id);
 			</div>
 			<div class="card-body">
 				<form action="./../../../controller/atualizar_evento.php" method="POST">
-				<input type="hidden" value=<?php echo $id; ?> name = 'id'>
+				<input type="hidden" value='<?php echo $id; ?>' name = 'id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" id="titulo" name="titulo" value=<?php echo $lista['nome_evento']; ?> required>
+						<input type="text" class="form-control" id="titulo" name="titulo" value='<?php echo $lista['nome_evento']; ?>' required>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">

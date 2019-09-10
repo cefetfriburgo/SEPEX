@@ -30,7 +30,7 @@ $ida = $lista['tipo_atividade_id'];
 				<input type="hidden" value='<?php echo $id; ?>' id='id' name='id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" value='<?php echo $lista['nome_atividade'];?>' id="titulo" name="titulo" placeholder="Título da atividade" required>
+						<input type="text" class="form-control" value="<?php echo $lista['nome_atividade'];?>" id="nome_atividade" name="nome_atividade" placeholder="Título da atividade" required>
 					</div>
 					<div class="form-group">
 						<label for="descricao">Descrição</label>
@@ -39,15 +39,15 @@ $ida = $lista['tipo_atividade_id'];
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="data">Data</label>
-							<input type="date" class="form-control" value='<?php echo $lista['data'];?>' id="data" name="data">
+							<input type="date" class="form-control" value="<?php echo $lista['data'];?>" id="data" name="data">
 						</div>
 						<div class="col">
 							<label for="hora_inicio">Hora de início</label>
-							<input type="time" class="form-control" value='<?php echo $lista['hora_inicio'];?>' id="hora_inicio" name="hora_inicio">
+							<input type="time" class="form-control" value="<?php echo $lista['hora_inicio'];?>" id="hora_inicio" name="hora_inicio">
 						</div>
 						<div class="col">
 							<label for="hora_fim">Hora de término</label>
-							<input type="time" class="form-control" value='<?php echo $lista['hora_fim'];?>' id="hora_fim" name="hora_fim">
+							<input type="time" class="form-control" value="<?php echo $lista['hora_fim'];?>" id="hora_fim" name="hora_fim">
 						</div>
 					</div>
 					<div class="form-group">
@@ -58,12 +58,13 @@ $ida = $lista['tipo_atividade_id'];
 								$c = new Atividade();
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
-									if($idEvento == $l['idEvento']){
+									if($idEvento == $l['evento_id']){
 
-							?>		<option value = <?php echo $l['evento_id']; ?> selected ><?php echo $l['nome_evento']; ?></option>
-							<?php }else{ ?>
-									<option value = <?php echo $l['evento_id']; ?> ><?php echo $l['nome_evento']; ?></option>
-								<?php } }?>
+							?>		
+								<option value = "<?php echo $l['evento_id']; ?>" selected><?php echo $l['nome_evento']; ?></option>
+							<?php } else{ ?>
+								<option value = "<?php echo $l['evento_id']; ?>" ><?php echo $l['nome_evento']; ?></option>
+							<?php } }?>
 							
 						</select>
 					</div>
@@ -77,9 +78,9 @@ $ida = $lista['tipo_atividade_id'];
 								foreach($lista as $l){
 									if($ida == $l['tipo_atividade_id']){
 							 ?>
-							<option value = <?php echo $l['tipo_atividade_id'];?> selected><?php echo $l['nome_tipo_atividade']; ?></option>
+							<option value = "<?php echo $l['tipo_atividade_id'];?>" selected><?php echo $l['nome_tipo_atividade']; ?></option>
 									<?php }else{ ?>				
-							<option value = <?php echo $l['tipo_atividade_id'];?> ><?php echo $l['nome_tipo_atividade']; ?></option>
+							<option value = "<?php echo $l['tipo_atividade_id'];?>" ><?php echo $l['nome_tipo_atividade']; ?></option>
 							
 							<?php } } ?>
 						</select>
