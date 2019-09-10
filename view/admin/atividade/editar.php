@@ -18,7 +18,6 @@ $etiqueta = $lista['etiqueta'];
 $idEvento = $lista['evento_id'];
 $ida = $lista['tipo_atividade_id'];
 
-
 ?>
 
 <div class="row">

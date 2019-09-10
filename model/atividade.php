@@ -32,18 +32,7 @@
                 $p = $this->pdo->query("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES('$n', '$id', $paper)");
                 $t++;
                 
-            }//
-            // foreach($array as $a){
-            //     $pd4 = $this->pdo->query("INSERT INTO colaborador(nome) VALUES('$a')"); 
-            //     $t++;  
-            // }
-            // echo $t;
-            // $pd5 = $this->pdo->query("SELECT idColaborador FROM colaborador order by idColaborador desc limit $t");
-            // $col_atividade = $pd5->fetchAll();
-            // foreach($col_atividade as $ca){
-            //     $c = $ca['idColaborador'];
-            //     $pd6 = $this->pdo->query("INSERT INTO colaborador_atividade(idColaborador, idAtividade) VALUES('$c', '$id')");
-            // }
+            }
         }
 
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
