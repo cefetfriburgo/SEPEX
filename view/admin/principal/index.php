@@ -6,6 +6,7 @@ include_once("../base/header.php");
 require_once("./../../../controller/contar_evento.php");
 require_once("./../../../controller/contar_atividade.php");
 require_once("./../../../controller/contar_inscricao.php");
+
 ?>
 
 <div class="row">
