@@ -9,7 +9,7 @@
 
         public function contarEvento(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM evento");
-            $p = $pd->fetchAll();
+            $p = $pd->fetch();
 
             return $p;
             echo $p;            
@@ -17,7 +17,7 @@
 
         public function contarAtividade(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM atividade");
-            $p = $pd->fetchAll();
+            $p = $pd->fetch();
 
             return $p;
             echo $p;            
@@ -25,7 +25,7 @@
 
         public function contarInscricao(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM inscricao");
-            $p = $pd->fetchAll();
+            $p = $pd->fetch();
 
             return $p;
             echo $p;            

@@ -4,9 +4,13 @@ $titulo = "Página inicial";
 require_once("./base/header.php");
 require_once("../../controller_site/controller_atividade.php"); 
 require_once("../../controller_site/controller_evento.php");
+require_once("../../controller_site/controller_detalhes_atividade.php");
+
   
 $c = new ControllerAtividade();
 $lista = $c->atividade();
+$i = new ControllerDetalhesAtividade();
+
 ?>
 <section id="home" class="home-cover">
     <div class="cover_slider owl-carousel owl-theme">
@@ -18,7 +22,7 @@ $lista = $c->atividade();
 
                             <strong class="cover-xl-text" style="color: white"><?php echo $nome; ?></strong>
                             <p class="cover-date">
-                            	<?php echo $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
+                                <?php echo $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
                             </p>
                             <?php if(date("Y-m-d") <= $evento['data_fim']){  ?>
                             <a href="#" class=" btn btn-primary btn-rounded" >
@@ -140,6 +144,9 @@ $lista = $c->atividade();
                 </thead>
                 <tbody>
             <?php foreach ($lista as $l) {
+                           
+                $lista2 = $i->inscritosAtividade($l['atividade_id']);
+
                 $dt = explode("-",$l['data']); 
                 $d = $dt[2];
                 $m = $dt[1];
@@ -183,7 +190,14 @@ $lista = $c->atividade();
                         <a href="./atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
-                    	<a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>
+                        <?php if($lista2['total'] < $l['capacidade']){
+
+                        ?>
+                        <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">INSCREVER-SE</a>
+                        <?php } else{
+                            echo "<br><strong>Capacidade de inscritos esgotada</strong>";
+                        }?>
+                        
                     </td>
                 </tr>
             <?php } ?>
