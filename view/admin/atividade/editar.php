@@ -14,7 +14,6 @@ require_once("./../../../controller/editar_atividade.php");
 
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
-$etiqueta = $lista['etiqueta'];
 $idEvento = $lista['evento_id'];
 $ida = $lista['tipo_atividade_id'];
 
@@ -89,15 +88,10 @@ $ida = $lista['tipo_atividade_id'];
 						<label for='capacidade'>Vagas</label>
 						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade" value='<?php echo $capacidade;?>'>
 					</div>
-					<!-- <div id='vagas' class="form-group">
-						<label for="ncolaborador">Número de colaboradores</label>
-						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
-						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
-					</div> -->
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" value='<?php echo $etiqueta;?>' id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
-					</div>
+						<input type="text" class="form-control" value="" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
+					</div> -->
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
 			</div>

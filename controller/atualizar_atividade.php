@@ -10,7 +10,7 @@
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_fim'];
     $data = $_POST['data'];
-    $etiqueta = $_POST['etiqueta'];
+    $etiqueta = "";
 
     class ControllerAtividade{
         private $atividade;
@@ -25,16 +25,6 @@
                 header('location: ./../view/admin/atividade/editar.php');
             }
             $erro = false;
-            /*if (!isset($_POST) || empty($_POST)){
-                $erro = 'Por favor, preencha corretamente os campos<br>';
-            }
-           
-            foreach ($_POST as $campo => $valor){
-                $campo = trim(strip_tags($valor));
-                if (empty($valor)){
-                    $erro = 'Por favor, preencha todos os campos<br>';
-                }
-            }*/
 
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O título não pode conter apenas números, por favor, preencha-o corretamente!<br>';
