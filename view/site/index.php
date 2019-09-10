@@ -25,7 +25,7 @@ $i = new ControllerDetalhesAtividade();
                                 <?php echo $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
                             </p>
                             <?php if(date("Y-m-d") <= $evento['data_fim']){  ?>
-                            <a href="#" class=" btn btn-primary btn-rounded" >
+                            <a href="#atividade" class=" btn btn-primary btn-rounded" >
                                 Inscrições abertas
                             </a>
                             <?php } ?>

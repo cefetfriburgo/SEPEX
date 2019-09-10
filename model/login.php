@@ -4,15 +4,11 @@
   
 	    public function validaDados($email, $senha) {
 			$pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
-			//echo $email."--> 1";
-			//$pos = strpos($email, 'cefet-rj.br');
-			//echo $pos;
-			//if($pos!= null){
 				
 				$array = explode('@', $email);			
-				//echo "tamanho do array =". sizeof($array);
-				$pass = md5($senha); //deve receber a variavel $senha com a criptografia
-				$ps = $pdo->query("select senha from usuario where email='" . $email . "'");
+
+				$pass = sha1($senha); //deve receber a variavel $senha com a criptografia
+				$ps = $pdo->query("SELECT senha FROM usuario WHERE email='" . $email . "'");
 	    	
 				$p = $ps->fetch();
 				
@@ -35,9 +31,6 @@
 					
 					header('location:./../view/admin/principal/index.php');	
 				}
-			//}else{
-			//	header('location:./../view/admin/login.php');//return "digite corretamente";
-			//}
 				
 		}
 	

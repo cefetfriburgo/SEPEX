@@ -16,7 +16,7 @@ class Publico{
     }
 
     public function exibirAtividade(){
-        $pd = $this->pdo->query("SELECT * FROM atividade");
+        $pd = $this->pdo->query("SELECT * FROM atividade ORDER BY atividade.data");
         $p = $pd->fetchAll();
 
         return $p;
