@@ -4,9 +4,12 @@ $titulo = "Página inicial";
 require_once("./base/header.php");
 require_once("../../controller_site/controller_atividade.php"); 
 require_once("../../controller_site/controller_evento.php");
+require_once("../../controller_site/controller_detalhes_atividade.php");
+
   
 $c = new ControllerAtividade();
 $lista = $c->atividade();
+$i = new ControllerDetalhesAtividade();
 
 ?>
 <section id="home" class="home-cover">
@@ -141,6 +144,9 @@ $lista = $c->atividade();
                 </thead>
                 <tbody>
             <?php foreach ($lista as $l) {
+				           
+				$lista2 = $i->inscritosAtividade($l['atividade_id']);
+
                 $dt = explode("-",$l['data']); 
                 $d = $dt[2];
                 $m = $dt[1];
@@ -184,7 +190,14 @@ $lista = $c->atividade();
                         <a href="./atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
-                    	<a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">Inscrever-se</a>
+                    	<?php if($lista2['total'] < $l['capacidade']){
+
+		                ?>
+		                <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">INSCREVER-SE</a>
+		                <?php } else{
+		                    echo "<br><strong>Capacidade de inscritos esgotada</strong>";
+		                }?>
+                    	
                     </td>
                 </tr>
             <?php } ?>
