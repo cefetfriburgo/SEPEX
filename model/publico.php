@@ -1,10 +1,11 @@
 <?php
+require_once dirname(__FILE__)."./../conexao.php";
 
 class Publico{
     private $pdo = null;
 
     public function __construct(){
-        $this->pdo = new PDO("mysql:local=localhost;dbname=sepex;charset=utf8", 'root', '');
+        $this->pdo = Conexao::conectar();//new PDO("mysql:local=localhost;dbname=sepex;charset=utf8", 'root', '');
     }
 
     public function exibirEvento(){
