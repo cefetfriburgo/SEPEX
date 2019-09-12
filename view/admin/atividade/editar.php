@@ -58,7 +58,7 @@ $ida = $lista['tipo_atividade_id'];
 								$c = new Atividade();
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
-									if($idEvento == $l['idEvento']){
+									if($idEvento == $l['evento_id']){
 
 							?>		<option value = <?php echo $l['evento_id']; ?> selected ><?php echo $l['nome_evento']; ?></option>
 							<?php }else{ ?>
