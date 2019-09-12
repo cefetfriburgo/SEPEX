@@ -2,7 +2,7 @@
     require_once "./../model/atividade.php";
 
     $idAtividade = $_POST['id'];
-    $nome_atividade = $_POST['titulo'];
+    $nome_atividade = $_POST['nome_atividade'];
     $idEvento = $_POST['evento'];
     $idTipoAtividade = $_POST['tipo'];
     $descricao = $_POST['descricao'];

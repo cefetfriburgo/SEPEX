@@ -17,9 +17,16 @@ $comunidade = $_POST['comunidade'];
         }
 
         public function inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
-            $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
-            //echo $comunidade;
-            header("location: ../view/site/sucesso.php");
+            $vrfcr = $this->inscricao->verificarExistencia($atividade_id, $nome_aluno, $email, $cpf);
+            // if(!isset($nome_aluno) || empty($nome_aluno) || !isset($email) || empty($email) ||!isset($cpf) || empty($cpf)){
+            //     header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
+            // }else
+            if($vrfcr == 1){
+                header("location: ../view/site/formulario.php?id=$atividade_id&erro=1");
+            }else{
+                $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
+                header("location: ../view/site/sucesso.php");
+            }
             
         }
 
@@ -32,7 +39,7 @@ $comunidade = $_POST['comunidade'];
     function validaCPF($cpf = null) {
 
     // Verifica se um número foi informado
-    if(empty($cpf)) {
+    if(empty($cpf) || !isset($cpf)) {
         return false;
     }
 
@@ -81,7 +88,7 @@ $comunidade = $_POST['comunidade'];
         $domino = "[a-zA-Z0-9\._-]+.";
         $extensao = "([a-zA-Z]{2,4})$";
         $pattern = $conta.$domino.$extensao;
-        if (preg_match($pattern, $email))
+        if (preg_match($pattern, $email) || !isset($email) || empty($email))
             return false;
         else
             return true;
@@ -90,8 +97,8 @@ $comunidade = $_POST['comunidade'];
 $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
-if(($valida_cpf == false) || ($valida_email == false)) {
-    header('location: ../view/site/formulario.php?erro=erro');
+if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
+    header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
 }else{
     $c = new ControllerInscricao();
     $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);

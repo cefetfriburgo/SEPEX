@@ -1,10 +1,12 @@
 <?php
 
 class Conexao{
+    private static $pdo;
 
-    public function conectar(){
+    public static function conectar(){
         try {
-            $pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
+            self::$pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
+            return self::$pdo;
         }
         catch (PDOException $e) {
             print "Error: " . $e->getMessage() . "<br/>";

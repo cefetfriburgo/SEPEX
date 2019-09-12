@@ -6,6 +6,14 @@ require_once("./base/header.php");
 require_once "../../controller_site/controller_detalhes_atividade.php";
 
 $id = $_GET['id'];
+if(isset($_GET['erro'])){
+    $erro = $_GET['erro']; 
+    if($erro == 1){echo "<script>alert('Inscrito já existente!');</script>"; }
+    if($erro == 2){echo "<script>alert('Por favor, preencha todos os campos corretamente!');</script>"; }
+    //if($erro == 3){echo "<script>alert('CPF ou email inválidos!');</script>"; }
+}
+
+
 
 $lista = $c->detalhesAtividade($id);
 

@@ -1,9 +1,10 @@
 <?php
+require_once dirname(__FILE__)."./../conexao.php";
 
 	class Model{
   
 	    public function validaDados($email, $senha) {
-			$pdo = new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
+			$pdo = Conexao::conectar();//new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
 				
 				$array = explode('@', $email);			
 
