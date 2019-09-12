@@ -14,7 +14,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
         $('thead').append(hd);
         
         $.post('../../api/inscricao/relatorio.php', {"email": email}, function($atividades){
-            var obj = JSON.parse($atividades);
+            var obj = $atividades;
             
             for(var atividade of obj.atividades){
                 var actv = $('<tr><td>'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
