@@ -15,9 +15,9 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
             $pd = $this->pdo->query("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, 
-            hora_inicio, hora_fim, capacidade) VALUES ($idEvento, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
+            hora_inicio, hora_fim, capacidade) VALUES ($evento_id, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
             '$hora_inicio', '$hora_fim', '$capacidade')");
             $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
             $id = $pd1->fetch();
@@ -36,9 +36,9 @@ require_once dirname(__FILE__)."./../conexao.php";
             }
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
             $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
-            capacidade='$capacidade', idEvento='$idEvento', idTipoAtividade='$idTipoAtividade', hora_inicio = '$hora_inicio', 
+            capacidade='$capacidade', evento_id='$evento_id', tipo_atividade_id='$idTipoAtividade', hora_inicio = '$hora_inicio', 
             hora_fim = '$hora_fim', atividade.data = '$data' WHERE atividade_id = '$idAtividade'");
             $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE atividade_id = '$idAtividade'");            
         }

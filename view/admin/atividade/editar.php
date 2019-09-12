@@ -14,7 +14,7 @@ require_once("./../../../controller/editar_atividade.php");
 
 $lista = $ctrlAtividade->nome($id);
 $capacidade = $lista['capacidade'];
-$idEvento = $lista['evento_id'];
+$evento_id = $lista['evento_id'];
 $ida = $lista['tipo_atividade_id'];
 
 ?>
@@ -58,7 +58,7 @@ $ida = $lista['tipo_atividade_id'];
 								$c = new Atividade();
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
-									if($idEvento == $l['evento_id']){
+									if($evento_id == $l['evento_id']){
 
 							?>		
 								<option value = "<?php echo $l['evento_id']; ?>" selected><?php echo $l['nome_evento']; ?></option>
