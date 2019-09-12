@@ -20,12 +20,12 @@ $i = new ControllerDetalhesAtividade();
                     <div class="container">
                         <div class="slider-content-center">
 
-                            <strong class="cover-xl-text" style="color: white"><?php echo $nome; ?></strong>
+                            <strong class="cover-xl-text" style="color: white"><?= $nome; ?></strong>
                             <p class="cover-date">
-                                <?php echo $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
+                                <?= $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
                             </p>
                             <?php if(date("Y-m-d") <= $evento['data_fim']){  ?>
-                            <a href="#atividade" class=" btn btn-primary btn-rounded" >
+                            <a href="#atividade" class="btn btn-primary btn-rounded" >
                                 Inscrições abertas
                             </a>
                             <?php } ?>
@@ -49,7 +49,7 @@ $i = new ControllerDetalhesAtividade();
                             Data
                         </h5>
                         <p>
-                           <?php echo $dia_inicio . " de " . mesEmString($mes_inicio) . " de " . $ano_inicio; ?>
+                           <?= $dia_inicio . " de " . mesEmString($mes_inicio) . " de " . $ano_inicio; ?>
                         </p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ $i = new ControllerDetalhesAtividade();
                             Atividades
                         </h5>
                         <p>
-                            <?php echo $evento['total']. " atividades"; ?>
+                            <?= $evento['total']. " atividades"; ?>
                         </p>
                     </div>
                 </div>
@@ -162,7 +162,7 @@ $i = new ControllerDetalhesAtividade();
             ?>
                 <tr>
                     <td class="event_date">
-                        <?php echo $d; ?>
+                        <?= $d; ?>
                         <span><?php switch (date("$m")) {
                                 case "01":    $mes = "Janeiro";     break;
                                 case "02":    $mes = "Fevereiro";   break;
@@ -182,18 +182,18 @@ $i = new ControllerDetalhesAtividade();
                     </td>
                     <td>
                         <div class="event_place">
-                            <h5><?php echo $l['nome_atividade']; ?></h5>
-                            <h6><?php echo $hr. ":". $mn. " às ". $hr2. ":". $mn2; ?></h6>
+                            <h5><?= $l['nome_atividade']; ?></h5>
+                            <h6><?= $hr. ":". $mn. " às ". $hr2. ":". $mn2; ?></h6>
                         </div>
                     </td>
                     <td>
-                        <a href="./atividade.php?id=<?php echo $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
+                        <a href="./atividade.php?id=<?= $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
                         <?php if($lista2['total'] < $l['capacidade']){
 
                         ?>
-                        <a href="./formulario.php?id=<?php echo $l['atividade_id']; ?>">INSCREVER-SE</a>
+                        <a href="./formulario.php?id=<?= $l['atividade_id']; ?>">Inscrever-se</a>
                         <?php } else{
                             echo "<br><strong>Capacidade de inscritos esgotada</strong>";
                         }?>

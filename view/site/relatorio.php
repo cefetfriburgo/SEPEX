@@ -6,16 +6,15 @@ require_once "../../controller_site/controller_relatorio.php" ;
 
 ?>
 <script>
-    $d = document;
     
     function gerarRelatorio(){
-        email = $d.getElementById('email').value;
+        email = $('#email').val();
         $('tr').remove();
         var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
         $('thead').append(hd);
         
         $.post('../../api/inscricao/relatorio.php', {"email": email}, function($atividades){
-            var obj = JSON.parse($atividades);
+            var obj = $atividades;
             
             for(var atividade of obj.atividades){
                 var actv = $('<tr><td>'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
