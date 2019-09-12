@@ -40,7 +40,7 @@ require_once("../../../model/atividade.php"); ?>
 		select.name ="papel" + id;		
 		select.classList.add('form-control');
 
-		select.innerHTML = "<option selected value='xxx'>Evento para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+		select.innerHTML = "<option selected value='xxx'>Função para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
 		
 
         bloco.append('Nome do colaborador');
@@ -111,7 +111,7 @@ require_once("../../../model/atividade.php"); ?>
 						<label for='capacidade'>Vagas</label>
 						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<div id='bloco' class='form-group'>
 						</div>
 						<label for="colaborador">Colaboradores</label>
@@ -127,7 +127,7 @@ require_once("../../../model/atividade.php"); ?>
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
 					</div>
-					<!-- <div class='form-group'>
+					<div class='form-group'>
 						<a href='./colaborador.php'>
 							<input type='button' value='Cadastrar colaborador' id='colaborador' name='colaborador'/>
 						</a>
