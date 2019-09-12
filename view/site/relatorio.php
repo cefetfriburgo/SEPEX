@@ -6,10 +6,9 @@ require_once "../../controller_site/controller_relatorio.php" ;
 
 ?>
 <script>
-    $d = document;
     
     function gerarRelatorio(){
-        email = $d.getElementById('email').value;
+        email = $('#email').val();
         $('tr').remove();
         var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
         $('thead').append(hd);
