@@ -2,10 +2,11 @@
 require_once dirname(__FILE__)."./../conexao.php";
 
 class Publico{
+
     private $pdo = null;
 
     public function __construct(){
-        $this->pdo = Conexao::conectar();//new PDO("mysql:local=localhost;dbname=sepex;charset=utf8", 'root', '');
+        $this->pdo = Conexao::conectar();
     }
 
     public function exibirEvento(){
@@ -77,20 +78,18 @@ class Publico{
     }
 
     public function verificarExistencia($id, $nome, $email, $cpf){
-        //$n_atividade = $this->pdo->query("SELECT  FROM inscricao WHERE atividade_id='$id'");
-        //$v1 = 0; 
+
         $v2 = 0; $v3 = 0;
-        // $pd1 = $this->pdo->query("SELECT COUNT('$nome') FROM inscricao WHERE atividade_id='$id' AND nome_inscrito='$nome'");
+
         $pd2 = $this->pdo->query("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
         WHERE inscricao.email='$email' AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id='$id')");
 
         $pd3 = $this->pdo->query("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
-        WHERE cpf='$cpf' AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id='$id')");//SELECT COUNT('$cpf') FROM inscricao WHERE atividade_id='$id' AND nome_inscrito='$cpf'");
-        
-        //$v1 = $pd1->fetch();
+        WHERE cpf='$cpf' AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id='$id')");
+
         $v2 = $pd2->fetch();
         $v3 = $pd3->fetch();
-        //echo $v1[0];
+        
         if($v2[0] == 0 && $v3[0] == 0){
            return 0;
         }else{
@@ -100,10 +99,5 @@ class Publico{
     }
 
 }
-
-// $c = new Publico();
-// $l = $c->verificarExistencia(1, 'Pedronese', 'pedro3423@cefet-rj.br', '00776362046');
-
-// echo $l;
 
 ?>
