@@ -68,10 +68,14 @@ class Publico{
     }
 
     public function exibirDatasAtividade($id){
-        $pd2 = $this->pdo->query("SELECT nome FROM  listar_atividades_disponiveis WHERE id=$id");
+        $pd2 = $this->pdo->query("SELECT nome FROM  listar_atividades_disponiveis WHERE id='$id'");
         $pd3 = $pd2->fetch();
         $nome = $pd3[0];
-        $p3 = $this->pdo->query("SELECT * FROM  listar_atividades_disponiveis WHERE nome='$nome'");
+        $p3 = $this->pdo->query("SELECT atividade.atividade_id as 'id', atividade.nome_atividade as 'nome', atividade.descricao 
+        as 'descricao', atividade.data as data, atividade.hora_inicio as 'inicio', atividade.hora_fim as 'termino', atividade.capacidade 
+        as 'capacidade', tipo_atividade.nome_tipo_atividade 'tipo', evento.nome_evento as 'evento' 
+        FROM atividade JOIN evento ON atividade.evento_id=evento.evento_id JOIN tipo_atividade 
+        ON atividade.tipo_atividade_id=tipo_atividade.tipo_atividade_id WHERE evento.publicado=1 AND nome_atividade='$nome'");
         $p2 = $p3->fetchAll();
 
         return $p2;

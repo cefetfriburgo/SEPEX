@@ -151,7 +151,7 @@ $i = new ControllerDetalhesAtividade();
                 <tr>
                     <td class="event_date">
                         <?= $l['dia']; ?>
-                        <span><?php echo mesEmString($l['mes']); ?></span>
+                        <span><?= mesEmString($l['mes']); ?></span>
                     </td>
                     <td>
                         <div class="event_place">
