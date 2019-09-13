@@ -143,47 +143,20 @@ $i = new ControllerDetalhesAtividade();
                 </tr>
                 </thead>
                 <tbody>
-            <?php foreach ($lista as $l) {
+            <?php foreach ($lista['atividades'] as $l) {
                            
                 $lista2 = $i->inscritosAtividade($l['atividade_id']);
-
-                $dt = explode("-",$l['data']); 
-                $d = $dt[2];
-                $m = $dt[1];
-                $y = $dt[0]; 
-
-                $hora1 = explode(":", $l['hora_inicio']);
-                $hr = $hora1[0];
-                $mn = $hora1[1];
-
-                $hora2 = explode(":", $l['hora_fim']);
-                $hr2 = $hora2[0];
-                $mn2 = $hora2[1];
+                
             ?>
                 <tr>
                     <td class="event_date">
-                        <?= $d; ?>
-                        <span><?php switch (date("$m")) {
-                                case "01":    $mes = "Janeiro";     break;
-                                case "02":    $mes = "Fevereiro";   break;
-                                case "03":    $mes = "Março";       break;
-                                case "04":    $mes = "Abril";       break;
-                                case "05":    $mes = "Maio";        break;
-                                case "06":    $mes = "Junho";       break;
-                                case "07":    $mes = "Julho";       break;
-                                case "08":    $mes = "Agosto";      break;
-                                case "09":    $mes = "Setembro";    break;
-                                case "10":    $mes = "Outubro";     break;
-                                case "11":    $mes = "Novembro";    break;
-                                case "12":    $mes = "Dezembro";    break; 
-                         }
-                         
-                         echo $mes; ?></span>
+                        <?= $l['dia']; ?>
+                        <span><?php echo mesEmString($l['mes']); ?></span>
                     </td>
                     <td>
                         <div class="event_place">
                             <h5><?= $l['nome_atividade']; ?></h5>
-                            <h6><?= $hr. ":". $mn. " às ". $hr2. ":". $mn2; ?></h6>
+                            <h6><?php echo  $l['hora_inicio'] . " às " . $l['hora_fim']; ?></h6>
                         </div>
                     </td>
                     <td>
