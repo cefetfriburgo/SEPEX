@@ -2,7 +2,6 @@
 $titulo = "Inscrição";
 
 require_once("./base/header.php");
-//require_once("../../controller/listar_atividade.php");
 require_once "../../controller_site/controller_detalhes_atividade.php";
 
 $id = $_GET['id'];
@@ -10,7 +9,6 @@ if(isset($_GET['erro'])){
     $erro = $_GET['erro']; 
     if($erro == 1){echo "<script>alert('Inscrito já existente!');</script>"; }
     if($erro == 2){echo "<script>alert('Por favor, preencha todos os campos corretamente!');</script>"; }
-    //if($erro == 3){echo "<script>alert('CPF ou email inválidos!');</script>"; }
 }
 
 
@@ -18,33 +16,6 @@ if(isset($_GET['erro'])){
 $lista = $c->detalhesAtividade($id);
 
 foreach($lista['detalhes'] as $l){
-    // $data = explode("/",$l['data']); 
-    //     $a = $data[2];
-    //     $m = $data[1];
-    //     $d = $data[0];
-
-    //     switch (date("$m")) {
-    //         case "01":    $mes = "Janeiro";     break;
-    //         case "02":    $mes = "Fevereiro";   break;
-    //         case "03":    $mes = "Março";       break;
-    //         case "04":    $mes = "Abril";       break;
-    //         case "05":    $mes = "Maio";        break;
-    //         case "06":    $mes = "Junho";       break;
-    //         case "07":    $mes = "Julho";       break;
-    //         case "08":    $mes = "Agosto";      break;
-    //         case "09":    $mes = "Setembro";    break;
-    //         case "10":    $mes = "Outubro";     break;
-    //         case "11":    $mes = "Novembro";    break;
-    //         case "12":    $mes = "Dezembro";    break; 
-    //     }
-
-    //     $hora_inicio = explode(":", $l['inicio']);
-    //         $hora = $hora_inicio[0];
-    //         $min = $hora_inicio[1];
-
-    //     $hora_fim = explode(":", $l['termino']);
-    //         $hora2 = $hora_fim[0];
-    //         $min2 = $hora_fim[1];
 ?>
 <script>
 function formatar(mascara, documento){

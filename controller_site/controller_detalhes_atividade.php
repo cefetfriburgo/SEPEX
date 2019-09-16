@@ -15,7 +15,7 @@
             $dados = [];
             $mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
             foreach($registros as $i => $registro){
-                $m = date('m', strtotime($registro['data']));
+                $m = explode('/', $registro['data']);
                 array_push($dados, array(
                     'id' => $registro['id'],
                     'nome' => $registro['nome'],
@@ -25,10 +25,11 @@
                     'evento' => $registro['evento'],
                     'inicio' => date('H:i', strtotime($registro['inicio'])),
                     'termino' => date('H:i', strtotime($registro['termino'])),
-                    'dia' => date('d', strtotime($registro['data'])),
-                    'mes' => $mes[$m-1],
-                    'ano' => date('Y', strtotime($registro['data']))                 
+                    'dia' => $m[0],//date('d', strtotime($registro['data'])),
+                    'mes' => $mes[$m[1]-1],
+                    'ano' => $m[2]                 
                 ));
+                //echo $registro['data'] . '<br>';
             } 
             
             $datas = ['detalhes' => $dados];
@@ -92,28 +93,8 @@
 
      $c = new ControllerDetalhesAtividade();
 
-    echo $c->colaboradoresAtividade(1);
-    //  $lista = $c->detalhesAtividade(1);
-    //  $lista4 = $c->datasAtividade(1);
+    //echo $c->colaboradoresAtividade(1);
+     // $lista = $c->inscritosAtividade(1);
 
-    //  foreach($lista4['dados'] as $l4){
-    //     echo $l4['dia'] .'/ ' . $l4['mes'] . '/' .$l4['ano'] . "<br>" ;
-    //  }
-
-     
-    // //  foreach($lista['dados'] as $l){
-    //      echo $l['data'];
-    //  }
-
-  /*Textos completos	
-id-
-nome-
-descricao
-data-
-inicio-
-termino-
-capacidade-
-tipo-
-evento- */
 ?>
 

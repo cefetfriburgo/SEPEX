@@ -18,4 +18,8 @@ require dirname(__FILE__).'./../model/publico.php';
 
 
     }
+
+    $c = new ControllerRelatorio(); 
+    $lista = $c->evento(); 
+    $nome = $lista[0];
 ?>
