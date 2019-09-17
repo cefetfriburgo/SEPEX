@@ -16,35 +16,45 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
-            $pd = $this->pdo->query("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, 
-            hora_inicio, hora_fim, capacidade) VALUES ($evento_id, $idTipoAtividade, '$nome_atividade', '$descricao', '$data', 
-            '$hora_inicio', '$hora_fim', '$capacidade')");
+            $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, 
+            hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?)");
+            $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $data, $hora_inicio, $hora_fim, $capacidade));
+
             $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
             $id = $pd1->fetch();
             $id = $id[0];
-            $pd3 = $this->pdo->query("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES($id, '$etiqueta')");
+            $pd3 = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?,?)");
+            $pd3->execute(array($id, $etiqueta));
             $t = 0;
 
             foreach($array as $a){
-                $pd = $this->pdo->query("SELECT colaborador_id FROM colaborador WHERE nome='$a'");
+                $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");
+                $pd->execute(array($a));
                 $p = $pd->fetch();
                 $n = $p[0];
                 $paper = $papel[$t];
-                $p = $this->pdo->query("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES('$n', '$id', $paper)");
+                $p = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES(?, ?, ?)");
+                $p->execute(array($n, $id, $paper));
                 $t++;
                 
             }
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
-            $pd = $this->pdo->query("UPDATE atividade SET nome_atividade= '$nome_atividade', descricao='$descricao', 
-            capacidade='$capacidade', evento_id='$evento_id', tipo_atividade_id='$idTipoAtividade', hora_inicio = '$hora_inicio', 
-            hora_fim = '$hora_fim', atividade.data = '$data' WHERE atividade_id = '$idAtividade'");
-            $pd = $this->pdo->query("UPDATE etiqueta SET etiqueta.etiqueta = '$etiqueta' WHERE atividade_id = '$idAtividade'");            
+        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){       
+            $pd = $this->pdo->prepare("UPDATE atividade SET nome_atividade=? , descricao=?, 
+            capacidade=?, evento_id=?, tipo_atividade_id=?, hora_inicio = ?, hora_fim = ?, atividade.data = ? WHERE atividade_id = ?");
+
+            $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim,
+            $data, $idAtividade));
+
+            $pd = $this->pdo->prepare("UPDATE etiqueta SET etiqueta.etiqueta = ? WHERE atividade_id = ?");
+            $pd->execute(array($etiqueta, $idAtividade));           
         }
 
         public function excluirAtividade($idAtividade){
-            $pd = $this->pdo->query("DELETE FROM atividade WHERE atividade_id=$idAtividade");
+            $pd = $this->pdo->prepare("DELETE FROM atividade WHERE atividade_id=?");
+
+            $pd->execute(array($idAtividade));
         }
 
         public function listarEvento(){
@@ -62,7 +72,8 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->query("SELECT * FROM atividade a WHERE a.atividade_id = $id");
+            $pd = $this->pdo->prepare("SELECT * FROM atividade a WHERE a.atividade_id = ?");
+            $pd->execute(array($id));
             $p = $pd->fetch();
             
             return $p;
@@ -76,7 +87,8 @@ require_once dirname(__FILE__)."./../conexao.php";
 
        public function adicionarColaborador($array){
             foreach($array as $nome){
-                $pd = $this->pdo->query("INSERT INTO colaborador(nome) VALUE('$nome')");
+                $pd = $this->pdo->prepare("INSERT INTO colaborador(nome) VALUE(?)");
+                $pd->execute(array($nome));
             }           
        }
 
@@ -87,6 +99,5 @@ require_once dirname(__FILE__)."./../conexao.php";
        }
 
     }
-
     
 ?>

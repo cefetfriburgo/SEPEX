@@ -4,12 +4,14 @@ require_once dirname(__FILE__)."./../conexao.php";
 	class Model{
   
 	    public function validaDados($email, $senha) {
-			$pdo = Conexao::conectar();//new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');
+			$pdo = Conexao::conectar();
 				
 				$array = explode('@', $email);			
 
 				$pass = sha1($senha); //deve receber a variavel $senha com a criptografia
-				$ps = $pdo->query("SELECT senha FROM usuario WHERE email='" . $email . "'");
+				
+				$ps = $pdo->prepare("SELECT senha FROM usuario WHERE email=?");
+				$ps->execute(array($email));
 	    	
 				$p = $ps->fetch();
 				

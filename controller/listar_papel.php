@@ -19,7 +19,6 @@
     $ctrlPapel = new ControllerPapel();
     $lista = $ctrlPapel->listar();
 
-    // foreach($lista as $n)
-    //     echo $n['nome'];
+   
     
 ?>

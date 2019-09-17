@@ -5,7 +5,7 @@ require_once dirname(__FILE__)."./../conexao.php";
     	private $pdo;
 
         public function __construct(){
-            $this->pdo = Conexao::conectar();//new PDO('mysql:local=localhost;dbname=sepex;charset=utf8', 'root', '');
+            $this->pdo = Conexao::conectar();
         }
 
         public function contarEvento(){            

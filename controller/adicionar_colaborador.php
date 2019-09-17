@@ -25,7 +25,5 @@
     $ctrlColaborador = new ControllerColaborador();
     $ctrlColaborador->adicionar($array);
 
-    // foreach($lista as $n)
-    //     echo $n['nome'];
     
 ?>

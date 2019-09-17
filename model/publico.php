@@ -28,7 +28,9 @@ class Publico{
         $pd = $this->pdo->prepare("SELECT c.nome FROM colaborador_atividade ca join atividade a on ca.atividade_id=a.atividade_id 
         join colaborador c on ca.colaborador_id=c.colaborador_id WHERE a.atividade_id=ca.atividade_id 
         AND c.colaborador_id=ca.colaborador_id AND a.atividade_id=?");
+
         $pd->execute(array($id));
+
         $p = $pd->fetchAll();
 
         return $p;
@@ -37,7 +39,9 @@ class Publico{
 
     public function exibirDetalhesAtividade($id){
         $pd2 = $this->pdo->prepare("SELECT * FROM  listar_atividades_disponiveis WHERE id=?");
+
         $pd2->execute(array($id));
+
         $p2 = $pd2->fetchAll();
 
         return $p2;
@@ -46,12 +50,14 @@ class Publico{
     public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
         $pd = $this->pdo->prepare("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade) 
         VALUES(?, capitalizar(?), ?, ?, ?)");
+
         $pd->execute(array($atividade_id, $nome_aluno, $email, $cpf, $comunidade));
     }
 
     public function consultarAtividade($email){
         $pd = $this->pdo->prepare("SELECT a.nome_atividade, date_format(a.data, '%d/%m/%Y') as 'data', a.hora_inicio, a.hora_fim 
-              FROM atividade a JOIN inscricao i ON a.atividade_id=i.atividade_id WHERE i.email='$email'");
+              FROM atividade a JOIN inscricao i ON a.atividade_id=i.atividade_id WHERE i.email=?");
+
         $pd->execute(array($email));
 
         return $pd->fetchAll();
@@ -60,6 +66,7 @@ class Publico{
     public function exibirRelatorio($email){
         $pd = $this->pdo->prepare("SELECT a.nome_atividade, a.data, a.hora_inicio, a.hora_fim FROM inscricao i JOIN atividade a ON 
         a.atividade_id=i.atividade_id WHERE email=? order by a.data asc");
+
         $pd->execute(array($email));
 
         return $pd->fetchAll();
@@ -71,7 +78,9 @@ class Publico{
         where atividade.atividade_id = ?");
 
         $pd->execute(array($id));
+
         $p = $pd->fetch();
+
         return $p;
     }
 
@@ -85,21 +94,27 @@ class Publico{
         as 'capacidade', tipo_atividade.nome_tipo_atividade 'tipo', evento.nome_evento as 'evento' 
         FROM atividade JOIN evento ON atividade.evento_id=evento.evento_id JOIN tipo_atividade 
         ON atividade.tipo_atividade_id=tipo_atividade.tipo_atividade_id WHERE evento.publicado=1 AND nome_atividade=?");
-        return $p3->execute(array($nome));
-        // $p2 = $p3->fetchAll();
 
-        // return $p2;
+        $p3->execute(array($nome));
+
+        $p2 = $p3->fetchAll();
+
+        return $p2;
     }
 
     public function verificarExistencia($id, $nome, $email, $cpf){
 
         $v2 = 0; $v3 = 0;
 
-        $pd2 = $this->pdo->query("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
-        WHERE inscricao.email='$email' AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id='$id')");
+        $pd2 = $this->pdo->prepare("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
+        WHERE inscricao.email=? AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id=?)");
 
-        $pd3 = $this->pdo->query("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
-        WHERE cpf='$cpf' AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id='$id')");
+        $pd2->execute(array($email, $id));
+
+        $pd3 = $this->pdo->prepare("SELECT count(*) FROM inscricao JOIN atividade ON inscricao.atividade_id=atividade.atividade_id 
+        WHERE cpf=? AND atividade.nome_atividade=(SELECT atividade.nome_atividade WHERE atividade.atividade_id=?)");
+
+        $pd3->execute(array($cpf, $id));
 
         $v2 = $pd2->fetch();
         $v3 = $pd3->fetch();

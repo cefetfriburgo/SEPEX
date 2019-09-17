@@ -9,8 +9,7 @@
         }
 
         public function detalhesAtividade($id){
-            //return $this->detalhesAtividade->exibirDetalhesAtividade($id);
-
+           
             $registros =  $this->detalhesAtividade->exibirDetalhesAtividade($id);
             $dados = [];
             $mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -25,11 +24,11 @@
                     'evento' => $registro['evento'],
                     'inicio' => date('H:i', strtotime($registro['inicio'])),
                     'termino' => date('H:i', strtotime($registro['termino'])),
-                    'dia' => $m[0],//date('d', strtotime($registro['data'])),
+                    'dia' => $m[0],
                     'mes' => $mes[$m[1]-1],
                     'ano' => $m[2]                 
                 ));
-                //echo $registro['data'] . '<br>';
+                
             } 
             
             $datas = ['detalhes' => $dados];
@@ -37,7 +36,7 @@
         }
 
         public function colaboradoresAtividade($id){
-            //return $this->detalhesAtividade->exibirColaboradoresAtividade($id);
+            
             $lista2 = $this->detalhesAtividade->exibirColaboradoresAtividade($id);
             
             
@@ -63,7 +62,7 @@
         }
 
         public function datasAtividade($id){
-            //return $this->detalhesAtividade->exibirDatasAtividade($id);
+           
             $registros =  $this->detalhesAtividade->exibirDatasAtividade($id);
             $dados = [];
             $mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -83,8 +82,7 @@
                     'ano' => date('Y', strtotime($registro['data']))                 
                 ));
             }
-            //var_dump($dados);
-
+           
             $datas = ['dados' => $dados];
             return $datas;
         }
@@ -93,8 +91,7 @@
 
      $c = new ControllerDetalhesAtividade();
 
-    //echo $c->colaboradoresAtividade(1);
-     // $lista = $c->inscritosAtividade(1);
+   
 
 ?>
 

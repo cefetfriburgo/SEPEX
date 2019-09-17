@@ -18,9 +18,7 @@ $comunidade = $_POST['comunidade'];
 
         public function inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
             $vrfcr = $this->inscricao->verificarExistencia($atividade_id, $nome_aluno, $email, $cpf);
-            // if(!isset($nome_aluno) || empty($nome_aluno) || !isset($email) || empty($email) ||!isset($cpf) || empty($cpf)){
-            //     header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
-            // }else
+            
             if($vrfcr == 1){
                 header("location: ../view/site/formulario.php?id=$atividade_id&erro=1");
             }else{
@@ -30,10 +28,6 @@ $comunidade = $_POST['comunidade'];
             
         }
 
-        // public function relatorio($email){
-        //     // $email = $_POST['email'];
-        //      return $this->inscricao->exibirRelatorio($email);
-        // }
     }
 
     function validaCPF($cpf = null) {

@@ -19,7 +19,5 @@
     $ctrlColaborador = new ControllerColaborador();
     $lista = $ctrlColaborador->listar();
 
-    // foreach($lista as $n)
-    //     echo $n['nome'];
     
 ?>

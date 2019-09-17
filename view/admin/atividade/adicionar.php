@@ -9,19 +9,7 @@ require_once("../../../model/atividade.php"); ?>
 
     $d = document;
     id = 1;
-    // function adicionar(){
-    //     bloco = $d.getElementById('bloco');
-    //     input = $d.createElement('input');
-
-    //     input.type = 'text';
-    //     input.name = 'nome' + id;
-    //     input.id = 'nome' + id;
-    //     input.classList.add('form-control');
-
-    //     bloco.append('Nome do colaborador');
-    //     bloco.append(input);
-    //     id++;        
-    // }
+  
 
 	function cadastrado(){
         bloco = $d.getElementById('bloco');

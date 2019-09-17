@@ -10,7 +10,7 @@
     $hora_fim = $_POST['hora_termino'];
     $data = $_POST['data'];
     $etiqueta = $_POST['etiqueta'];
-    //$tamanho = $_POST['ncolaborador'];
+
     $array = [];
     $papel = [];
 
@@ -37,17 +37,7 @@
             }
             
             $erro = false;
-            /*if (!isset($_POST) || empty($_POST)){
-                $erro = 'Por favor, preencha corretamente os campos<br>';
-            }
-
-            foreach ($_POST as $campo => $valor){
-                $campo = trim(strip_tags($valor));
-                if (empty($valor)){
-                    $erro = 'Por favor, preencha todos os campos<br>';
-                }
-            }*/
-
+         
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O nome da atividade não pode conter apenas números. Por favor, preencha-o corretamente!<br>';
             }
@@ -107,9 +97,7 @@
             } else{
                 $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel);
                 header('location: ./../view/admin/atividade/listar.php');
-                // foreach($array as $a){
-                //     echo $a . '<br>';
-                // }
+              
             }
         }
 
