@@ -2,7 +2,18 @@
 $titulo = "Configurações";
 $categoria = "Usuário";
 $local = "Configurações";
-include_once("../base/header.php"); ?>
+include_once("../base/header.php"); 
+
+
+    if(isset($_GET['erro'])){
+      if($_GET['erro']=='senhaAtual'){
+        echo "<script> alert('Senha atual incorreta!'); </script>";
+      }else if($_GET['erro']=='senhaNova'){
+      	echo "<script> alert('As senhas são diferentes!'); </script>";
+      }
+    } 
+$email = $_SESSION['email'];
+?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -12,14 +23,15 @@ include_once("../base/header.php"); ?>
 			</div>
 			<div class="card-body">
 
-				<form action="./../../../controller/adicionar_evento.php" method="POST">
+				<form action="./../../../controller/usuario.php" method="POST">
 					<div class="form-group">
 						<label for="email">Endereço de e-mail</label>
-						<input type="text" class="form-control" id="email" name="email" value="<?= "email@email.com" ?>" disabled />
+						<input type="text" class="form-control" id="email0" name="email0" value="<?php echo $email; ?>" disabled/>
+						<input type='hidden' id="email" name="email" value="<?php echo $email; ?>"/>
 					</div>
 					<div class="form-group">
 						<label for="senha">Senha atual</label>
-						<input type="password" class="form-control" id="senha" name="senha" value="<?= "senha" ?>" />
+						<input type="password" class="form-control" id="senha" name="senha" />
 					</div>
 					<div class='form-group form-row'>
 						<div class='col'>
