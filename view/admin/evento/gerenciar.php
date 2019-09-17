@@ -2,7 +2,8 @@
 $titulo = "Gerenciar evento";
 $categoria = "Eventos";
 $local = "Gerenciar evento";
-include_once("../base/header.php"); ?>
+include_once("../base/header.php"); 
+require_once("../../../model/evento.php"); ?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -11,14 +12,25 @@ include_once("../base/header.php"); ?>
 				<i class="fas fa-plus"></i> Publicar evento
 			</div>
 			<div class="card-body">
+				<?php 
+					$c = new Evento();
+					$lista = $c->eventoDisponivel();
 
-				<p>O evento <strong><?= "SEPEX 2019" ?></strong> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?= "Imprimir aqui o código do evento" ?>">clique aqui</a>.</p>
+					$e = new Evento();
+					$publicado = $e->eventoAtual();
+				?>
 
-				<form action="./../../../controller/adicionar_evento.php" method="POST">
+				<p>O evento <?php echo "<strong>$publicado[0]</strong>"; ?> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?= "Imprimir aqui o código do evento" ?>">clique aqui</a>.</p>
+
+				<form action="./../../../controller/gerenciar_evento.php" method="POST">
+					<input type="hidden" id="id_evento_atual" name="id_evento_atual" value="<?php echo $publicado[1]; ?>">
 					<div class="form-group">
 						<label for="titulo">Selecionar evento</label>
-						<select class="form-control" id="semestre" name="semestre">
-							<option value="Primeiro semestre">Semana de Extensão</option>
+						<select class="form-control" id="evento" name="evento">
+							<?php foreach($lista as $l){ 
+								echo "<option value='$l[1]'>". $l[0] ."</option>";
+								}
+							?>
 						</select>
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>

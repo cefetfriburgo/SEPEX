@@ -46,6 +46,28 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;
         }
 
+        public function eventoDisponivel(){
+            $pd = $this->pdo->query("SELECT nome_evento, evento_id FROM evento");
+            $p = $pd->fetchAll();
+
+            return $p;
+        }
+
+        public function despublicarEvento($id){
+            $pd = $this->pdo->query("UPDATE evento SET publicado = 0 WHERE evento_id = " . $id);
+        }
+
+        public function publicarEvento($id){
+            $pd = $this->pdo->query("UPDATE evento SET publicado = 1 WHERE evento_id = " . $id);
+        }
+
+        public function eventoAtual(){
+            $pd = $this->pdo->query("SELECT nome_evento, evento_id FROM evento WHERE publicado = 1");
+            $p = $pd->fetch();
+
+            return $p;
+        }
+
     }
 
     
