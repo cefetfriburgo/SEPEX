@@ -1,7 +1,5 @@
-<?php 
-header("Content-Type: application/json");
+<?php header("Content-Type: application/json");
 require_once "./../../controller_site/controller_relatorio.php";
-
 
 $email = $_POST['email'];
 
@@ -25,10 +23,7 @@ $atividades = ['atividades' => $atividade];
 $atividades = json_encode($atividades);
 
 echo $atividades;
-
-
-   
-   
+  
 ?>
 
 

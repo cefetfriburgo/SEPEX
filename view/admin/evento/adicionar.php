@@ -26,7 +26,7 @@ include_once("../base/header.php"); ?>
 							<select class="form-control" id="semestre" name="semestre">
 								<option value="Primeiro semestre">Primeiro semestre</option>
 								<option value="Segundo semestre">Segundo semestre</option>
-						</select>
+							</select>
 						</div>
 					</div>
 					<div class='form-group form-row'>
