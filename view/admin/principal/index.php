@@ -18,7 +18,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 </div>
                 <div class="mr-5"><?php echo $qtdEvento['total']; if($qtdEvento['total'] == 1) echo " evento"; else echo " eventos"; ?></div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="./../evento/listar.php">
                 <span class="float-left">Ver mais detalhes</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -34,7 +34,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 </div>
                 <div class="mr-5"><?php echo $qtdAtividade['total']; if($qtdAtividade['total'] == 1) echo " atividade"; else echo " atividades"; ?></div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="./../atividade/listar.php">
                 <span class="float-left">Ver mais detalhes</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
