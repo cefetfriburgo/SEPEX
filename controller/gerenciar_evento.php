@@ -10,5 +10,6 @@
 		
 		$p = new Evento();
 		$publicado = $p->publicarEvento($id_novo);
-	}	
+	}
+	header("Location: ./../view/admin/evento/listar.php");
 ?>

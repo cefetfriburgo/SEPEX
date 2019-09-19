@@ -109,7 +109,7 @@ $ida = $lista['tipo_atividade_id'];
 					<li><strong>Título</strong>: escreva o nome que você deseja dar para a atividade.</li>
 					<li><strong>Descrição</strong>: escreva um texto para a atividade. Este campo é opcional.</li>
 					<li><strong>Data e horas</strong>: selecione a data de início, incluindo o dia, mês e ano e as horas de início e término da atividade, incluindo os minutos.</li>
-					<li><strong>Evento</strong>: selecione dentre a lista o evento no qual esta atividade associada. Se você ainda não registrou o evento, faça-o <a href="#">aqui</a>.</li>
+					<li><strong>Evento</strong>: selecione dentre a lista o evento no qual esta atividade associada. Se você ainda não registrou o evento, faça-o <a href=../evento/adicionar.php>aqui</a>.</li>
 					<li><strong>Tipo</strong>: selecione dentre a lista de opções o tipo desta atividade.</li>
 					<li><strong>Palavras-chave</strong>: escreva, separado por vírgulas, as palavras-chave que correspondem a esta atividade.</li>
 				</ul>
