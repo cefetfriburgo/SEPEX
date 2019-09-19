@@ -29,7 +29,7 @@ foreach($lista1['detalhes'] as $l){
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="/#inicio">Início</a>  |  </li>
+                <li><a href="./#home">Início</a>  |  </li>
                 <li><a href="#">Atividade</a></li>
             </ul>
         </div>

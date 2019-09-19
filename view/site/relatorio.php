@@ -40,7 +40,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="/#inicio">Início</a>  |  </li>
+                <li><a href="./#home">Início</a>  |  </li>
                 <li><a href="#">Registros de Inscrição</a></li>
             </ul>
         </div>

@@ -19,7 +19,7 @@ require_once("./base/header.php");
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="/#inicio">Início</a>  |  </li>
+                <li><a href="./#home">Início</a>  |  </li>
                 <li><a href="#">Inscrição</a></li>
             </ul>
         </div>
@@ -37,7 +37,7 @@ require_once("./base/header.php");
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-12">
                 <p>
-                    Sua participação para a atividade está confirmada. Para consultar todas as atividades que você se inscreveu, emita o seu relatório de inscrição <a href="">clicando aqui</a>.
+                    Sua participação para a atividade está confirmada. Para consultar todas as atividades que você se inscreveu, emita o seu relatório de inscrição <a href="./relatorio.php">clicando aqui</a>.
                 </p>
 
             </div>

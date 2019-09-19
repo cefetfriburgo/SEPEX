@@ -45,7 +45,7 @@ function formatar(mascara, documento){
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="/#inicio">Início</a>  |  </li>
+                <li><a href="./#home">Início</a>  |  </li>
                 <li><a href="#">Inscrição</a></li>
             </ul>
         </div>
@@ -63,12 +63,12 @@ function formatar(mascara, documento){
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-6">
                 <p>
-                    Você está na página de formulário de inscrição para a atividade <strong>"<?php echo $l['nome']; ?>"</strong> que ocorrerá em <?php echo $l['dia'] . ' de ' . $l['mes'] .' de '. $l['ano'] .' de ' . $l['inicio'] . "  às " . $l['termino']; ?>
+                    Você está na página de formulário de inscrição para a atividade <strong>"<?php echo $l['nome']; ?>"</strong> que ocorrerá em <?php echo $l['dia'] . ' de ' . $l['mes'] .' de '. $l['ano'] .' de ' . $l['inicio'] . "  às " . $l['termino']. '.'; ?>
                 </p>
                 <p>
                     Preencha ao lado suas informações pessoais para inscrever-se no evento. Antes de submeter o formulário, confira se todos os campos foram preenchidos corretamente. Estas informações serão utilizadas para emissão do certificado. Sua inscrição, apenas, não garante a emissão do formulário.
                 </p>
-                <p><strong>Observação</strong>: se a sua atividade ocorrer em dois ou mais dias, basta inscrever-se apenas uma única vez.</p>
+                <p><strong>Observação</strong>: Se a sua atividade ocorrer em dois ou mais dias, basta inscrever-se apenas uma única vez.</p>
             </div>
             <?php
                 if(isset($_GET['erro'])){
