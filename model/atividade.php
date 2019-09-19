@@ -15,10 +15,10 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
-            $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, atividade.data, 
-            hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?)");
-            $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $data, $hora_inicio, $hora_fim, $capacidade));
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local){
+            $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, local, atividade.data, 
+            hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?,?)");
+            $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $local, $data, $hora_inicio, $hora_fim, $capacidade));
 
             $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
             $id = $pd1->fetch();
@@ -40,12 +40,12 @@ require_once dirname(__FILE__)."./../conexao.php";
             }
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){       
+        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){       
             $pd = $this->pdo->prepare("UPDATE atividade SET nome_atividade=? , descricao=?, 
-            capacidade=?, evento_id=?, tipo_atividade_id=?, hora_inicio = ?, hora_fim = ?, atividade.data = ? WHERE atividade_id = ?");
+            capacidade=?, evento_id=?, tipo_atividade_id=?, hora_inicio = ?, hora_fim = ?, atividade.data = ?, local = ? WHERE atividade_id = ?");
 
             $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim,
-            $data, $idAtividade));
+            $data, $local, $idAtividade));
 
             $pd = $this->pdo->prepare("UPDATE etiqueta SET etiqueta.etiqueta = ? WHERE atividade_id = ?");
             $pd->execute(array($etiqueta, $idAtividade));           

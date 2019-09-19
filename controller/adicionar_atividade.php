@@ -10,6 +10,7 @@
     $hora_fim = $_POST['hora_termino'];
     $data = $_POST['data'];
     $etiqueta = $_POST['etiqueta'];
+    $local = $_POST['local'];
 
     $array = [];
     $papel = [];
@@ -31,12 +32,16 @@
             $this->atividade = new Atividade();
         }
 
-        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel){
-            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data)){
+        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local){
+            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) || !isset($local)){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }
             
             $erro = false;
+
+            if ((!isset($local) || is_numeric($local)) && !$erro){
+                $erro = 'O local não pode conter apenas números. Por favor, preencha-o corretamente!<br>';
+            }
          
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O nome da atividade não pode conter apenas números. Por favor, preencha-o corretamente!<br>';
@@ -95,7 +100,7 @@
             if ($erro) {
                 echo $erro. "<br>";
             } else{
-                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel);
+                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local);
                 header('location: ./../view/admin/atividade/listar.php');
               
             }
@@ -104,6 +109,6 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel);
+    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local);
         
 ?>

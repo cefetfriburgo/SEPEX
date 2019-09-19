@@ -70,6 +70,10 @@ require_once("../../../model/atividade.php"); ?>
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="local">Local</label>
+						<input type="text" class="form-control" id="local" name="local" placeholder="Local da atividade" required>
+					</div>
+					<div class="form-group">
 						<label for="evento">Evento</label>
 						<select class="form-control" id="evento" name="evento">
 							<option value='xxx' selected>Evento para esta atividade</option>

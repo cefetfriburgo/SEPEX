@@ -11,6 +11,7 @@
     $hora_fim = $_POST['hora_fim'];
     $data = $_POST['data'];
     $etiqueta = "";
+    $local = $_POST['local'];
 
     class ControllerAtividade{
         private $atividade;
@@ -19,12 +20,16 @@
             $this->atividade = new Atividade();
         }
 
-        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta){
+        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){
 
-            if(!isset($idAtividade) || !isset($nome_atividade) || !isset($descricao) || !isset($capacidade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data)){
+            if(!isset($idAtividade) || !isset($nome_atividade) || !isset($descricao) || !isset($capacidade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) || !isset($local)){
                 header('location: ./../view/admin/atividade/editar.php');
             }
             $erro = false;
+
+            if ((!isset($local) || is_numeric($local)) && !$erro){
+                $erro = 'O local não pode conter apenas números, por favor, preencha-o corretamente!<br>';
+            }
 
             if ((!isset($nome_atividade) || is_numeric($nome_atividade)) && !$erro){
                 $erro = 'O título não pode conter apenas números, por favor, preencha-o corretamente!<br>';
@@ -77,7 +82,7 @@
                 echo $erro. "<br>";
             }
             else{
-                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta);
+                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
                 header('location: ./../view/admin/atividade/listar.php');
                 
             }
@@ -85,6 +90,6 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta);
+    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
 
 ?>

@@ -22,6 +22,7 @@ require_once("../../../controller/listar_atividade.php"); ?>
             <th>Tipo</th>
             <th>Evento</th>
             <th>Data</th>
+            <th>Local</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -32,6 +33,7 @@ require_once("../../../controller/listar_atividade.php"); ?>
             <th>Tipo</th>
             <th>Evento</th>
             <th>Data</th>
+            <th>Local</th>
             <th>Ações</th>
           </tr>
         </tfoot>
@@ -43,6 +45,7 @@ require_once("../../../controller/listar_atividade.php"); ?>
           		<td><?php echo $l['tipo']; ?></td>
             	<td><?php echo $l['evento']; ?></td>
             	<td><?php echo $l['data']; ?></td>
+              <td><?php echo $l['local']; ?></td>
             	<td>
             		<div class="btn-group" role="group">
             			<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs"></i> Escolher

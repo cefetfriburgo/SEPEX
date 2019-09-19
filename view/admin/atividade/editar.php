@@ -51,6 +51,10 @@ $ida = $lista['tipo_atividade_id'];
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="local">Local</label>
+						<input type="text" class="form-control" value="<?php echo $lista['local'];?>" id="local" name="local" placeholder="Local da atividade" required>
+					</div>
+					<div class="form-group">
 						<label for="evento">Evento</label>
 						<select class="form-control" id="evento" name="evento" required>
 							<option disabled >Evento para esta atividade</option>
