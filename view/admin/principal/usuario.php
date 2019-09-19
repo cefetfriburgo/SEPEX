@@ -12,7 +12,7 @@ include_once("../base/header.php");
       	echo "<script> alert('As senhas são diferentes!'); </script>";
       }
     } 
-$email = $_SESSION['email'];
+	$email = $_SESSION['email'];
 ?>
 
 <div class="row">

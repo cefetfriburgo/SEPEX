@@ -61,6 +61,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="../evento/adicionar.php">Novo evento</a>
           <a class="dropdown-item" href="../evento/listar.php">Listar eventos</a>
+          <a class="dropdown-item" href="../evento/gerenciar.php">Gerenciar eventos</a>
         </div>
       </li>
       <li class="nav-item dropdown">
