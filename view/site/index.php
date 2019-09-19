@@ -36,7 +36,6 @@ $i = new ControllerDetalhesAtividade();
         </div>
     </div>
 </section>
-<a href="../../controller_site/controller_detalhes_atividade.php">teste</a>
 
 <section id="info" class="pt100 pb100">
     <div class="container">

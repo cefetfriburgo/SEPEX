@@ -18,7 +18,7 @@ class Publico{
     }
 
     public function exibirAtividade(){
-        $pd = $this->pdo->query("SELECT * FROM atividade ORDER BY atividade.data");
+        $pd = $this->pdo->query("SELECT * FROM atividade JOIN evento ON atividade.evento_id = evento.evento_id WHERE evento.publicado = 1 ORDER BY atividade.data");
         $p = $pd->fetchAll();
 
         return $p;

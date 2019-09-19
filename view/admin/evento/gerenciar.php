@@ -20,6 +20,7 @@ require_once("../../../model/evento.php"); ?>
 					$publicado = $e->eventoAtual();
 				?>
 
+
 				<p>O evento <?php echo "<strong>$publicado[0]</strong>"; ?> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?= "Imprimir aqui o código do evento" ?>">clique aqui</a>.</p>
 
 				<form action="./../../../controller/gerenciar_evento.php" method="POST">
