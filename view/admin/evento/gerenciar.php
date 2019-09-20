@@ -3,7 +3,7 @@ $titulo = "Gerenciar evento";
 $categoria = "Eventos";
 $local = "Gerenciar evento";
 include_once("../base/header.php"); 
-require_once("../../../model/evento.php"); ?>
+require_once "./../../../controller/gerenciar_evento.php";?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -13,15 +13,15 @@ require_once("../../../model/evento.php"); ?>
 			</div>
 			<div class="card-body">
 				<?php 
-					$c = new Evento();
-					$lista = $c->eventoDisponivel();
+					// $c = new Evento();
+					// $lista = $c->eventoDisponivel();
 
-					$e = new Evento();
-					$publicado = $e->eventoAtual();
+					// $e = new Evento();
+					// $publicado = $e->eventoAtual();
 				?>
 
 
-				<p>O evento <?php echo "<strong>$publicado[0]</strong>"; ?> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?= "Imprimir aqui o código do evento" ?>">clique aqui</a>.</p>
+				<p>O evento <?php echo "<strong>$publicado[0]</strong>"; ?> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?php echo $publicado[1]; ?>">clique aqui</a>.</p>
 
 				<form action="./../../../controller/gerenciar_evento.php" method="POST">
 					<input type="hidden" id="id_evento_atual" name="id_evento_atual" value="<?php echo $publicado[1]; ?>">
