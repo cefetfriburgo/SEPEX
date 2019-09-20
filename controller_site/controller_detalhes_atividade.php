@@ -91,7 +91,6 @@
 
      $c = new ControllerDetalhesAtividade();
 
-   
 
 ?>
 

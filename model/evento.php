@@ -16,31 +16,42 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
-            $pd = $this->pdo->query("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
-            VALUES('$nome ', '$ano ', '$semestre', '$data_inicio', '$hora_inicio', '$data_fim', '$hora_fim')");
+            $pd = $this->pdo->prepare("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
+            VALUES(?,?,?,?,?,?,?)");
+
+            $pd->execute(array($nome , $ano , $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim));
            
         }
 
         public function atualizarEvento($id, $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
-            $pd = $this->pdo->query("UPDATE evento SET nome_evento= '$nome', ano= '$ano', semestre='$semestre', 
-            data_inicio = '$data_inicio', hora_inicio = '$hora_inicio', data_fim = '$data_fim', hora_fim = '$hora_fim' 
-            WHERE evento_id =$id");
+            $pd = $this->pdo->prepare("UPDATE evento SET nome_evento= ?, ano= ?, semestre=?, 
+            data_inicio = ?, hora_inicio = ?, data_fim = ?, hora_fim = ? WHERE evento_id =?");
+
+            $pd->execute(array($nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim, $id));         
         }
 
         public function excluirEvento($id){
-            $pd = $this->pdo->query("DELETE FROM atividade WHERE evento_id=$id");
-            $pd = $this->pdo->query("DELETE FROM evento WHERE evento_id=$id");
+            $pd = $this->pdo->prepare("DELETE FROM atividade WHERE evento_id = ?");
+            $pd->execute(array($id));
+
+            $pd = $this->pdo->prepare("DELETE FROM evento WHERE evento_id = ?");
+            $pd->execute(array($id));
+
         }
 
         public function pesquisarEvento($nome){
-            $pd = $this->pdo->query("SELECT * FROM evento WHERE nome_evento ='$nome'");
+            $pd = $this->pdo->prepare("SELECT * FROM evento WHERE nome_evento = ?");
+            $pd->execute(array($nome));
+
             $p = $pd->fetchAll();
 
             return $p;            
         }
 
         public function nomeEvento($id){
-            $pd = $this->pdo->query("SELECT * FROM evento WHERE evento_id = $id");
+            $pd = $this->pdo->prepare("SELECT * FROM evento WHERE evento_id = ?");
+            $pd->execute(array($id));
+
             $p = $pd->fetch();
             
             return $p;
@@ -54,11 +65,13 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function despublicarEvento($id){
-            $pd = $this->pdo->query("UPDATE evento SET publicado = 0 WHERE evento_id = " . $id);
+            $pd = $this->pdo->prepare("UPDATE evento SET publicado = 0 WHERE evento_id = ?");
+            $pd->execute(array($id));
         }
 
         public function publicarEvento($id){
-            $pd = $this->pdo->query("UPDATE evento SET publicado = 1 WHERE evento_id = " . $id);
+            $pd = $this->pdo->prepare("UPDATE evento SET publicado = 1 WHERE evento_id = ?");
+            $pd->execute(array($id));
         }
 
         public function eventoAtual(){

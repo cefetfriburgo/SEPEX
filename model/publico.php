@@ -87,8 +87,10 @@ class Publico{
     public function exibirDatasAtividade($id){
         $pd2 = $this->pdo->prepare("SELECT nome FROM  listar_atividades_disponiveis WHERE id=?");
         
-        $pd3 = $pd2->execute(array($id));
+        $pd2->execute(array($id));
+        $pd3 = $pd2->fetch();
         $nome = $pd3[0];
+        
         $p3 = $this->pdo->prepare("SELECT atividade.atividade_id as 'id', atividade.nome_atividade as 'nome', atividade.descricao 
         as 'descricao', atividade.data as data, atividade.hora_inicio as 'inicio', atividade.hora_fim as 'termino', atividade.capacidade 
         as 'capacidade', tipo_atividade.nome_tipo_atividade 'tipo', evento.nome_evento as 'evento' 
