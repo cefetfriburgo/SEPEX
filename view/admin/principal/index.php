@@ -16,7 +16,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5"><?php echo $qtdEvento['total']; if($qtdEvento['total'] == 1) echo " evento"; else echo " eventos"; ?></div>
+                <div class="mr-5"><?php if($qtdEvento >= 1)echo $qtdEvento['total']; else echo 0; if($qtdEvento['total'] <= 1) echo " evento"; else echo " eventos"; ?></div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="./../evento/listar.php">
                 <span class="float-left">Ver mais detalhes</span>
@@ -32,7 +32,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-list"></i>
                 </div>
-                <div class="mr-5"><?php echo $qtdAtividade['total']; if($qtdAtividade['total'] == 1) echo " atividade"; else echo " atividades"; ?></div>
+                <div class="mr-5"><?php if($qtdAtividade >= 1) echo $qtdAtividade['total']; else echo 0; if($qtdAtividade['total'] <= 1) echo " atividade"; else echo " atividades"; ?></div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="./../atividade/listar.php">
                 <span class="float-left">Ver mais detalhes</span>
@@ -48,7 +48,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-shopping-cart"></i>
                 </div>
-                <div class="mr-5"><?php echo $qtdInscricao['total']; if($qtdInscricao['total'] == 1) echo " inscrito"; else echo " inscritos"; ?></div>
+                <div class="mr-5"><?php if($qtdInscricao >=1) echo $qtdInscricao['total']; else echo 0; if($qtdInscricao['total'] <= 1) echo " inscrito"; else echo " inscritos"; ?></div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Ver mais detalhes</span>

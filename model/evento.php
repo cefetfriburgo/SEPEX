@@ -10,9 +10,12 @@ require_once dirname(__FILE__)."./../conexao.php";
 
         public function listarEvento(){            
             $pd = $this->pdo->query("SELECT * FROM evento");
-            $p = $pd->fetchAll();
+            if(isset($pd) && !empty($pd)){
+                $p = $pd->fetchAll();
 
-            return $p;            
+                return $p;
+            }else return 0;
+                        
         }
 
         public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){

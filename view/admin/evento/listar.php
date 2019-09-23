@@ -34,7 +34,7 @@ require_once("../../../controller/listar_evento.php");?>
           </tr>
         </tfoot>
         <tbody>
-          <?php foreach($lista as $l){ ?>
+          <?php if(isset($lista) && !empty($lista)) foreach($lista as $l){ ?>
           <tr>
             <td><?php echo $l['evento_id']; ?></td>
             <td><?php echo $l['nome_evento']; ?></td>

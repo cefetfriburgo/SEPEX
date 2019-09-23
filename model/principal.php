@@ -10,25 +10,28 @@ require_once dirname(__FILE__)."./../conexao.php";
 
         public function contarEvento(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM evento");
-            $p = $pd->fetch();
-
-            return $p;
-            echo $p;            
+            if(isset($pd) && !empty($pd)){
+                $p = $pd->fetch();
+                return $p;
+            }else{ return 0;}
+            //echo $p;            
         }
 
         public function contarAtividade(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM atividade");
-            $p = $pd->fetch();
-
-            return $p;
+            if(isset($pd) && !empty($pd)){
+                $p = $pd->fetch();
+                return $p;
+            }else{ return 0;}
             echo $p;            
         }
 
         public function contarInscricao(){            
             $pd = $this->pdo->query("SELECT count(*) as total FROM inscricao");
-            $p = $pd->fetch();
-
-            return $p;
+            if(isset($pd) && !empty($pd)){
+                $p = $pd->fetch();
+                return $p;               
+            }else{ return 0;}
             echo $p;            
         }
     }
