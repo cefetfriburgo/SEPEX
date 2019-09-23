@@ -88,6 +88,10 @@ function formatar(mascara, documento){
                     <div class="form-group">
                         <input id="email" name="email" type="email" class="form-control" placeholder="Endereço de e-mail">
                     </div>
+                    <label for="email">Data de Nascimento</label>
+                    <div class="form-group">
+                        <input id="nascimento" name="nascimento" type="date" class="form-control" placeholder="Endereço de e-mail">
+                    </div>
                     <label for="cpf">CPF</label>
                     <div class="form-group">
                         <input id="cpf" name="cpf" type="text" maxlength='14' class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Cadastro de Pessoa Física">
