@@ -9,6 +9,7 @@ $cpf = str_replace(".","",$cpf);
 $cpf = str_replace("-","",$cpf);
 $cpf = str_replace(",","",$cpf);
 $comunidade = $_POST['comunidade'];
+$nascimento = $_POST['nascimento'];
 
     class ControllerInscricao{
         private $inscricao;
@@ -16,13 +17,13 @@ $comunidade = $_POST['comunidade'];
             $this->inscricao = new Publico();
         }
 
-        public function inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
+        public function inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento){
             $vrfcr = $this->inscricao->verificarExistencia($atividade_id, $nome_aluno, $email, $cpf);
             
             if($vrfcr == 1){
                 header("location: ../view/site/formulario.php?id=$atividade_id&erro=1");
             }else{
-                $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
+                $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);
                 header("location: ../view/site/sucesso.php");
             }
             
@@ -95,7 +96,7 @@ if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !
     header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
 }else{
     $c = new ControllerInscricao();
-    $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade);
-
+    $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);
+    
     }
 ?>
