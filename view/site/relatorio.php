@@ -8,6 +8,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
 <script>
     
     function gerarRelatorio(){
+        id = 0;
         email = $('#email').val();
         $('tr').remove();
         var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
@@ -17,12 +18,23 @@ require_once "../../controller_site/controller_relatorio.php" ;
             var obj = $atividades;
             
             for(var atividade of obj.atividades){
-                var actv = $('<tr><td>'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+                id = id+1;
+                
+                var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
                 '</td><td>'+atividade.termino+'</td></tr>');
-                $('tbody').append(actv);
+                $('#tcorpo').append(actv);
             }
         });
     }
+    // var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+    //             '</td><td>'+atividade.termino+'</td>/*<td><input type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
+    //             $('#tcorpo').append(actv);
+
+    // function cancelar(){
+    //     nome = document.getElementById('nome1').innerHTML;
+    // //    console.log(nome);
+
+    // }
 
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
@@ -75,14 +87,35 @@ require_once "../../controller_site/controller_relatorio.php" ;
         <div class="row justify-content-center mt50">
             <div class="col-12 col-md-12">
                 <div class="table-responsive">
+                
                     <table id='tabela' class="table table-bordered" width="100%" cellspacing="0">
                         <thead>
                             
                         </thead>
-                        <tbody>
+                        <tbody id='tcorpo'>
                             
                         </tbody>
                     </table>
+                    <!-- Modal -->
+                    <div class="modal fade" id="cancelar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <div id='modal' class="modal-body">
+                        <p id = 'prgrf'>Deseja cancelar a sua inscrição?</p>
+                    </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button"  class="btn btn-primary" onclick="cancelar()" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
             </div>
         </div>

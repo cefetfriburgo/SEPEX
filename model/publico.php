@@ -47,11 +47,11 @@ class Publico{
         return $p2;
     }
 
-    public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade){
-        $pd = $this->pdo->prepare("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade) 
-        VALUES(?, capitalizar(?), ?, ?, ?)");
+    public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento){
+        $pd = $this->pdo->prepare("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade, data_nascimento) 
+        VALUES(?, capitalizar(?), ?, ?, ?, ?)");
 
-        $pd->execute(array($atividade_id, $nome_aluno, $email, $cpf, $comunidade));
+        $pd->execute(array($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento));
     }
 
     public function consultarAtividade($email){
@@ -129,6 +129,13 @@ class Publico{
 
     }
 
+    public function cancelarInscricao($atividade_id, $email, $cpf){
+        $pd = $this->pdo->prepare("DELETE FROM inscricao WHERE atividade_id=? AND email=? AND cpf=?");
+        $pd->execute(array($atividade_id, $email, $cpf));
+    }
+
 }
+
+
 
 ?>
