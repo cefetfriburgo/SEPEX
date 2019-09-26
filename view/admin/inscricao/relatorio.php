@@ -13,37 +13,49 @@ include_once("../base/header.php"); ?>
 			<div class="card-body">
 				<h2><?= "Atividade de Extensão 1"; ?></h2>
 				<p class="float-left">Esta atividade inicia-se em <strong><?= "20-08-2019"; ?> às <?= "08:30" ?></strong>.</p>
-				<p class="float-right"><a href="">Registrar participante</a></p>
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col">Nome</th>
-							<th scope="col">E-mail</th>
-							<th scope="col">CPF</th>
-							<th scope="col">Data de registro</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Leonardo Pinto Guilherme</td>
-							<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-							<td>01234567890</td>
-							<td>12-12-2012 08:25:33</td>
-						</tr>
-						<tr>
-							<td>Leonardo Pinto Guilherme</td>
-							<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-							<td>01234567890</td>
-							<td>12-12-2012 08:25:33</td>
-						</tr>
-						<tr>
-							<td>Leonardo Pinto Guilherme</td>
-							<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-							<td>01234567890</td>
-							<td>12-12-2012 08:25:33</td>
-						</tr>
+				<p class="float-right"><a href="adicionar.php?id=<?= 1; ?>">Registrar participante</a></p>
+				<form>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">Endereço de e-mail</th>
+								<th scope="col">CPF</th>
+								<th scope="col">Data de registro</th>
+								<th scope="col">Presente</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Leonardo Pinto Guilherme</td>
+								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
+								<td>01234567890</td>
+								<td>12-12-2012 08:25:33</td>
+								<td class="float-right">
+									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
+								</td>
+							</tr>
+							<tr>
+								<td>Leonardo Pinto Guilherme</td>
+								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
+								<td>01234567890</td>
+								<td>12-12-2012 08:25:33</td>
+								<td class="float-right">
+									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
+								</td>
+							</tr>
+							<tr>
+								<td>Leonardo Pinto Guilherme</td>
+								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
+								<td>01234567890</td>
+								<td>12-12-2012 08:25:33</td>
+								<td class="float-right">
+									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
+								</td>
+							</tr>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
 	</div>
