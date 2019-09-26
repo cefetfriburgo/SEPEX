@@ -28,16 +28,7 @@ require_once '../../../controller/gerenciar_inscricao.php'; ?>
 							<td><a href="./relatorio.php?id=<?= $l['atividade_id']; ?>">Acessar</a></td>
 						</tr>
 						<?php } ?>
-						<!-- <tr>
-							<td><?= "Atividade da Semana de Extensão 2" ?></td>
-							<td><?= "98" ?></td>
-							<td><a href="./relatorio.php?id=<?= 1 ?>">Acessar</a></td>
-						</tr>
-						<tr>
-							<td><?= "Atividade da Semana de Extensão 3" ?></td>
-							<td><?= "98" ?></td>
-							<td><a href="./relatorio.php?id=<?= 1 ?>">Acessar</a></td>
-						</tr> -->
+						
 					</tbody>
 				</table>
 			</div>

@@ -12,12 +12,21 @@
             return $this->gerenciar->gerenciarInscricao();
         }
 
+        public function listar($atividade_id){
+            return $this->gerenciar->listarParticipante($atividade_id);
+        }
+
+        public function inicio($atividade_id){
+            return $this->gerenciar->inicioAtividade($atividade_id);
+        }
+
 
     }
 
-    // $c = new GerenciarInscricao();
+    $c = new GerenciarInscricao();
 
-    // $lista = $c->gerenciar();
+    $lista = $c->gerenciar();
+
     
 
     // foreach($lista as $l1){

@@ -3,7 +3,13 @@ $titulo = "Relatório de Inscrição";
 $categoria = "Inscrições";
 $local = "Relatório de Inscrição";
 include_once("../base/header.php"); 
-if(isset($_GET['id']) && !empty($_GET['id'])){ ?>
+require_once('../../../controller/gerenciar_inscricao.php');
+
+if(isset($_GET['id']) && !empty($_GET['id'])){ 
+	$id = $_GET['id'];
+
+	$participante = $c->listar($id); 
+	$atividade = $c->inicio($id); ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -13,7 +19,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){ ?>
 			</div>
 			<div class="card-body">
 				<h2><?= "Atividade de Extensão 1"; ?></h2>
-				<p class="float-left">Esta atividade inicia-se em <strong><?= "20-08-2019"; ?> às <?= "08:30" ?></strong>.</p>
+				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong>.</p>
 				<p class="float-right"><a href="adicionar.php?id=<?= 1; ?>">Registrar participante</a></p>
 				<form>
 					<table class="table table-striped">
@@ -27,7 +33,18 @@ if(isset($_GET['id']) && !empty($_GET['id'])){ ?>
 							</tr>
 						</thead>
 						<tbody>
+							<?php foreach($participante as $prt){ ?>
 							<tr>
+								<td><?= $prt['nome_inscrito']; ?></td>
+								<td><?= $prt['email']; ?></td>
+								<td><?= $prt['cpf']; ?></td>
+								<td><?= $prt['data_inscricao'];?></td>
+								<td class="float-right">
+									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
+								</td>
+							</tr>
+							<?php } ?>
+							<!-- <tr>
 								<td>Leonardo Pinto Guilherme</td>
 								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
 								<td>01234567890</td>
@@ -44,16 +61,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){ ?>
 								<td class="float-right">
 									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
 								</td>
-							</tr>
-							<tr>
-								<td>Leonardo Pinto Guilherme</td>
-								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-								<td>01234567890</td>
-								<td>12-12-2012 08:25:33</td>
-								<td class="float-right">
-									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
-								</td>
-							</tr>
+							</tr> -->
 					</tbody>
 				</table>
 				<button class="btn btn-primary btn-block col-2 float-right" type="submit">Salvar alterações</button>

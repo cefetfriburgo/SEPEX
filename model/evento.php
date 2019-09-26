@@ -20,7 +20,7 @@ require_once dirname(__FILE__)."./../conexao.php";
 
         public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
             $pd = $this->pdo->prepare("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim, publicado, gratuito) 
-            VALUES(?,?,?,?,?,?,?)");
+            VALUES(?,?,?,?,?,?,?,?,?)");
 
             $publicado = 0;
             $gratuito = 1;
@@ -98,18 +98,34 @@ require_once dirname(__FILE__)."./../conexao.php";
 
         }
 
+        public function listarParticipante($atividade_id){
+            $pd = $this->pdo->prepare("SELECT i.nome_inscrito, i.email, i.cpf, i.data_inscricao, i.presente  from inscricao i join 
+            atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
+            $pd->execute(array($atividade_id));
+            $p = $pd->fetchAll();
+
+            return $p;
+
+        }
+
+        public function inicioAtividade($atividade_id){
+            $pd = $this->pdo->prepare("SELECT date_format(atividade.data, '%d/%m/%Y') as 'data', hora_inicio 
+            from atividade where atividade_id=?");
+            $pd->execute(array($atividade_id));
+            $p = $pd->fetch();
+            
+            return $p;
+        }
+
 
     }
 
     
     // $c = new Evento();
 
-    // $lista = $c->gerenciarInscricao();
+    // $lista = $c->inicioAtividade(1);
     
-
-    // foreach($lista as $l1){
-    //     echo $l1['nome_atividade'] . '    '   . $l1['total'];
-    // }
+    // echo $lista['data'];
 
   
 
