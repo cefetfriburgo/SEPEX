@@ -2,7 +2,8 @@
 $titulo = "Relatório de Inscrição";
 $categoria = "Inscrições";
 $local = "Relatório de Inscrição";
-include_once("../base/header.php"); ?>
+include_once("../base/header.php"); 
+if(isset($_GET['id']) && !empty($_GET['id'])){ ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -62,4 +63,7 @@ include_once("../base/header.php"); ?>
 	</div>
 </div>
 
-<?php include_once("../base/footer.php"); ?>
+<?php }else{
+			header('location: ./gerenciar.php');
+		}
+	 include_once("../base/footer.php"); ?>
