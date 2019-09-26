@@ -19,10 +19,13 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function adicionarEvento( $nome, $ano, $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim){
-            $pd = $this->pdo->prepare("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim) 
+            $pd = $this->pdo->prepare("INSERT INTO evento(nome_evento, ano, semestre, data_inicio, hora_inicio, data_fim, hora_fim, publicado, gratuito) 
             VALUES(?,?,?,?,?,?,?)");
 
-            $pd->execute(array($nome , $ano , $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim));
+            $publicado = 0;
+            $gratuito = 1
+
+            $pd->execute(array($nome , $ano , $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim, $publicado, $gratuito));
            
         }
 
