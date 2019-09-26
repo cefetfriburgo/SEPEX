@@ -23,7 +23,7 @@ require_once dirname(__FILE__)."./../conexao.php";
             VALUES(?,?,?,?,?,?,?)");
 
             $publicado = 0;
-            $gratuito = 1
+            $gratuito = 1;
 
             $pd->execute(array($nome , $ano , $semestre, $data_inicio, $hora_inicio, $data_fim, $hora_fim, $publicado, $gratuito));
            
