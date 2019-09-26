@@ -55,6 +55,7 @@ include_once("../base/header.php"); ?>
 							</tr>
 					</tbody>
 				</table>
+				<button class="btn btn-primary btn-block col-2 float-right" type="submit">Salvar alterações</button>
 				</form>
 			</div>
 		</div>
