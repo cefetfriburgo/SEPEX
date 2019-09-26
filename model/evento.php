@@ -84,7 +84,31 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;
         }
 
+        public function gerenciarInscricao(){
+            $pd = $this->pdo->prepare("SELECT a.atividade_id, a.nome_atividade, CASE WHEN COUNT(i.atividade_id) > 0 THEN COUNT(i.atividade_id) ELSE 0 END AS total 
+            from atividade a join evento e on a.evento_id=e.evento_id
+            join inscricao i on a.atividade_id=i.atividade_id where e.publicado=1 group by i.atividade_id");
+            $pd->execute();
+            $p = $pd->fetchAll();            
+
+            return $p;
+
+        }
+
+
     }
+
+    
+    // $c = new Evento();
+
+    // $lista = $c->gerenciarInscricao();
+    
+
+    // foreach($lista as $l1){
+    //     echo $l1['nome_atividade'] . '    '   . $l1['total'];
+    // }
+
+  
 
     
 ?>

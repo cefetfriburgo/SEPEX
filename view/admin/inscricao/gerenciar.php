@@ -2,7 +2,8 @@
 $titulo = "Acompanhar de Inscrições";
 $categoria = "Inscrições";
 $local = "Acompanhar Inscrições";
-include_once("../base/header.php"); ?>
+include_once("../base/header.php");
+require_once '../../../controller/gerenciar_inscricao.php'; ?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -20,12 +21,14 @@ include_once("../base/header.php"); ?>
 						</tr>
 					</thead>
 					<tbody>
+						<?php foreach($lista as $l){ ?> 
 						<tr>
-							<td><?= "Atividade da Semana de Extensão 1" ?></td>
-							<td><?= "98" ?></td>
-							<td><a href="./relatorio.php?id=<?= 1 ?>">Acessar</a></td>
+							<td><?= $l['nome_atividade']; ?></td>
+							<td><?= $l['total']; ?></td>
+							<td><a href="./relatorio.php?id=<?= $l['atividade_id']; ?>">Acessar</a></td>
 						</tr>
-						<tr>
+						<?php } ?>
+						<!-- <tr>
 							<td><?= "Atividade da Semana de Extensão 2" ?></td>
 							<td><?= "98" ?></td>
 							<td><a href="./relatorio.php?id=<?= 1 ?>">Acessar</a></td>
@@ -34,7 +37,7 @@ include_once("../base/header.php"); ?>
 							<td><?= "Atividade da Semana de Extensão 3" ?></td>
 							<td><?= "98" ?></td>
 							<td><a href="./relatorio.php?id=<?= 1 ?>">Acessar</a></td>
-						</tr>
+						</tr> -->
 					</tbody>
 				</table>
 			</div>
