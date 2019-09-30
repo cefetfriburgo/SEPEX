@@ -24,19 +24,25 @@ include_once("../base/header.php");
 			<div class="card-body">
 
 				<form action="./../../../controller/usuario.php" method="POST">
-					<div class="form-group">
-						<label for="email">Endereço de e-mail</label>
-						<input type="text" class="form-control" id="email0" name="email0" value="<?php echo $email; ?>" disabled/>
-						<input type='hidden' id="email" name="email" value="<?php echo $email; ?>"/>
+					<div class="form-group  form-row">
+						<div class="col-md-8">
+							<label for="email">Endereço de e-mail</label>
+							<input type="text" class="form-control" id="email0" name="email0" value="<?= $email; ?>" disabled/>
+							<input type='hidden' id="email" name="email" value="<?php echo $email; ?>"/>
+						</div>
+						<div class="col-md-4">
+							<label for="email">Privilégio do perfil</label>
+							<input type="text" class="form-control" id="perfil" name="perfil" value="<?= "Administrador"; ?>" disabled/>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="senha">Senha atual</label>
 						<input type="password" class="form-control" id="senha" name="senha" />
 					</div>
-					<div class='form-group form-row'>
+					<div class="form-group form-row">
 						<div class='col'>
 							<label for="nova-senha">Nova senha</label>
-							<input type='password' class='form-control' id='nova-senha' name='nova-senha'required/>
+							<input type="password" class="form-control" id="nova-senha" name="nova-senha" required/>
 						</div>
 						<div class='col'>
 							<label for="confirmar-nova-senha">Confirmar nova senha</label>
