@@ -38,12 +38,19 @@
 	 $lista = $c->disponivel();
 	 $publicado = $c->atual();
 
-	if(isset($_POST['id_evento_atual']) && !empty($_POST['id_evento_atual']))
-		if(isset($_POST['evento']) && !empty($_POST['evento'])){
-			$id_atual = $_POST['id_evento_atual'];
-			$id_novo =  $_POST['evento'];
-			$c->gerenciar($id_novo, $id_atual);
-	 }
+	if(isset($_POST['id_evento_atual']) && !empty($_POST['id_evento_atual'])){
+		$id_atual = $_POST['id_evento_atual'];
+	}else{
+		$id_atual = 0;
+	}
+	
+	if(isset($_POST['evento']) && !empty($_POST['evento'])){		
+		$id_novo =  $_POST['evento'];
+		$c->gerenciar($id_novo, $id_atual);
+	}
+
+
+
 ?>
 
 

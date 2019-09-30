@@ -13,16 +13,12 @@ require_once "./../../../controller/gerenciar_evento.php";?>
 			</div>
 			<div class="card-body">
 				<?php 
-					// $c = new Evento();
-					// $lista = $c->eventoDisponivel();
-
-					// $e = new Evento();
-					// $publicado = $e->eventoAtual();
+					if(isset($publicado[0])){
 				?>
 
 
 				<p>O evento <?php echo "<strong>$publicado[0]</strong>"; ?> está atualmente selecionado como publicado. Para ver mais detalhes sobre este evento, <a href="./editar.php?id=<?php echo $publicado[1]; ?>">clique aqui</a>.</p>
-
+					<?php }else{ echo "Nenhum evento publicado";}?>
 				<form action="./../../../controller/gerenciar_evento.php" method="POST">
 					<input type="hidden" id="id_evento_atual" name="id_evento_atual" value="<?php echo $publicado[1]; ?>">
 					<div class="form-group">

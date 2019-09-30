@@ -24,7 +24,7 @@ $nascimento = $_POST['nascimento'];
                 header("location: ../view/admin/inscricao/adicionar.php?id=$atividade_id&erro=1");
             }else{
                 $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);
-                header("location: ../view/site/sucesso.php");
+                header("location: ../view/admin/inscricao/relatorio.php?id=$atividade_id");
             }
             
         }
