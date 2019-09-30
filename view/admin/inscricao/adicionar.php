@@ -19,7 +19,7 @@ if(isset($_GET['erro'])){
 				<i class="fas fa-plus"></i> Novo participante
 			</div>
 			<div class="card-body">
-				<form action="" method="POST">
+				<form action="../../../controller/inscricao_participante.php" method="POST">
 					<div class="form-group">
 						<label for="nome">Nome do candidato</label>
 						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo" required>

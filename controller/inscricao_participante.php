@@ -93,10 +93,10 @@ $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
 if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
-    header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
+    header("location: ../view/admin/inscricao/adicionar.php?id=$atividade_id&erro=2");
 }else{
     $c = new ControllerInscricao();
     $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);
     
-    }
+     }
 ?>
