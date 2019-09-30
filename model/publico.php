@@ -25,7 +25,7 @@ class Publico{
     }
 
     public function exibirColaboradoresAtividade($id){
-        $pd = $this->pdo->prepare("SELECT c.nome FROM colaborador_atividade ca join atividade a on ca.atividade_id=a.atividade_id 
+        $pd = $this->pdo->prepare("SELECT c.nome_colaborador FROM colaborador_atividade ca join atividade a on ca.atividade_id=a.atividade_id 
         join colaborador c on ca.colaborador_id=c.colaborador_id WHERE a.atividade_id=ca.atividade_id 
         AND c.colaborador_id=ca.colaborador_id AND a.atividade_id=?");
 

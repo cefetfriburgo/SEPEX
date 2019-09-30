@@ -43,13 +43,13 @@
             if(count($lista2) > 1){
             	$colaboradores = [];
             	foreach ($lista2 as $l2){
-                    array_push($colaboradores, $l2['nome']);
+                    array_push($colaboradores, $l2['nome_colaborador']);
                 }                    
                 	$la = array_pop($colaboradores);
             		$colaboradores = implode( ', ', $colaboradores ) . ' e ' . $la;
         	} else {
             		foreach ($lista2 as $l2){
-                    	$colaboradores = $l2['nome'];
+                    	$colaboradores = $l2['nome_colaborador'];
                  	}
                 }
 
@@ -90,7 +90,12 @@
     }
 
      $c = new ControllerDetalhesAtividade();
-
+     
+    //  $lista = $c->ColaboradoresAtividade(1);
+     
+    //  foreach($lista as $l){
+    //      echo $l['nome_colaborador'];
+    //  }
 
 ?>
 
