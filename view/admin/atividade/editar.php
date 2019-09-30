@@ -30,44 +30,48 @@ $ida = $lista['tipo_atividade_id'];
 				<input type="hidden" value='<?php echo $id; ?>' id='id' name='id'>
 					<div class="form-group">
 						<label for="titulo">Título</label>
-						<input type="text" class="form-control" value="<?php echo $lista['nome_atividade'];?>" id="nome_atividade" name="nome_atividade" placeholder="Título da atividade" required>
+						<input type="text" class="form-control" value="<?= htmlspecialchars($lista['nome_atividade']); ?>" id="nome_atividade" name="nome_atividade" placeholder="Título da atividade" required>
 					</div>
 					<div class="form-group">
 						<label for="descricao">Descrição</label>
-						<textarea class="form-control"  id="descricao" name="descricao" rows="3"><?php echo $lista['descricao'];?></textarea>
+						<textarea class="form-control"  id="descricao" name="descricao" rows="3"><?= htmlspecialchars($lista['descricao']); ?></textarea>
 					</div>
 					<div class="form-group form-row">
 						<div class="col">
 							<label for="data">Data</label>
-							<input type="date" class="form-control" value="<?php echo $lista['data'];?>" id="data" name="data">
+							<input type="date" class="form-control" value="<?= $lista['data']; ?>" id="data" name="data">
 						</div>
 						<div class="col">
 							<label for="hora_inicio">Hora de início</label>
-							<input type="time" class="form-control" value="<?php echo $lista['hora_inicio'];?>" id="hora_inicio" name="hora_inicio">
+							<input type="time" class="form-control" value="<?= $lista['hora_inicio']; ?>" id="hora_inicio" name="hora_inicio">
 						</div>
 						<div class="col">
 							<label for="hora_fim">Hora de término</label>
-							<input type="time" class="form-control" value="<?php echo $lista['hora_fim'];?>" id="hora_fim" name="hora_fim">
+							<input type="time" class="form-control" value="<?= $lista['hora_fim']; ?>" id="hora_fim" name="hora_fim">
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="local">Local</label>
-						<input type="text" class="form-control" value="<?php echo $lista['local'];?>" id="local" name="local" placeholder="Local da atividade" required>
+					<div class="form-group form-row">
+						<div class="col">
+							<label for="local">Local</label>
+							<input type="text" class="form-control" value="<?= $lista['local']; ?>" id="local" name="local" placeholder="Local da atividade" required>
+						</div>
+						<div class="col-md-2">
+							<label for="capacidade">Capacidade</label>
+							<input type="number" min="0" max="200" class="form-control" id="capacidade" name="capacidade" value='<?= $capacidade;?>'>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="evento">Evento</label>
 						<select class="form-control" id="evento" name="evento" required>
-							<option disabled >Evento para esta atividade</option>
+							<option disabled>Evento para esta atividade</option>
 							<?php 
 								$c = new Atividade();
 								$lista = $c->listarEvento();
 								foreach($lista as $l){
-									if($evento_id == $l['evento_id']){
-
-							?>		
-								<option value = "<?php echo $l['evento_id']; ?>" selected><?php echo $l['nome_evento']; ?></option>
+									if($evento_id == $l['evento_id']){ ?>		
+								<option value = "<?= $l['evento_id']; ?>" selected><?= $l['nome_evento']; ?></option>
 							<?php } else{ ?>
-								<option value = "<?php echo $l['evento_id']; ?>" ><?php echo $l['nome_evento']; ?></option>
+								<option value = "<?= $l['evento_id']; ?>" ><?= $l['nome_evento']; ?></option>
 							<?php } }?>
 							
 						</select>
@@ -82,16 +86,12 @@ $ida = $lista['tipo_atividade_id'];
 								foreach($lista as $l){
 									if($ida == $l['tipo_atividade_id']){
 							 ?>
-							<option value = "<?php echo $l['tipo_atividade_id'];?>" selected><?php echo $l['nome_tipo_atividade']; ?></option>
+							<option value = "<?= $l['tipo_atividade_id'];?>" selected><?= $l['nome_tipo_atividade']; ?></option>
 									<?php }else{ ?>				
-							<option value = "<?php echo $l['tipo_atividade_id'];?>" ><?php echo $l['nome_tipo_atividade']; ?></option>
+							<option value = "<?= $l['tipo_atividade_id'];?>" ><?= $l['nome_tipo_atividade']; ?></option>
 							
 							<?php } } ?>
 						</select>
-					</div>
-					<div class="form-group">
-						<label for='capacidade'>Vagas</label>
-						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade" value='<?php echo $capacidade;?>'>
 					</div>
 					<!-- <div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
