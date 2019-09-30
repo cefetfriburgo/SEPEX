@@ -11,7 +11,8 @@ class Publico{
 
     public function exibirEvento(){
         $pd = $this->pdo->query("SELECT e.nome_evento, e.ano, e.semestre, e.data_inicio, e.hora_inicio, e.data_fim, e.hora_fim, 
-        COUNT(atividade_id) as 'total', e.gratuito FROM evento e, atividade a WHERE e.publicado=1");
+        (SELECT COUNT(a.atividade_id) as 'a.total' FROM atividade a JOIN evento e ON a.evento_id=e.evento_id WHERE e.publicado=1) as 'total',
+         e.gratuito FROM evento e, atividade a WHERE e.publicado=1");
         $p = $pd->fetch();
 
         return $p;

@@ -15,6 +15,5 @@ class Conexao{
         return self::$pdo;
     }
 }
-//'mysql:host=172.16.50.17;dbname=sepex_dev;charset=utf8', 'app', 'aplicacao89'
 
 ?>

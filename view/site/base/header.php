@@ -18,10 +18,10 @@
     <link href="../../public/assets/css/main.css" rel="stylesheet">
 </head>
 <body>
-<div class="loader">
+<!-- <div class="loader">
     <div class="loader-outter"></div>
     <div class="loader-inner"></div>
-</div>
+</div> -->
 
 <header class="header navbar fixed-top navbar-expand-md sticky_header">
     <div class="container">
