@@ -20,8 +20,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 			<div class="card-body">
 				<h2><?= "Atividade de Extensão 1"; ?></h2>
 				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong>.</p>
-				<p class="float-right"><a href="adicionar.php?id=<?= 1; ?>">Registrar participante</a></p>
-				<form>
+				<p class="float-right"><a href="adicionar.php?id=<?= $id; ?>">Registrar participante</a></p>
+				<form action="./relatorio.php" method="POST">
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -40,20 +40,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 								<td><?= $prt['cpf']; ?></td>
 								<td><?= $prt['data_inscricao'];?></td>
 								<td class="float-right">
-									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
+									<input type="checkbox" class="form-check-input" id="presente" value="<?= $id; ?>">
 								</td>
 							</tr>
 							<?php } ?>
 							<!-- <tr>
-								<td>Leonardo Pinto Guilherme</td>
-								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-								<td>01234567890</td>
-								<td>12-12-2012 08:25:33</td>
-								<td class="float-right">
-									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
-								</td>
-							</tr>
-							<tr>
 								<td>Leonardo Pinto Guilherme</td>
 								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
 								<td>01234567890</td>

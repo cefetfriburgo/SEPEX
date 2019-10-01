@@ -99,8 +99,7 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function listarParticipante($atividade_id){
-            $pd = $this->pdo->prepare("SELECT i.nome_inscrito, i.email, i.cpf, i.data_inscricao, i.presente  from inscricao i join 
-            atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
+            $pd = $this->pdo->prepare("SELECT i.nome_inscrito, i.email, i.cpf, i.data_inscricao, i.presente  from inscricao i join atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
             $pd->execute(array($atividade_id));
             $p = $pd->fetchAll();
 
@@ -125,9 +124,9 @@ require_once dirname(__FILE__)."./../conexao.php";
 
    $lista = $c->gerenciarInscricao();
 
-   foreach($lista as $l){
-       echo $l['nome_atividade'];
-   }
+   // foreach($lista as $l){
+   //     echo $l['nome_atividade'];
+   // }
     
     // echo $lista['data'];
 

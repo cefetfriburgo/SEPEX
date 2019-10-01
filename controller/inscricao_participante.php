@@ -2,6 +2,7 @@
 require dirname(__FILE__).'./../model/publico.php';
 
 $atividade_id = $_POST['id'];
+
 $nome_aluno = $_POST['nome'];
 $email = $_POST['email'];
 $cpf = $_POST['cpf'];
@@ -9,7 +10,7 @@ $cpf = str_replace(".","",$cpf);
 $cpf = str_replace("-","",$cpf);
 $cpf = str_replace(",","",$cpf);
 $comunidade = $_POST['comunidade'];
-$nascimento = $_POST['nascimento'];
+$nascimento = $_POST['data'];
 
     class ControllerInscricao{
         private $inscricao;
@@ -79,11 +80,7 @@ $nascimento = $_POST['nascimento'];
     }
 
     function validaEmail($email) {
-        $conta = "^[a-zA-Z0-9\._-]+@";
-        $domino = "[a-zA-Z0-9\._-]+.";
-        $extensao = "([a-zA-Z]{2,4})$";
-        $pattern = $conta.$domino.$extensao;
-        if (preg_match($pattern, $email) || !isset($email) || empty($email))
+        if ((var_dump(filter_var($email, FILTER_VALIDATE_EMAIL))) == 'bool(false)') 
             return false;
         else
             return true;
@@ -91,6 +88,7 @@ $nascimento = $_POST['nascimento'];
 
 $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
+
 
 if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
     header("location: ../view/admin/inscricao/adicionar.php?id=$atividade_id&erro=2");

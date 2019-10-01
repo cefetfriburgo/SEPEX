@@ -20,6 +20,7 @@ if(isset($_GET['erro'])){
 			</div>
 			<div class="card-body">
 				<form action="../../../controller/inscricao_participante.php" method="POST">
+					<input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
 					<div class="form-group">
 						<label for="nome">Nome do candidato</label>
 						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo" required>
@@ -34,12 +35,12 @@ if(isset($_GET['erro'])){
 							<input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
 						</div>
 						<div class="col">
-							<label for="email">Data de nascimento</label>
+							<label for="data">Data de nascimento</label>
 							<input type="date" class="form-control" id="data" name="data" required>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email">Em relação ao CEFET, o candidato pertence à comunidade:</label>
+						<label for="comunidade">Em relação ao CEFET, o candidato pertence à comunidade:</label>
 						<div class="radio">
                             <label><input type="radio" name="comunidade" value="1" checked> Interna</label>
                             <label><input type="radio" name="comunidade" value="2"> Externa</label>
