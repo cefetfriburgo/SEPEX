@@ -20,6 +20,7 @@
                     'nome' => $registro['nome'],
                     'capacidade' => $registro['capacidade'],
                     'descricao' => $registro['descricao'],
+                    'local' => $registro['local'],
                     'tipo' => $registro['tipo'],
                     'evento' => $registro['evento'],
                     'inicio' => date('H:i', strtotime($registro['inicio'])),

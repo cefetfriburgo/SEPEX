@@ -56,10 +56,11 @@ foreach($lista1['detalhes'] as $l){
                 <p><strong>Colaboradores</strong></p>
                 <p>
                     <?php echo $lista2;	?>
-                	
                 </p>
                 <p><strong>Tipo de atividade</strong></p>
                 <p><?php echo $l['tipo']; ?></p>
+                <p><strong>Local</strong></p>
+                <p><?php echo $l['local']; ?></p>
             </div>
             <div class="col-12 col-md-3">
                 <p><strong>Data e hora</strong></p>
