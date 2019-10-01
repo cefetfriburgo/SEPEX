@@ -20,21 +20,27 @@ require_once "../../controller_site/controller_relatorio.php" ;
             for(var atividade of obj.atividades){
                 id = id+1;
                 
-                var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
-                '</td><td>'+atividade.termino+'</td></tr>');
+                var actv = $('<tr id="md'+id+'"><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+                '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" onclick="modal(md'+id+')" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
                 $('#tcorpo').append(actv);
             }
         });
     }
     // var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
-    //             '</td><td>'+atividade.termino+'</td>/*<td><input type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
+    //             '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
     //             $('#tcorpo').append(actv);
 
-    // function cancelar(){
-    //     nome = document.getElementById('nome1').innerHTML;
-    // //    console.log(nome);
+    function modal(id){
+        //$nome = document.getElementById().innerHTML;
+        console.log(id );
+    }
 
-    // }
+    function cancelar(){
+        
+        //location.reload();
+        console.log($nome);
+
+    }
 
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
