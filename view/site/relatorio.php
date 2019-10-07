@@ -20,8 +20,8 @@ require_once "../../controller_site/controller_relatorio.php" ;
             for(var atividade of obj.atividades){
                 id = id+1;
                 
-                var actv = $('<tr id="md'+id+'"><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
-                '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" onclick="modal(md'+id+')" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
+                var actv = $('<tr id="md'+id+'"><td id="'+atividade.nome_atividade+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+                '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" onclick="modal(md'+id+',nome'+id+')" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
                 $('#tcorpo').append(actv);
             }
         });
@@ -29,16 +29,33 @@ require_once "../../controller_site/controller_relatorio.php" ;
     // var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
     //             '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
     //             $('#tcorpo').append(actv);
+    atividade = '';
+    $md = '';
+    // cpf = '';
 
-    function modal(id){
-        //$nome = document.getElementById().innerHTML;
-        console.log(id );
+    function modal(md, nome){
+        $md = md.id;
+        atividade = nome.id;
     }
 
+    function confirmar(cpf){
+        // cpf = document.getElementById(cpf.id).value;
+        // nome_atividade = document.getElementById(atividade).value;
+        //  $.post('../../controller_site/cancelar_inscricao_atividade.php', {'cpf':cpf,'atividade':nome_atividade}, function($resposta){
+        //     var obj = $resposta;
+        //     console.log(obj);
+        // });
+        // $mdl = document.getElementById($md);
+        // $mdl.innerHTML='';
+console.log(atividade);
+    }
+    
+
     function cancelar(){
+        //$.get('../../controller_site/cancelar_inscricao_atividade.php?email='+email+',nome='+$n);
+       
+        //console.log($n, $i, email);
         
-        //location.reload();
-        console.log($nome);
 
     }
 
@@ -113,11 +130,12 @@ require_once "../../controller_site/controller_relatorio.php" ;
                             </button>
                         </div>
                     <div id='modal' class="modal-body">
-                        <p id = 'prgrf'>Deseja cancelar a sua inscrição?</p>
+                        <p id = 'prgrf'>Informe seu CPF para cancelar a sua inscrição?</p>
+                        <input type='text' id='confirma_cpf' name='confirma_cpf' >
                     </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button"  class="btn btn-primary" onclick="cancelar()" data-dismiss="modal">OK</button>
+            <button type="button"  class="btn btn-primary" onclick='confirmar(confirma_cpf)' data-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
@@ -129,3 +147,4 @@ require_once "../../controller_site/controller_relatorio.php" ;
 </section>
 
 <?php require_once("./base/footer.php"); ?>
+<!-- onclick="cancelar()" -->
