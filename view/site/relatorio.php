@@ -20,7 +20,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
             for(var atividade of obj.atividades){
                 id = id+1;
                 
-                var actv = $('<tr id="md'+id+'"><td id="'+atividade.nome_atividade+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
+                var actv = $('<tr id="md'+id+'"><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
                 '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" onclick="modal(md'+id+',nome'+id+')" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
                 $('#tcorpo').append(actv);
             }
@@ -36,18 +36,19 @@ require_once "../../controller_site/controller_relatorio.php" ;
     function modal(md, nome){
         $md = md.id;
         atividade = nome.id;
+        
     }
 
     function confirmar(cpf){
-        // cpf = document.getElementById(cpf.id).value;
-        // nome_atividade = document.getElementById(atividade).value;
-        //  $.post('../../controller_site/cancelar_inscricao_atividade.php', {'cpf':cpf,'atividade':nome_atividade}, function($resposta){
-        //     var obj = $resposta;
-        //     console.log(obj);
-        // });
-        // $mdl = document.getElementById($md);
-        // $mdl.innerHTML='';
-console.log(atividade);
+        cpf = document.getElementById(cpf.id).value;
+        nome_atividade = document.getElementById(atividade).innerHTML;
+         $.post('../../controller_site/cancelar_inscricao_atividade.php', {'cpf':cpf,'atividade':nome_atividade}, function($resposta){
+            var obj = $resposta;
+            console.log(obj);
+        });
+        $mdl = document.getElementById($md);
+        $mdl.innerHTML='';
+            //console.log(document.getElementById(atividade).innerHTML);
     }
     
 
