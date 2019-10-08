@@ -21,7 +21,8 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 				<h2><?= "Atividade de Extensão 1"; ?></h2>
 				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong>.</p>
 				<p class="float-right"><a href="adicionar.php?id=<?= $id; ?>">Registrar participante</a></p>
-				<form action="./relatorio.php" method="POST">
+				<form action="../../../view/admin/inscricao/formulario.php" method="POST">
+					<input type="hidden" id="atividade" name="atividade" value="<?php echo $id; ?>">
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -34,13 +35,17 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 						</thead>
 						<tbody>
 							<?php foreach($participante as $prt){ ?>
+							<input type="hidden" id="participante" name="participante" value="<?php echo $prt['inscricao_id']; ?>">
 							<tr>
 								<td><?= $prt['nome_inscrito']; ?></td>
 								<td><?= $prt['email']; ?></td>
 								<td><?= $prt['cpf']; ?></td>
 								<td><?= $prt['data_inscricao'];?></td>
+
 								<td class="float-right">
-									<input type="checkbox" class="form-check-input" id="presente" value="<?= $id; ?>">
+									<input type="checkbox" class="form-check-input" name="presenca" id="presenca" <?php if($prt['presente']){
+										echo "checked";
+									} ?>>				
 								</td>
 							</tr>
 							<?php } ?>

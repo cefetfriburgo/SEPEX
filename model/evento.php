@@ -99,7 +99,7 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function listarParticipante($atividade_id){
-            $pd = $this->pdo->prepare("SELECT i.nome_inscrito, i.email, i.cpf, i.data_inscricao, i.presente  from inscricao i join atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
+            $pd = $this->pdo->prepare("SELECT i.inscricao_id, i.nome_inscrito, i.email, i.cpf, i.data_inscricao, i.presente  from inscricao i join atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
             $pd->execute(array($atividade_id));
             $p = $pd->fetchAll();
 
@@ -116,6 +116,12 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;
         }
 
+        public function confirmarPresenca($id, $presenca){
+            $pd = $this->pdo->prepare("UPDATE inscricao SET presente = ? WHERE inscricao_id = ?");
+            $pd->execute(array($presenca, $id));
+            header('location: ./../view/admin/inscricao/gerenciar.php');
+
+        }
 
     }
 
@@ -130,5 +136,5 @@ require_once dirname(__FILE__)."./../conexao.php";
     
     // echo $lista['data'];
 
-    
+    //$c->confirmarPresenca(1);
 ?>
