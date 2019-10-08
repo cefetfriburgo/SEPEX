@@ -45,7 +45,7 @@ function formatar(mascara, documento){
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="./#home">Início</a>  |  </li>
+                <li><a href="/#home">Início</a>  |  </li>
                 <li><a href="#">Inscrição</a></li>
             </ul>
         </div>

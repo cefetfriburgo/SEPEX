@@ -21,10 +21,10 @@ $nascimento = $_POST['nascimento'];
             $vrfcr = $this->inscricao->verificarExistencia($atividade_id, $nome_aluno, $email, $cpf);
             
             if($vrfcr == 1){
-                header("location: ../view/site/formulario.php?id=$atividade_id&erro=1");
+                header("location: /inscricoes/$atividade_id?erro=1");
             }else{
                 $this->inscricao->registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);
-                header("location: ../view/site/sucesso.php");
+                header("location: /inscricoes/confirmacao");
             }
             
         }
@@ -93,7 +93,7 @@ $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
 if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
-    header("location: ../view/site/formulario.php?id=$atividade_id&erro=2");
+    header("location: /inscricoes/$atividade_id?erro=2");
 }else{
     $c = new ControllerInscricao();
     $c->inscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento);

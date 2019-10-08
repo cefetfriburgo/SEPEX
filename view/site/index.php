@@ -159,13 +159,13 @@ $i = new ControllerDetalhesAtividade();
                         </div>
                     </td>
                     <td>
-                        <a href="./atividade.php?id=<?= $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
+                        <a href="./atividades/<?= $l['atividade_id']; ?>" class="btn btn-primary btn-rounded">Ver mais</a>
                     </td>
                     <td class="buy_link">
                         <?php if($lista2['total'] < $l['capacidade']){
 
                         ?>
-                        <a href="./formulario.php?id=<?= $l['atividade_id']; ?>">Inscrever-se</a>
+                        <a href="./inscricoes/<?= $l['atividade_id']; ?>">Inscrever-se</a>
                         <?php } else{
                             echo "<br><strong>Capacidade de inscritos esgotada</strong>";
                         }?>
