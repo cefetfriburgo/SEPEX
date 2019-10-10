@@ -57,17 +57,8 @@ require_once "../../controller_site/controller_relatorio.php" ;
             }
         });
         
-            //console.log(document.getElementById(atividade).innerHTML);
     }
-    
 
-    function cancelar(){
-        //$.get('../../controller_site/cancelar_inscricao_atividade.php?email='+email+',nome='+$n);
-       
-        //console.log($n, $i, email);
-        
-
-    }
 
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
