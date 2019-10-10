@@ -29,7 +29,7 @@ foreach($lista1['detalhes'] as $l){
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="./#home">Início</a>  |  </li>
+                <li><a href="/#home">Início</a>  |  </li>
                 <li><a href="#">Atividade</a></li>
             </ul>
         </div>
@@ -76,7 +76,7 @@ foreach($lista1['detalhes'] as $l){
                 <?php if($lista3['total'] < $l['capacidade']){
 
                 ?>
-                <a href="./formulario.php?id=<?php echo $id; ?>" class="btn btn-rounded btn-primary">Inscrever-se</a>
+                <a href="/inscricoes/<?php echo $id; ?>" class="btn btn-rounded btn-primary">Inscrever-se</a>
                 <?php } else{
                     echo "<br><strong>Capacidade de inscritos esgotada.</strong>";
                 }?>

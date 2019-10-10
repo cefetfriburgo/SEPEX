@@ -50,7 +50,7 @@ require_once("./../../../controller/contar_inscricao.php");
                 </div>
                 <div class="mr-5"><?php if($qtdInscricao >=1) echo $qtdInscricao['total']; else echo 0; if($qtdInscricao['total'] <= 1) echo " inscrito"; else echo " inscritos"; ?></div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
+              <a class="card-footer text-white clearfix small z-1" href="./../inscricao/gerenciar.php">
                 <span class="float-left">Ver mais detalhes</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
@@ -60,7 +60,7 @@ require_once("./../../../controller/contar_inscricao.php");
           </div>
         </div>
 
-        <div class="card mb-3">
+        <!-- <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-chart-area"></i> Sobre o sistema
           </div>
@@ -68,7 +68,7 @@ require_once("./../../../controller/contar_inscricao.php");
             <p>Este sistema foi desenvolvido para gerenciar os eventos do CEFET-RJ campus Nova Friburgo. Somente membros da comunidade interna estão autorizados a acessá-lo através do e-mail institucional.</p>
             <p>Para iniciar, você deverá primeiro registrar um evento. Em seguida, acesse o menu de atividade para registrá-las. Feito isso, as atividades registradas serão disponibilizadas publicamente para inscrições dentro do prazo estipulado definido em seu evento.</p>
           </div>
-        </div>
+        </div> -->
 
 <?php include_once("../base/footer.php"); ?>
 

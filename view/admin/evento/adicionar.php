@@ -2,7 +2,8 @@
 $titulo = "Registrar evento";
 $categoria = "Eventos";
 $local = "Registrar evento";
-include_once("../base/header.php"); ?>
+include_once("../base/header.php"); 
+if($_SESSION['acesso'] == 'Administrador'){ ?>
 
 <div class="row">
 	<div class="col-md-8">
@@ -72,4 +73,8 @@ include_once("../base/header.php"); ?>
 	</div>
 </div>
 
-<?php include_once("../base/footer.php"); ?>
+<?php } else{
+  header("Location: ./../principal/index.php");
+}
+
+include_once("../base/footer.php"); ?>

@@ -70,12 +70,6 @@
             foreach($registros as $i => $registro){
                 $m = date('m', strtotime($registro['data']));
                 array_push($dados, array(
-                    // 'id' => $registro['id'],
-                    // 'nome' => $registro['nome'],
-                    // 'capacidade' => $registro['capacidade'],
-                    // 'descricao' => $registro['descricao'],
-                    // 'tipo' => $registro['tipo'],
-                    // 'evento' => $registro['evento'],
                     'inicio' => date('H:i', strtotime($registro['inicio'])),
                     'termino' => date('H:i', strtotime($registro['termino'])),
                     'dia' => date('d', strtotime($registro['data'])),
@@ -91,12 +85,6 @@
     }
 
      $c = new ControllerDetalhesAtividade();
-     
-    //  $lista = $c->ColaboradoresAtividade(1);
-     
-    //  foreach($lista as $l){
-    //      echo $l['nome_colaborador'];
-    //  }
 
 ?>
 

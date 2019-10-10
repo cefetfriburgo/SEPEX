@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143511127-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-143511127-2');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="author" content="ColorLib">
@@ -18,10 +29,10 @@
     <link href="../../public/assets/css/main.css" rel="stylesheet">
 </head>
 <body>
-<!-- <div class="loader">
+<div class="loader">
     <div class="loader-outter"></div>
     <div class="loader-inner"></div>
-</div> -->
+</div>
 
 <header class="header navbar fixed-top navbar-expand-md sticky_header">
     <div class="container">
@@ -34,13 +45,13 @@
         <div class="collapse navbar-collapse flex-sm-row-reverse" id="headernav">
             <ul class=" nav navbar-nav menu">
                 <li class="nav-item">
-                    <a class="nav-link active" href="./#home">Início</a>
+                    <a class="nav-link active" href="/#home">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./#atividade">Atividades</a>
+                    <a class="nav-link " href="/#atividade">Atividades</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="./relatorio.php">Minhas Inscrições</a>
+                    <a class="nav-link " href="/relatorio">Minhas Inscrições</a>
                 </li>
             </ul>
         </div>
