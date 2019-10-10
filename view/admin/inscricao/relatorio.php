@@ -73,7 +73,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 							</tr> -->
 					</tbody>
 				</table>
-				<button class="btn btn-primary btn-block col-2 float-right" type="submit">Salvar alterações</button>
+				<a href="../../../controller/gerar_arquivo.php?atividade_id=<?php echo $id;?>" class="btn btn-primary btn-block col-2 float-right" type="submit">Exportar</a>
 				</form>
 			</div>
 		</div>
