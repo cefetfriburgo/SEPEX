@@ -9,6 +9,7 @@ $categoria = "Eventos";
 $local = "Registrar evento";
 
 require_once("../base/header.php");
+if($_SESSION['acesso'] == 'Administrador'){
 require_once "./../../../controller/editar_evento.php";
 
 $lista = $ctrlEvento->nome($id);
@@ -87,4 +88,8 @@ $lista = $ctrlEvento->nome($id);
 	</div>
 </div>
 
-<?php include_once("../base/footer.php"); ?>
+<?php } else{
+  header("Location: ./../principal/index.php");
+}
+
+include_once("../base/footer.php"); ?>
