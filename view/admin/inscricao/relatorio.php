@@ -34,21 +34,34 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($participante as $prt){ ?>
-							<input type="hidden" id="participante" name="participante" value="<?php echo $prt['inscricao_id']; ?>">
-							<tr>
-								<td><?= $prt['nome_inscrito']; ?></td>
-								<td><?= $prt['email']; ?></td>
-								<td><?= $prt['cpf']; ?></td>
-								<td><?= $prt['data_inscricao'];?></td>
-
-								<td class="float-right">
-									<input type="checkbox" class="form-check-input" name="presenca" id="presenca" <?php if($prt['presente']){
-										echo "checked";
-									} ?>>				
-								</td>
-							</tr>
-							<?php } ?>
+							<?php 
+								$array_id = [];
+								$i = 0;
+								//$array_presenca = [];
+								foreach($participante as $prt){ ?>
+									<!-- <input type="hidden" id="participante" name="participante" value="<?php echo $prt['inscricao_id']; ?>"> -->
+									<tr>
+										<td><?= $prt['nome_inscrito']; ?></td>
+										<td><?= $prt['email']; ?></td>
+										<td><?= $prt['cpf']; ?></td>
+										<td><?= $prt['data_inscricao'];?></td>
+										<td class="float-right">
+									<input type="checkbox" class="form-check-input" name="presenca[<?php echo $i;?>]" id="presenca" <?php if($prt['presente']){
+												echo "checked";	
+											} 
+											?>>				
+										</td>
+									</tr>
+									<input type="hidden" name="participantes[<?php echo $i;?>]" value="<?php echo $prt['inscricao_id']; ?>">
+							<?php 
+							$i++;
+								// array_push($array_id, $prt['inscricao_id']);
+								// $vetor_id = implode(",", $array_id);
+								// array_push($array_presenca, $prt['presente']);
+								// $vetor_presenca = implode(",", $array_presenca);
+							} ?>
+							
+<!-- 							<input type="hidden" name="participantes" value="<?php echo $vetor_presenca; ?>">-->							
 							<!-- <tr>
 								<td>Leonardo Pinto Guilherme</td>
 								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
