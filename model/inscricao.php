@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__)."./../conexao.php";
+    require_once dirname(__FILE__)."./../conexao.php";
 
     class Inscricao{
         private $pdo;
