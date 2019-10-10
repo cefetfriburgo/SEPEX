@@ -1,7 +1,7 @@
 Options -Indexes
 RewriteEngine On
 
-RewriteBase ../sepex/
+RewriteBase /sepex/
 
 # Apresentação do site
 RewriteRule ^$ view/site/index.php [NC,L]
