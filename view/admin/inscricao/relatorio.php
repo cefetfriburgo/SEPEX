@@ -18,7 +18,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 				<i class="fas fa-plus"></i> Relatório
 			</div>
 			<div class="card-body">
-				<h2><?= "Atividade de Extensão 1"; ?></h2>
+				<h2><?= $atividade['nome_atividade']; ?></h2>
 				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong>.</p>
 				<p class="float-right"><a href="adicionar.php?id=<?= $id; ?>">Registrar participante</a></p>
 				<form action="../../../view/admin/inscricao/formulario.php" method="POST">
@@ -28,7 +28,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 							<tr>
 								<th scope="col">Nome</th>
 								<th scope="col">Endereço de e-mail</th>
-								<th scope="col">CPF</th>
+								<?php if($_SESSION['acesso'] == 'Administrador'){ ?><th scope="col">CPF</th><?php } ?>
 								<th scope="col">Data de registro</th>
 								<th scope="col">Presente</th>
 							</tr>
@@ -43,7 +43,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 									<tr>
 										<td><?= $prt['nome_inscrito']; ?></td>
 										<td><?= $prt['email']; ?></td>
-										<td><?= $prt['cpf']; ?></td>
+										<?php if($_SESSION['acesso'] == 'Administrador'){ ?> <td><?= $prt['cpf']; ?></td><?php } ?>
 										<td><?= $prt['data_inscricao'];?></td>
 										<td class="float-right">
 									<input type="checkbox" class="form-check-input" name="presenca[<?php echo $i;?>]" id="presenca" <?php if($prt['presente']){

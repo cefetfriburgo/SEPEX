@@ -2,12 +2,17 @@
 require_once dirname(__FILE__)."./../conexao.php";
 
 	class Model{
+
+		private $pdo = null;
+		
+		public function __construct(){
+			$this->pdo = Conexao::conectar();
+		}
   
 	    public function validaDados($email, $senha, $nova_senha, $confirmar_nova_senha) {
-			$pdo = Conexao::conectar();//new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');	
 
 				$pass = sha1($senha); //deve receber a variavel $senha com a criptografia
-				$ps = $pdo->query("SELECT senha FROM usuario WHERE email='" . $email . "'");
+				$ps = $this->pdo->query("SELECT acesso, senha FROM usuario WHERE email='" . $email . "'");
 	    	
 				$p = $ps->fetch();
 				
@@ -26,13 +31,18 @@ require_once dirname(__FILE__)."./../conexao.php";
 					// $_SESSION['senha'] = $senha;
 
 					$nova = sha1($nova_senha);
-					$alteracao = $pdo->query("UPDATE usuario SET senha='$nova' where email='$email'");
+					$alteracao = $this->pdo->query("UPDATE usuario SET senha='$nova' where email='$email'");
 
 					
 					header('location:./../view/admin/principal/index.php');	
 				}
 				
 		}
+
+		public function adicionarUsuario($email, $senha, $perfil){
+                $pd = $this->pdo->prepare("INSERT INTO usuario(email, senha, acesso) VALUES(?, SHA1(?), ?)");
+                $pd->execute(array($email, $senha, $perfil));          
+        }
 	
 	}
 

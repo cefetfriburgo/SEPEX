@@ -2,7 +2,8 @@
 $titulo = "Listar eventos";
 $categoria = "Eventos";
 $local = "Listar eventos";
-require_once("../base/header.php"); 
+require_once("../base/header.php");
+if($_SESSION['acesso'] == 'Administrador'){ 
 require_once("../../../controller/listar_evento.php");?>
 
 <div class="row">
@@ -58,4 +59,8 @@ require_once("../../../controller/listar_evento.php");?>
   </div>
 </div>
 
-<?php include_once("../base/footer.php"); ?>
+<?php } else{
+  header("Location: ./../principal/index.php");
+}
+
+include_once("../base/footer.php"); ?>

@@ -4,6 +4,11 @@ $titulo = "Registro de Inscrição";
 require_once("./base/header.php"); 
 require_once "../../controller_site/controller_relatorio.php" ;
 
+// if(isset($_GET['erro']) && !empty($_GET['erro'])){
+//     if($_GET['erro'] == 'erro')
+//         echo "<script> alert('dados inválidos');</script>";
+// }
+
 ?>
 <script>
     
@@ -11,7 +16,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
         id = 0;
         email = $('#email').val();
         $('tr').remove();
-        var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th></tr>';
+        var hd = '<tr><th>Atividade</th><th>Data</th><th>Início</th><th>Término</th><th>Cancelar inscrição</th></tr>';
         $('thead').append(hd);
         
         $.post('../../api/inscricao/relatorio.php', {"email": email}, function($atividades){
@@ -44,21 +49,16 @@ require_once "../../controller_site/controller_relatorio.php" ;
         nome_atividade = document.getElementById(atividade).innerHTML;
          $.post('../../controller_site/cancelar_inscricao_atividade.php', {'cpf':cpf,'atividade':nome_atividade}, function($resposta){
             var obj = $resposta;
-            console.log(obj);
+            if(obj == 0){
+                alert('CPF invalido!');
+            }else{
+                $mdl = document.getElementById($md);
+                $mdl.innerHTML='';
+            }
         });
-        $mdl = document.getElementById($md);
-        $mdl.innerHTML='';
-            //console.log(document.getElementById(atividade).innerHTML);
-    }
-    
-
-    function cancelar(){
-        //$.get('../../controller_site/cancelar_inscricao_atividade.php?email='+email+',nome='+$n);
-       
-        //console.log($n, $i, email);
         
-
     }
+
 
 </script>
 <section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="../../public/images/capa.jpg">
@@ -76,7 +76,7 @@ require_once "../../controller_site/controller_relatorio.php" ;
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="./#home">Início</a>  |  </li>
+                <li><a href="/#home">Início</a>  |  </li>
                 <li><a href="#">Registros de Inscrição</a></li>
             </ul>
         </div>
@@ -130,9 +130,11 @@ require_once "../../controller_site/controller_relatorio.php" ;
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    <div id='modal' class="modal-body">
-                        <p id = 'prgrf'>Informe seu CPF para cancelar a sua inscrição?</p>
-                        <input type='text' id='confirma_cpf' name='confirma_cpf' >
+                    <div id="modal" class="modal-body">
+                        <p id = "prgrf">Informe seu CPF para cancelar a sua inscrição?</p>
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="confirma_cpf" name="confirma_cpf" >
+                        </div>
                     </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

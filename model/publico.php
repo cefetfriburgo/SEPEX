@@ -19,7 +19,7 @@ class Publico{
     }
 
     public function exibirAtividade(){
-        $pd = $this->pdo->query("SELECT a.nome_atividade, a.data, a.capacidade, a.hora_inicio, a.hora_fim, a.atividade_id FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id WHERE ta.nome_tipo_atividade='Palestra' OR ta.nome_tipo_atividade='Minicurso' AND e.publicado = 1 ORDER BY a.data");
+        $pd = $this->pdo->query("SELECT a.nome_atividade, a.data, a.capacidade, a.hora_inicio, a.hora_fim, a.atividade_id FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id WHERE e.publicado = 1 ORDER BY a.data");
         $p = $pd->fetchAll();
 
         return $p;
@@ -153,6 +153,8 @@ class Publico{
 
              return 1;
 
+         }else{
+             return 0;
          }
 
     }

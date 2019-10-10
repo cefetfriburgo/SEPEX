@@ -3,9 +3,10 @@
     require_once './../model/publico.php';
   
 
-    $cpf = $_POST['cpf'];
+    $cpf = str_replace('.', '', $_POST['cpf']);
+    $cpf = str_replace('-', '', $cpf);
     $nome_atividade = $_POST['atividade'];
-    echo  "<script>alert($g);<script>";
+    //echo  "<script>alert($g);<script>";
 
     class CancelarInscricaoAtividade{
         private $cancel;

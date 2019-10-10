@@ -45,7 +45,7 @@ function formatar(mascara, documento){
 
         <div class="breadcrumbs">
             <ul>
-                <li><a href="./#home">Início</a>  |  </li>
+                <li><a href="/#home">Início</a>  |  </li>
                 <li><a href="#">Inscrição</a></li>
             </ul>
         </div>
@@ -82,7 +82,7 @@ function formatar(mascara, documento){
                     <input type="hidden" value="<?php echo $id; ?>" name="id" id="id">
                     <label for="nome">Nome</label>
                     <div class="form-group">
-                        <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo">
+                        <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo (não use abreviações)">
                     </div>
                     <label for="email">Endereço de e-mail</label>
                     <div class="form-group">

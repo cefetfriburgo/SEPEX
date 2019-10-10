@@ -108,7 +108,7 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function inicioAtividade($atividade_id){
-            $pd = $this->pdo->prepare("SELECT date_format(atividade.data, '%d/%m/%Y') as 'data', hora_inicio 
+            $pd = $this->pdo->prepare("SELECT nome_atividade, date_format(atividade.data, '%d/%m/%Y') as 'data', hora_inicio 
             from atividade where atividade_id=?");
             $pd->execute(array($atividade_id));
             $p = $pd->fetch();

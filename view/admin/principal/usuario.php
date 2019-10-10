@@ -13,6 +13,7 @@ include_once("../base/header.php");
       }
     } 
 	$email = $_SESSION['email'];
+	$acesso = $_SESSION['acesso'];
 ?>
 
 <div class="row">
@@ -32,7 +33,7 @@ include_once("../base/header.php");
 						</div>
 						<div class="col-md-4">
 							<label for="email">Privilégio do perfil</label>
-							<input type="text" class="form-control" id="perfil" name="perfil" value="<?= "Administrador"; ?>" disabled/>
+							<input type="text" class="form-control" id="perfil" name="perfil" value="<?= $acesso; ?>" disabled/>
 						</div>
 					</div>
 					<div class="form-group">
