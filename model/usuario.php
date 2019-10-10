@@ -7,7 +7,7 @@ require_once dirname(__FILE__)."./../conexao.php";
 			$pdo = Conexao::conectar();//new PDO('mysql:host=localhost;dbname=sepex;charset=utf8', 'root', '');	
 
 				$pass = sha1($senha); //deve receber a variavel $senha com a criptografia
-				$ps = $pdo->query("SELECT senha FROM usuario WHERE email='" . $email . "'");
+				$ps = $pdo->query("SELECT acesso, senha FROM usuario WHERE email='" . $email . "'");
 	    	
 				$p = $ps->fetch();
 				

@@ -10,12 +10,13 @@ require_once dirname(__FILE__)."./../conexao.php";
 
 				$pass = sha1($senha); //deve receber a variavel $senha com a criptografia
 				
-				$ps = $pdo->prepare("SELECT senha FROM usuario WHERE email=?");
+				$ps = $pdo->prepare("SELECT acesso, senha FROM usuario WHERE email=?");
 				$ps->execute(array($email));
 	    	
 				$p = $ps->fetch();
 				
 				$ver = $p['senha'];
+				$acesso = $p['acesso'];
 
 			/* Aplica a validação ao usuário e senha passados, utilizando as regras de négocio especificas para ele. */
 			
@@ -31,6 +32,7 @@ require_once dirname(__FILE__)."./../conexao.php";
 					session_start();
 					$_SESSION['email'] = $email;
 					$_SESSION['senha'] = $senha;
+					$_SESSION['acesso'] = $acesso;
 					
 					header('location:./../view/admin/principal/index.php');	
 				}

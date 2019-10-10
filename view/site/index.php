@@ -115,12 +115,12 @@ $i = new ControllerDetalhesAtividade();
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing eli. Integer iaculis in lacus a sollicitudin. Ut hendrerit hendrerit nisl a accumsan. Pellentesque convallis consectetur tortor id placerat. Curabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod.
+                    A missão do CEFET-RJ é promover a educação mediante atividades de ensino, pesquisa e extensão que propiciem, de modo reflexivo e crítico, a formação integral (humanística, científica e tecnológica, ética, política e social) de profissionais capazes de contribuir para o desenvolvimento cultural, tecnológico e econômico da sociedade.
                 </p>
             </div>
             <div class="col-12 col-md-6">
                 <p>
-                    In rhoncus massa nec  sollicitudin. Ut hendrerit hendrerit nisl a accumsan. Pellentesque convallis consectetur tortor id placerat. Curabitur a pulvinar nunc. Maecenas laoreet finibus lectus, at volutpat ligula euismod quis. Maecenas ornare, ex in malesuada tempus.
+                    A Semana Nacional de Ciência e Tecnologia (SNCT) ocorrerá entre os dias 21 e 27 de outubro de 2019. Assim como em anos anteriores, em 2019, a Semana de Ensino, Pesquisa e Extensão, evento anual promovido pelo Cefet/RJ, será realizada no mesmo período em todos os campi. O tema deste ano será “Bioeconomia: diversidade e riqueza para o desenvolvimento sustentável”.
                 </p>
             </div>
         </div>
