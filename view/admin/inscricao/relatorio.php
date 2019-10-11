@@ -30,57 +30,29 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 								<th scope="col">Endereço de e-mail</th>
 								<?php if($_SESSION['acesso'] == 'Administrador'){ ?><th scope="col">CPF</th><?php } ?>
 								<th scope="col">Data de registro</th>
-								<th scope="col">Presente</th>
 							</tr>
 						</thead>
-						<tbody>
-							<?php 
-								$array_id = [];
-								$i = 0;
-								//$array_presenca = [];
-								foreach($participante as $prt){ ?>
-									<!-- <input type="hidden" id="participante" name="participante" value="<?php echo $prt['inscricao_id']; ?>"> -->
-									<tr>
-										<td><?= $prt['nome_inscrito']; ?></td>
-										<td><?= $prt['email']; ?></td>
-										<?php if($_SESSION['acesso'] == 'Administrador'){ ?> <td><?= $prt['cpf']; ?></td><?php } ?>
-										<td><?= $prt['data_inscricao'];?></td>
-										<td class="float-right">
-									<input type="checkbox" class="form-check-input" name="presenca[<?php echo $i;?>]" id="presenca" <?php if($prt['presente']){
-												echo "checked";	
-											} 
-											?>>				
-										</td>
-									</tr>
-									<input type="hidden" name="participantes[<?php echo $i;?>]" value="<?php echo $prt['inscricao_id']; ?>">
-							<?php 
-							$i++;
-								// array_push($array_id, $prt['inscricao_id']);
-								// $vetor_id = implode(",", $array_id);
-								// array_push($array_presenca, $prt['presente']);
-								// $vetor_presenca = implode(",", $array_presenca);
-							} ?>
-							
-<!-- 							<input type="hidden" name="participantes" value="<?php echo $vetor_presenca; ?>">-->							
-							<!-- <tr>
-								<td>Leonardo Pinto Guilherme</td>
-								<td>leozinho.guilherme@aluno.cefet-rj.br</td>
-								<td>01234567890</td>
-								<td>12-12-2012 08:25:33</td>
-								<td class="float-right">
-									<input type="checkbox" class="form-check-input" id="presente" value="<?= 1; ?>">
-								</td>
-							</tr> -->
+						<tbody><?php foreach($participante as $prt){ ?>
+							<tr>
+								<td><?= $prt['nome_inscrito']; ?></td>
+								<td><?= $prt['email']; ?></td>
+								<?php if($_SESSION['acesso'] == 'Administrador'){ ?> <td><?= $prt['cpf']; ?></td><?php } ?>
+								<td><?= $prt['data_inscricao'];?></td>
+							</tr>
+							<input type="hidden" name="participantes[]" value="<?= $prt['inscricao_id']; ?>">
+							<?php } ?>
 					</tbody>
 				</table>
-				<a href="../../../controller/gerar_arquivo.php?atividade_id=<?php echo $id;?>" class="btn btn-primary btn-block col-2 float-right" type="submit">Exportar</a>
+				<button href="../../../controller/gerar_arquivo.php?atividade_id=<?= $id;?>" class="btn btn-primary btn-block col-2 float-right" type="submit">Exportar</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
 
-<?php }else{
-			header('location: ./gerenciar.php');
-		}
-	 include_once("../base/footer.php"); ?>
+<?php 
+} else {
+	header('location: ./gerenciar.php');
+}
+include_once("../base/footer.php"); 
+?>
