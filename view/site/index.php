@@ -20,7 +20,7 @@ $i = new ControllerDetalhesAtividade();
                     <div class="container">
                         <div class="slider-content-center">
 
-                            <strong class="cover-xl-text" style="color: white"><?= $nome; ?></strong>
+                            <h1 class="cover-title" style="color: white"><?= $nome; ?></h1>
                             <p class="cover-date">
                                 <?= $dia_inicio . " a " . $dia_fim . " de " . mesEmString($mes_inicio); ?>
                             </p>

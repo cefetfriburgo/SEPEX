@@ -49,10 +49,16 @@ class Publico{
     }
 
     public function registrarInscricao($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento){
-        $pd = $this->pdo->prepare("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade, data_nascimento) 
-        VALUES(?, capitalizar(?), ?, ?, ?, ?)");
+        $pd1 = $this->pdo->prepare("SELECT atividade_id FROM atividade WHERE nome_atividade = (SELECT nome_atividade FROM atividade WHERE atividade_id=?)");
+        $pd1->execute(array($atividade_id));
+        $p1 = $pd1->fetchAll();
 
-        $pd->execute(array($atividade_id, $nome_aluno, $email, $cpf, $comunidade, $nascimento));
+        foreach($p1 as $id){
+            $pd2 = $this->pdo->prepare("INSERT INTO inscricao(atividade_id, nome_inscrito, email, cpf, comunidade, data_nascimento) 
+            VALUES(?, capitalizar(?), ?, ?, ?, ?)");
+            $pd2->execute(array($id['atividade_id'], $nome_aluno, $email, $cpf, $comunidade, $nascimento));
+        }
+        
     }
 
     public function consultarAtividade($email){
@@ -163,6 +169,6 @@ class Publico{
 //   $c = new Publico();
 
 //   echo $c->inscricaoAtividade('42226692029', 'Testando');
-
+//   $c->registrarInscricao(10, 'dentoso', 'dentoso@cefet-rj.br', '24009075015', '1', '2003-02-01');
 
 ?>
