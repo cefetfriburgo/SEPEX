@@ -19,7 +19,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 			</div>
 			<div class="card-body">
 				<h2><?= $atividade['nome_atividade']; ?></h2>
-				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong>.</p>
+				<p class="float-left">Esta atividade inicia-se em <strong><?= $atividade['data']; ?> às <?= $atividade['hora_inicio']; ?></strong> em  <strong><?= $atividade['local']?></strong>.</p>
 				<p class="float-right"><a href="adicionar.php?id=<?= $id; ?>">Registrar participante</a></p>
 				<form action="../../../view/admin/inscricao/formulario.php" method="POST">
 					<input type="hidden" id="atividade" name="atividade" value="<?php echo $id; ?>">

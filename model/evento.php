@@ -99,7 +99,7 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function listarParticipante($atividade_id){
-            $pd = $this->pdo->prepare("SELECT i.inscricao_id, i.nome_inscrito, i.email, i.cpf, DATE_FORMAT(i.data_inscricao, '%d/%m/%Y %H:%i') as data_inscricao, i.presente  from inscricao i join atividade a on i.atividade_id=a.atividade_id where i.atividade_id=?");
+            $pd = $this->pdo->prepare("SELECT i.inscricao_id, i.nome_inscrito, i.email, i.cpf, DATE_FORMAT(i.data_inscricao, '%d/%m/%Y %H:%i') AS data_inscricao, i.presente FROM inscricao i JOIN atividade a ON i.atividade_id=a.atividade_id WHERE i.atividade_id=?");
             $pd->execute(array($atividade_id));
             $p = $pd->fetchAll();
 
@@ -108,8 +108,7 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function inicioAtividade($atividade_id){
-            $pd = $this->pdo->prepare("SELECT nome_atividade, date_format(atividade.data, '%d/%m/%Y') as 'data', hora_inicio 
-            from atividade where atividade_id=?");
+            $pd = $this->pdo->prepare("SELECT nome_atividade, date_format(atividade.data, '%d/%m/%Y') as 'data', date_format(hora_inicio, '%H:%i') as hora_inicio, local FROM atividade WHERE atividade_id=?");
             $pd->execute(array($atividade_id));
             $p = $pd->fetch();
             

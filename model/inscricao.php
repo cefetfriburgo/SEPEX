@@ -17,9 +17,4 @@
     }
 
     $c = new Inscricao();
-
-    // $inscrito = $c->listarInscritos(1);
-    // foreach ($inscrito as $i) {
-    //     echo $i['nome_inscrito'];
-    // }
 ?>
