@@ -1988,6 +1988,7 @@ Cover
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  word-break: normal;
 }
 .cover_slider .slider-content-left {
   max-width: 800px;
