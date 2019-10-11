@@ -36,11 +36,7 @@
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-<<<<<<< HEAD
-          <a class="dropdown-item" href="../principal/usuario.php">Configurações</a>
-=======
           <a class="dropdown-item" href="./../principal/usuario.php">Configurações</a>
->>>>>>> ba366a490e1d5d68bd48291b7f8112fa0fc4b1d9
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
         </div>
       </li>

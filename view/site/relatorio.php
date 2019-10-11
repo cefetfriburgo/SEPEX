@@ -3,12 +3,6 @@
 $titulo = "Registro de Inscrição";
 require_once("./base/header.php"); 
 require_once "../../controller_site/controller_relatorio.php" ;
-
-// if(isset($_GET['erro']) && !empty($_GET['erro'])){
-//     if($_GET['erro'] == 'erro')
-//         echo "<script> alert('dados inválidos');</script>";
-// }
-
 ?>
 <script>
     
@@ -31,9 +25,6 @@ require_once "../../controller_site/controller_relatorio.php" ;
             }
         });
     }
-    // var actv = $('<tr><td id="nome'+id+'">'+atividade.nome_atividade+'</td><td>'+atividade.data+'</td><td>'+atividade.inicio+
-    //             '</td><td>'+atividade.termino+'</td><td><input type="button" class="btn btn-primary" data-toggle="modal" data-target="#cancelar" value="Cancelar"></td></tr>');
-    //             $('#tcorpo').append(actv);
     atividade = '';
     $md = '';
     // cpf = '';
@@ -125,20 +116,20 @@ require_once "../../controller_site/controller_relatorio.php" ;
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Cancelar inscrição</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     <div id="modal" class="modal-body">
-                        <p id = "prgrf">Informe seu CPF para cancelar a sua inscrição?</p>
+                        <p id = "prgrf">Confirme o seu CPF para cancelar a inscrição nesta atividade</p>
                         <div class="col-12">
                             <input type="text" class="form-control" id="confirma_cpf" name="confirma_cpf" >
                         </div>
                     </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button"  class="btn btn-primary" onclick='confirmar(confirma_cpf)' data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+            <button type="button"  class="btn btn-primary" onclick='confirmar(confirma_cpf)' data-dismiss="modal">Confirmar</button>
       </div>
     </div>
   </div>
