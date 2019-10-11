@@ -168,7 +168,7 @@ class Publico{
 
 //   $c = new Publico();
 
-//   echo $c->inscricaoAtividade('42226692029', 'Testando');
+//   // echo $c->inscricaoAtividade('42226692029', 'Testando');
 //   $c->registrarInscricao(10, 'dentoso', 'dentoso@cefet-rj.br', '24009075015', '1', '2003-02-01');
 
 ?>

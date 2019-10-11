@@ -35,6 +35,10 @@ require_once "../../controller_site/controller_relatorio.php" ;
         
     }
 
+    function aler(){
+        alert('oi');
+    }
+
     function confirmar(cpf){
         cpf = document.getElementById(cpf.id).value;
         nome_atividade = document.getElementById(atividade).innerHTML;
@@ -47,6 +51,8 @@ require_once "../../controller_site/controller_relatorio.php" ;
                 $mdl.innerHTML='';
             }
         });
+
+        gerarRelatorio();
         
     }
 
