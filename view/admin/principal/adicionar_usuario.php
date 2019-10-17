@@ -6,7 +6,9 @@ include_once("../base/header.php");
 if($_SESSION['acesso'] == 'Administrador'){ 
 
 		if(isset($_GET['erro'])){
-			if($_GET['erro'] == 'erroIgualdade'){
+			if($_GET['erro'] == 'erroEmail'){
+				echo "<script> alert('Email inválido!'); </script>";
+			} else if($_GET['erro'] == 'erroIgualdade'){
 				echo "<script> alert('As senhas são diferentes!'); </script>";
 			} else if($_GET['erro'] == 'erroTamanho'){
 				echo "<script> alert('A senha deve conter no mínimo 8 caracteres!'); </script>";
@@ -47,7 +49,7 @@ if($_SESSION['acesso'] == 'Administrador'){
 							<input type="password" class="form-control" id="senha" name="senha" />
 						</div>
 						<div class="col-md-6">
-							<label for="confirmar-nova-senha">Confirmar nova senha</label>
+							<label for="confirmar-nova-senha">Confirmar senha</label>
 							<input type="password" class="form-control" id="confirmar-nova-senha" name="confirmar-nova-senha" required />
 						</div>
 					</div>

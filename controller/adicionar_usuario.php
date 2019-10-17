@@ -19,7 +19,10 @@
         }
 
         public function adicionar($email, $senha, $perfil, $confirmar_senha){ 
-             if($senha != $confirmar_senha){
+            $array = explode('@', $email);
+            if(substr($array[1], -11) !="cefet-rj.br"){
+                header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroEmail'); 
+            }else if($senha != $confirmar_senha){
                  header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroIgualdade');
              } else if(strlen($senha) < 8){
                 header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroTamanho');

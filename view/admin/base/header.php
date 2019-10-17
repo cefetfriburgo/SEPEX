@@ -53,19 +53,6 @@
           <span>Página inicial</span>
         </a>
       </li>
-      <?php if($_SESSION['acesso'] == 'Administrador'){ ?>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Eventos</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="../evento/adicionar.php">Novo evento</a>
-            <a class="dropdown-item" href="../evento/listar.php">Listar eventos</a>
-            <a class="dropdown-item" href="../evento/gerenciar.php">Gerenciar eventos</a>
-          </div>
-        </li>
-      <?php } ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
@@ -83,8 +70,31 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <a class="dropdown-item" href="../inscricao/gerenciar.php">Gerenciar inscrições</a>
-        </div>
+        </div>   
       </li>
+      <?php if($_SESSION['acesso'] == 'Administrador'){ ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Eventos</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="../evento/adicionar.php">Novo evento</a>
+            <a class="dropdown-item" href="../evento/listar.php">Listar eventos</a>
+            <a class="dropdown-item" href="../evento/gerenciar.php">Gerenciar eventos</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Usuário</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="../principal/adicionar_usuario.php">Novo usuário</a>
+        </div>
+        
+      </li>
+      <?php } ?>  
     </ul>
 
     <div id="content-wrapper">
