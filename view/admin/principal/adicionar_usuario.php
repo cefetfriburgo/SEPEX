@@ -3,7 +3,21 @@ $titulo = "Configurações";
 $categoria = "Usuário";
 $local = "Configurações";
 include_once("../base/header.php");
-if($_SESSION['acesso'] == 'Administrador'){ ?>
+if($_SESSION['acesso'] == 'Administrador'){ 
+
+		if(isset($_GET['erro'])){
+			if($_GET['erro'] == 'erroIgualdade'){
+				echo "<script> alert('As senhas são diferentes!'); </script>";
+			} else if($_GET['erro'] == 'erroTamanho'){
+				echo "<script> alert('A senha deve conter no mínimo 8 caracteres!'); </script>";
+			} else if($_GET['erro'] == 'erroQtdLetra'){
+				echo "<script> alert('A senha deve conter números!'); </script>";
+			} else if($_GET['erro'] == 'erroQtdNumero'){
+				echo "<script> alert('A senha deve conter letras!'); </script>";
+			}
+		}
+
+	?>
 
 <div class="row">
 	<div class="col-md-8">

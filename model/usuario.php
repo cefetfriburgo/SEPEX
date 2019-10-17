@@ -43,6 +43,7 @@ require_once dirname(__FILE__)."./../conexao.php";
                 $pd = $this->pdo->prepare("INSERT INTO usuario(email, senha, acesso) VALUES(?, SHA1(?), ?)");
                 $pd->execute(array($email, $senha, $perfil));          
         }
+
 	
 	}
 
