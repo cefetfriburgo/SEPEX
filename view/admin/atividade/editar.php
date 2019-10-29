@@ -93,10 +93,19 @@ $ida = $lista['tipo_atividade_id'];
 							<?php } } ?>
 						</select>
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
+						<?php 
+							$c = new Atividade();
+							$lista = $c->listarEtiqueta($id);
+							$array = [];
+							foreach ($lista as $etiq){
+								$array[] = $etiq['etiqueta'];					
+							}
+							$palavras_chave = implode(", ", $array);
+						?>
 						<label for="etiqueta">Palavras-chave</label>
-						<input type="text" class="form-control" value="" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
-					</div> -->
+						<input type="text" class="form-control" value="<?= $palavras_chave;?>" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
+					</div>
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
 			</div>

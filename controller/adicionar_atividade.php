@@ -8,8 +8,8 @@
     $capacidade = $_POST['capacidade'];
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_termino'];
+    $palavra_chave = $_POST['etiqueta'];
     $data = $_POST['data'];
-    $etiqueta = $_POST['etiqueta'];
     $local = $_POST['local'];
 
     $array = [];
@@ -23,7 +23,10 @@
             $papel[] = $_POST['papel'.$i];
         }
     }
-    
+
+    // if(isset($palavra_chave)){
+    //     $etiqueta = explode(",", $palavra_chave);
+    // }    
     
     class ControllerAtividade{
         private $atividade;
@@ -32,7 +35,7 @@
             $this->atividade = new Atividade();
         }
 
-        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local){
+        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $array, $papel, $local){
             if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) || !isset($local)){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }
@@ -100,15 +103,20 @@
             if ($erro) {
                 echo $erro. "<br>";
             } else{
-                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local);
-                header('location: ./../view/admin/atividade/listar.php');
+                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $array, $papel, $local);
+                //header('location: ./../view/admin/atividade/listar.php');
               
             }
+        }
+
+        public function etiqueta($etiqueta){
+            $this->atividade->adicionarEtiqueta($etiqueta);
+            header('location: ./../view/admin/atividade/listar.php');
         }
 
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local);
-        
+    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $array, $papel, $local);
+    $ctrlAtividade->etiqueta($palavra_chave);
 ?>

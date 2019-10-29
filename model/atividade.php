@@ -40,15 +40,27 @@ require_once dirname(__FILE__)."./../conexao.php";
             }
         }
 
+        public function adicionarEtiqueta($etiqueta){
+            $eti= explode(",", $etiqueta);
+            for($i=0; $i<sizeof($eti); $i++){
+                $pd = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES ((select max(atividade_id) from atividade),?)");
+                $pd->execute(array( $eti[$i]));
+            }
+        }
+
         public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){       
             $pd = $this->pdo->prepare("UPDATE atividade SET nome_atividade=? , descricao=?, 
             capacidade=?, evento_id=?, tipo_atividade_id=?, hora_inicio = ?, hora_fim = ?, atividade.data = ?, local = ? WHERE atividade_id = ?");
 
-            $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim,
-            $data, $local, $idAtividade));
+            $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $local, $idAtividade));
 
-            $pd = $this->pdo->prepare("UPDATE etiqueta SET etiqueta.etiqueta = ? WHERE atividade_id = ?");
-            $pd->execute(array($etiqueta, $idAtividade));           
+            $pd = $this->pdo->prepare("DELETE FROM etiqueta WHERE atividade_id = ?");
+            $pd->execute(array($idAtividade));         
+        }
+
+        public function atualizarEtiqueta($idAtividade, $etiqueta){
+            $pd = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?, ?)");
+            $pd->execute(array($idAtividade, $etiqueta));
         }
 
         public function excluirAtividade($idAtividade){
@@ -97,6 +109,13 @@ require_once dirname(__FILE__)."./../conexao.php";
            $p = $pd->fetchAll();
            return $p;
        }
+
+       public function listarEtiqueta($id){
+            $pd = $this->pdo->prepare("SELECT * FROM etiqueta e WHERE e.atividade_id = ?");
+            $pd->execute(array($id));
+            $p = $pd->fetchAll();
+            return $p;
+        }
 
     }
     

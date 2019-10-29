@@ -10,7 +10,7 @@
     $hora_inicio = $_POST['hora_inicio'];
     $hora_fim = $_POST['hora_fim'];
     $data = $_POST['data'];
-    $etiqueta = "";
+    $etiqueta = $_POST['etiqueta'];
     $local = $_POST['local'];
 
     class ControllerAtividade{
@@ -87,9 +87,18 @@
                 
             }
         }
+
+        public function adicionarEtiqueta($idAtividade, $etiqueta){
+            $this->atividade->atualizarEtiqueta($idAtividade, $etiqueta);
+        }
     }
 
     $ctrlAtividade = new ControllerAtividade();
     $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
+
+    $palavras_chave = explode(", ", $etiqueta);
+    foreach($palavras_chave as $pc){ 
+        $ctrlAtividade->adicionarEtiqueta($idAtividade, $pc);
+    }
 
 ?>
