@@ -81,6 +81,10 @@
             $datas = ['dados' => $dados];
             return $datas;
         }
+
+        public function dataInicio($id){
+            return $this->detalhesAtividade->exibirDataInicio($id);
+        }
         
     }
 

@@ -19,7 +19,7 @@ class Publico{
     }
 
     public function exibirAtividade(){
-        $pd = $this->pdo->query("SELECT a.nome_atividade, a.data, a.capacidade, a.hora_inicio, a.hora_fim, a.atividade_id FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id WHERE e.publicado = 1 ORDER BY a.data");
+        $pd = $this->pdo->query("SELECT a.nome_atividade, a.capacidade, a.hora_inicio, a.hora_fim, a.atividade_id FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id WHERE e.publicado = 1");
         $p = $pd->fetchAll();
 
         return $p;
@@ -163,6 +163,13 @@ class Publico{
              return 0;
          }
 
+    }
+
+    public function exibirDataInicio($id){
+        $pd = $this->pdo->prepare("SELECT date_format(a.data, '%d/%m/%Y') as 'data', a.hora_inicio as 'hora' FROM atividade_data a WHERE a.atividade_id = ? ORDER BY a.data LIMIT 1");
+        $pd->execute(array($id));
+        $p = $pd->fetch();
+        return $p;
     }
 }
 
