@@ -23,24 +23,6 @@
         id++;        
     }
 
-	// function cadastrado(){
-    //     bloco = $d.getElementById('bloco');
-	// 	e = $d.getElementById('colaborador');
-	// 	nome = e.selectedOptions[0].text;
-    //     input = $d.createElement('input');
-
-    //     input.type = 'text';
-    //     input.name = 'nome' + id;
-    //     input.id = 'nome' + id;
-    //     input.classList.add('form-control');
-	// 	input.value = nome;
-		
-
-    //     bloco.append('Nome do colaborador');
-    //     bloco.append(input);
-    //     id++;        
-    // }
-
 </script>
 <div class="row">
 	<div class="col-md-8">
@@ -50,29 +32,14 @@
 			</div>
 			<div class="card-body">               
 				<form action="./../../../controller/adicionar_colaborador.php" method="POST">
-                    <div id='bloco' class = "form-group">
-					    <label for="titulo">Nome</label>
-					    <input type='button' class=" form-control btn btn-primary btn-block" onclick='adicionar()'value='Adicionar colaborador'>
-				    </div>                    
-					<!-- <div class="form-group">
-						<label for="evento">Colaboradores</label>
-                        <select class="form-control" id="colaborador" name="colaborador">
-							<option disabled selected>colaboradores já cadastrados</option>
-							<?php 
-								/*$c = new Atividade();
-								$lista = $c->listarColaborador();
-								foreach($lista as $l){*/
-							?>
-									<option id='cadastrado' name='pedro22' value = <?php// echo $l['idColaborador']; ?> ><?php// echo $l['nome']; ?></option>
-								<?php //} ?>							
-						</select>
-						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
-					</div> -->
-					<!-- <div id='vagas' class="form-group">
-						<label for="ncolaborador">Número de colaboradores</label>
-						<input type="number" min='0' class="form-control" id="ncolaborador" name="ncolaborador">
-						<input type='button' value='OK' class="btn btn-primary btn-block" onclick='adicionar()'/><br>
-					</div> -->
+                    <div id='bloco' class="form-group">
+					    <label for="nome">Nome</label>
+					    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do colaborador" required>
+				    </div>
+				    <div id='bloco' class="form-group">
+				    	<label for="sobre">Sobre</label>
+						<textarea class="form-control" id="sobre" name="sobre" rows="3" placeholder="Descrição do colaborador"></textarea>
+					</div>               
 					<button class="btn btn-primary btn-block" type="submit">Salvar</button>
 				</form>
 			</div>

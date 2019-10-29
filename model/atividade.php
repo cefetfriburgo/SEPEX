@@ -97,11 +97,9 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;           
        }
 
-       public function adicionarColaborador($array){
-            foreach($array as $nome){
-                $pd = $this->pdo->prepare("INSERT INTO colaborador(nome) VALUE(?)");
-                $pd->execute(array($nome));
-            }           
+       public function adicionarColaborador($nome, $sobre){
+            $pd = $this->pdo->prepare("INSERT INTO colaborador(nome_colaborador, sobre) VALUES(?, ?)");
+            $pd->execute(array($nome, $sobre));         
        }
 
        public function listarPapel(){
