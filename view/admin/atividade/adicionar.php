@@ -55,20 +55,26 @@ require_once("../../../model/atividade.php"); ?>
 						<label for="descricao">Descrição</label>
 						<textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
 					</div>
-					<div class="form-group form-row">
-						<div class="col">
-							<label for="data">Data</label>
-							<input type="date" class="form-control" id="data" name="data">
-						</div>
-						<div class="col">
-							<label for="hora_inicio">Hora de início</label>
-							<input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
-						</div>
-						<div class="col">
-							<label for="hora_termino">Hora de término</label>
-							<input type="time" class="form-control" id="hora_termino" name="hora_termino">
-						</div>
+					<div id="conteudo">
+						<!-- <div id="div0"class="form-group form-row">
+							<div class="col">
+								<label for="data">Data</label>
+								<input type="date" class="form-control" id="data" name="data">
+							</div>
+							<div class="col">
+								<label for="hora_inicio">Hora de início</label>
+								<input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
+							</div>
+							<div class="col">
+								<label for="hora_termino">Hora de término</label>
+								<input type="time" class="form-control" id="hora_termino" name="hora_termino">
+							</div>
+							<div class="col">
+								<input type="button" class="btn btn-primary form-control" value="excluir" id=0 onclick="remove(0)" name="excluir">
+							</div>
+						</div> -->
 					</div>
+					<input class="btn btn-primary" type="button" value="nova data" id='adicionar_data' onclick='adicionar()'>
 					<div class="form-group">
 						<label for="local">Local</label>
 						<input type="text" class="form-control" id="local" name="local" placeholder="Local da atividade" required>
@@ -154,5 +160,7 @@ require_once("../../../model/atividade.php"); ?>
 		</div>
 	</div>
 </div>
+
+<script src='./../../../public/js/atividade.js' ></script>
 
 <?php include_once("../base/footer.php"); ?>
