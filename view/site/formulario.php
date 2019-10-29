@@ -1,6 +1,9 @@
 <?php 
 $titulo = "Inscrição";
 
+$dataMAX = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y") - 5);
+$dataMIN = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y")-120);
+
 require_once("./base/header.php");
 require_once "../../controller_site/controller_detalhes_atividade.php";
 
@@ -90,7 +93,7 @@ function formatar(mascara, documento){
                     </div>
                     <label for="email">Data de Nascimento</label>
                     <div class="form-group">
-                        <input id="nascimento" name="nascimento" type="date" class="form-control" placeholder="Endereço de e-mail">
+                        <input id="nascimento" name="nascimento" type="date" class="form-control" min="<?php echo date('Y-m-d', $dataMIN);?>" max="<?php echo date('Y-m-d', $dataMAX);?>">
                     </div>
                     <label for="cpf">CPF</label>
                     <div class="form-group">
