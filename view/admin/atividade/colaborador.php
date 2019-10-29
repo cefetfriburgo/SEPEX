@@ -53,12 +53,8 @@
 			<div class="card-body">
 				<p>Para preencher corretamente os campos, siga as instruções</p>
 				<ul>
-					<li><strong>Título</strong>: escreva o nome que você deseja dar para a atividade.</li>
-					<li><strong>Descrição</strong>: escreva um texto para a atividade. Este campo é opcional.</li>
-					<li><strong>Data e horas</strong>: selecione a data de início, incluindo o dia, mês e ano e as horas de início e término da atividade, incluindo os minutos.</li>
-					<li><strong>Evento</strong>: selecione dentre a lista o evento no qual esta atividade associada. Se você ainda não registrou o evento, faça-o <a href="#">aqui</a>.</li>
-					<li><strong>Tipo</strong>: selecione dentre a lista de opções o tipo desta atividade.</li>
-					<li><strong>Palavras-chave</strong>: escreva, separado por vírgulas, as palavras-chave que correspondem a esta atividade.</li>
+					<li><strong>Nome do colaborador</strong>: escreva o nome do colaborador que você deseja adicionar. Este colaborador não poderá se repetir no sistema.</li>
+					<li><strong>Sobre</strong>: escreva um breve resumo sobre este colaborador. Este campo é opcional.</li>
 				</ul>
 				<p>Após conferir todos os campos, clique no botão <strong>Salvar</strong>.</p>
 			</div>
