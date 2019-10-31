@@ -15,29 +15,34 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $array, $papel, $local){
-            $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, local, atividade.data, 
-            hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?,?)");
-            $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $local, $data, $hora_inicio, $hora_fim, $capacidade));
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $datas, $array, $papel, $local){
+            foreach($datas as $dat){
+                $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, local,  
+                hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?)");
+                $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $local, $dat['hora_inicio'], $dat['hora_fim'], $capacidade));
 
-            $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
-            $id = $pd1->fetch();
-            $id = $id[0];
-            $pd3 = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?,?)");
-            $pd3->execute(array($id, $etiqueta));
-            $t = 0;
+                $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
+                $id = $pd1->fetch();
+                $id = $id[0];
+                // $pd3 = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?,?)");
+                // $pd3->execute(array($id, $etiqueta));
+                $t = 0;
 
-            foreach($array as $a){
-                $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");
-                $pd->execute(array($a));
-                $p = $pd->fetch();
-                $n = $p[0];
-                $paper = $papel[$t];
-                $p = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES(?, ?, ?)");
-                $p->execute(array($n, $id, $paper));
-                $t++;
-                
+                foreach($array as $a){
+                    $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");
+                    $pd->execute(array($a));
+                    $p = $pd->fetch();
+                    $n = $p[0];
+                    $paper = $papel[$t];
+                    $p = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES(?, ?, ?)");
+                    $p->execute(array($n, $id, $paper));
+                    $t++;
+                    
+                }
             }
+            // foreach($datas as $dat){
+            //     echo $dat['data'] . ' ' . $dat['hora_inicio'] . ' ' . $dat['hora_fim'] . '<br>' ;
+            // }
         }
 
         public function adicionarEtiqueta($etiqueta){

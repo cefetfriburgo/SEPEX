@@ -161,6 +161,6 @@ require_once("../../../model/atividade.php"); ?>
 	</div>
 </div>
 
-<script src='./../../../public/js/atividade.js' ></script>
+<script src='./../../../public/js/adicionar_atividade.js' ></script>
 
 <?php include_once("../base/footer.php"); ?>

@@ -6,11 +6,31 @@
     $idTipoAtividade = $_POST['tipo'];
     $descricao = $_POST['descricao'];
     $capacidade = $_POST['capacidade'];
-    $hora_inicio = $_POST['hora_inicio'];
-    $hora_fim = $_POST['hora_termino'];
-    $palavra_chave = $_POST['etiqueta'];
-    $data = $_POST['data'];
+
+    $hide = $_POST['hide'];
+    $datas = [];
+   
+    
+    
+    for($i=0; $i<=$hide; $i++){
+        if(isset($_POST['data'.$i]) && !empty($_POST['data'.$i]) && isset($_POST['hora_inicio'.$i]) && !empty($_POST['hora_inicio'.$i]) && isset($_POST['hora_termino'.$i]) && !empty($_POST['hora_termino'.$i])){
+            array_push($datas, array(
+                'data' => $_POST['data'.$i],
+                'hora_inicio' => $_POST['hora_inicio'.$i],
+                'hora_fim' => $_POST['hora_termino'.$i]
+            ));            
+        }
+    }
+
+   
+   
+    // $data = $_POST['data'];
+    // $hora_inicio = $_POST['hora_inicio'];
+    // $hora_fim = $_POST['hora_termino'];
+
+    $palavra_chave = $_POST['etiqueta'];    
     $local = $_POST['local'];
+    
 
     $array = [];
     $papel = [];
@@ -35,8 +55,8 @@
             $this->atividade = new Atividade();
         }
 
-        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $array, $papel, $local){
-            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) || !isset($local)){
+        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $papel, $local){
+            if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($datas) || !isset($local)){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }
             
@@ -58,23 +78,25 @@
                 $erro = 'A quantidade de vagas deve ser numérica. Por favor, preencha-a corretamente!<br>';
             }
 
-            $horai = explode(":","$hora_inicio"); 
+            foreach($datas as $hora){
+                $hor = $hora['hora_inicio'];
+                $horai = explode(":","$hor"); 
                 $h = $horai[0];
-                $m = $horai[1];
-                
-
+                $m = $horai[1];                    
                 if ($h > 23 || $h < 0){
                     $erro = 'A hora de início é inválida. Por favor, preencha-a corretamente!<br>'; 
                 }
-
                 if ($m > 59 || $m < 0){
                     $erro = 'A hora de início é inválida. Por favor, preencha-a corretamente!<br>';
                 }
+            }
 
-            $horaf = explode(":","$hora_fim"); 
+            foreach($datas as $hora){
+                $hor = $hora['hora_fim'];
+                $horaf = explode(":","$hor"); 
                 $hf = $horaf[0];
                 $mf = $horaf[1];
-                
+                    
 
                 if ($hf > 23 || $hf < 0){
                     $erro = 'A hora de término é inválida. Por favor, preencha-a corretamente!<br>'; 
@@ -83,15 +105,20 @@
                 if ($mf > 59 || $mf < 0){
                     $erro = 'A hora de término é inválida. Por favor, preencha-a corretamente!<br>';
                 }
+            }
 
-            $dt = explode("-","$data"); 
+            foreach($datas as $dia){
+                $dat = $dia['data'];
+                $dt = explode("-","$dat"); 
                 $d = $dt[2];
                 $m = $dt[1];
                 $y = $dt[0];
+            }
 
-                if ($y < 2019){
+            if ($y < 2019){
                     $erro = 'A data é inválida. Por favor, preencha-a corretamente!<br>'; 
-               }
+            }
+
             if($idEvento == "xxx"){
                 $erro = 'Selecione um evento que já esteja disponível.<br>';
             }
@@ -103,7 +130,7 @@
             if ($erro) {
                 echo $erro. "<br>";
             } else{
-                $this->atividade->adicionarAtividade($nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $array, $papel, $local);
+                $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $papel, $local);
                 //header('location: ./../view/admin/atividade/listar.php');
               
             }
@@ -117,6 +144,17 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $hora_inicio, $hora_fim, $data, $array, $papel, $local);
+    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $papel, $local);
     $ctrlAtividade->etiqueta($palavra_chave);
+
+    //$nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $array, $papel, $local
+    // foreach($datas as $l){
+    //     $dat = $l['data'];
+    //     $dt = explode("-","$dat"); 
+    //     $d = $dt[2];
+    //     $m = $dt[1];
+    //     $y = $dt[0];
+
+    //     echo "$d - $m - $y <br>";
+    // }
 ?>

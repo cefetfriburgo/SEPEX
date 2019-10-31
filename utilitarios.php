@@ -1,7 +1,7 @@
 <?php
 
 function mesParaString($numeroDoMes){
-	switch ($numeroDoMes)) {
+	switch ($numeroDoMes) {
 		case "01":    return "Janeiro";     break;
 		case "02":    return "Fevereiro";   break;
 		case "03":    return "Março";       break;
