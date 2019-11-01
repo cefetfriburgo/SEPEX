@@ -5,7 +5,7 @@ RewriteBase /sepex/
 
 # Apresentação do site
 RewriteRule ^$ view/site/index.php [NC,L]
-RewriteRule ^relatorio?$ view/site/relatorio.php [NC,L]
+RewriteRule ^relatorio/?$ view/site/relatorio.php [NC,L]
 RewriteRule ^atividades/([0-9]*)$ view/site/atividade.php?id=$1
 RewriteRule ^inscricoes/([0-9]*)$ view/site/formulario.php?id=$1
 RewriteRule ^relatorio?$ view/site/relatorio.php [NC,L]
