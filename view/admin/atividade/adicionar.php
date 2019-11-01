@@ -3,7 +3,13 @@ $titulo = "Registrar atividade";
 $categoria = "Atividades";
 $local = "Registrar atividade";
 require_once("../base/header.php"); 
-require_once("../../../model/atividade.php"); ?>
+require_once("../../../model/atividade.php"); 
+if( isset($_GET['erro']) ){
+	$erro = $_GET['erro'];
+	echo "<script>alert(" . $erro . ");</script>";
+}
+?>
+
 
 <script >
 

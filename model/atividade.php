@@ -9,17 +9,17 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
         public function listarAtividade(){            
-            $pd = $this->pdo->query("SELECT * FROM listar_atividades");
+            $pd = $this->pdo->query("SELECT * FROM atividade a JOIN atividade_data ad ON a.atividade_id=ad.atividade_id");
             $p = $pd->fetchAll();
 
             return $p;            
         }
 
         public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $datas, $array, $papel, $local){
-            foreach($datas as $dat){
+            
                 $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, local,  
-                hora_inicio, hora_fim, capacidade) VALUES (?,?,?,?,?,?,?,?)");
-                $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $local, $dat['hora_inicio'], $dat['hora_fim'], $capacidade));
+                capacidade) VALUES (?,?,?,?,?,?)");
+                $pd->execute(array($evento_id, $idTipoAtividade, $nome_atividade, $descricao, $local,  $capacidade));
 
                 $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
                 $id = $pd1->fetch();
@@ -27,6 +27,11 @@ require_once dirname(__FILE__)."./../conexao.php";
                 // $pd3 = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?,?)");
                 // $pd3->execute(array($id, $etiqueta));
                 $t = 0;
+                foreach($datas as $dat){
+                    $pd = $this->pdo->prepare("INSERT INTO atividade_data(atividade_id,	data, hora_inicio, hora_fim)
+                    VALUES (?,?,?,?)");
+                    $pd->execute(array($id, $dat['data'], $dat['hora_inicio'], $dat['hora_fim']));
+                }//$dat['hora_inicio'], $dat['hora_fim'],
 
                 foreach($array as $a){
                     $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");
@@ -36,10 +41,9 @@ require_once dirname(__FILE__)."./../conexao.php";
                     $paper = $papel[$t];
                     $p = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES(?, ?, ?)");
                     $p->execute(array($n, $id, $paper));
-                    $t++;
-                    
+                    $t++;                    
                 }
-            }
+            
             // foreach($datas as $dat){
             //     echo $dat['data'] . ' ' . $dat['hora_inicio'] . ' ' . $dat['hora_fim'] . '<br>' ;
             // }
@@ -68,10 +72,25 @@ require_once dirname(__FILE__)."./../conexao.php";
             $pd->execute(array($idAtividade, $etiqueta));
         }
 
-        public function excluirAtividade($idAtividade){
-            $pd = $this->pdo->prepare("DELETE FROM atividade WHERE atividade_id=?");
+        public function excluirAtividade($idDataAtividade){
+            $pd = $this->pdo->prepare("SELECT atividade_id FROM atividade_data WHERE atividade_data_id=?");
+            $pd->execute(array($idDataAtividade));
+            $pex = $pd->fetch();
+            $excluir_id = $pex[0];
 
-            $pd->execute(array($idAtividade));
+            $pd = $this->pdo->prepare("DELETE FROM atividade_data WHERE atividade_data_id=?");
+            $pd->execute(array($idDataAtividade));
+
+            $pd = $this->pdo->prepare("SELECT COUNT(atividade_data_id) FROM atividade_data WHERE atividade_id=?");
+            $pd->execute(array($excluir_id));
+            $p = $pd->fetch();
+            $p = $p[0];
+
+            if($p == 0){
+                $pd = $this->pdo->prepare("DELETE FROM atividade WHERE atividade_id=?");
+                $pd->execute(array($excluir_id));
+            }
+            return $p;
         }
 
         public function listarEvento(){
@@ -89,7 +108,8 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->prepare("SELECT * FROM atividade a WHERE a.atividade_id = ?");
+            $pd = $this->pdo->prepare("SELECT * FROM atividade a JOIN atividade_data ad ON a.atividade_id=ad.atividade_id
+            WHERE a.atividade_id = ?");
             $pd->execute(array($id));
             $p = $pd->fetch();
             
@@ -121,5 +141,6 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
 
     }
-    
+
+    //$c = new Atividade();
 ?>

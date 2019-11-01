@@ -9,6 +9,7 @@
 
     $hide = $_POST['hide'];
     $datas = [];
+    $err='';
    
     
     
@@ -72,6 +73,7 @@
 
             if ((!isset($descricao) || is_numeric($descricao)) && !$erro){
                 $erro = 'A descrição não pode conter apenas números. Por favor, preencha-a corretamente!<br>';
+
             }
 
             if($capacidade <= 0 || !is_numeric($capacidade)) {
@@ -116,29 +118,31 @@
             }
 
             if ($y < 2019){
-                    $erro = 'A data é inválida. Por favor, preencha-a corretamente!<br>'; 
+                    $erro = 'A data é inválida. Por favor, preencha-a corretamente!'; 
             }
 
             if($idEvento == "xxx"){
-                $erro = 'Selecione um evento que já esteja disponível.<br>';
+                $erro = 'Selecione um evento que já esteja disponível.';
             }
 
             if($idTipoAtividade == "xxx"){
-                $erro = 'Selecione um tipo de atividade que já esteja disponível.<br>';
+                $erro = 'Selecione um tipo de atividade que já esteja disponível.';
             }
                        
-            if ($erro) {
-                echo $erro. "<br>";
+            if ($erro) {               
+                header('location: ./../view/admin/atividade/adicionar.php?erro="'.$erro.'"');
             } else{
                 $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $papel, $local);
-                //header('location: ./../view/admin/atividade/listar.php');
+                header('location: ./../view/admin/atividade/listar.php');
               
             }
         }
 
         public function etiqueta($etiqueta){
-            $this->atividade->adicionarEtiqueta($etiqueta);
-            header('location: ./../view/admin/atividade/listar.php');
+            if($err == 1){}
+            else{ $this->atividade->adicionarEtiqueta($etiqueta);
+                //header('location: ./../view/admin/atividade/listar.php');
+            }
         }
 
     }

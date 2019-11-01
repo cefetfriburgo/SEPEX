@@ -23,7 +23,7 @@ $ida = $lista['tipo_atividade_id'];
 	<div class="col-md-8">
 		<div class="card mb-3">
 			<div class="card-header">
-				<i class="fas fa-plus"></i> Nova atividade
+				<i class="fas fa-plus"></i> Editar atividade
 			</div>
 			<div class="card-body">
 				<form action="./../../../controller/atualizar_atividade.php" method="POST">
@@ -131,5 +131,6 @@ $ida = $lista['tipo_atividade_id'];
 		</div>
 	</div>
 </div>
+<script src='./../../../public/js/atualizar_atividade.js'></script>
 
 <?php include_once("../base/footer.php"); ?>
