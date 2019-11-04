@@ -80,7 +80,9 @@ if( isset($_GET['erro']) ){
 							</div>
 						</div> -->
 					</div>
-					<input class="btn btn-primary" type="button" value="nova data" id='adicionar_data' onclick='adicionar()'>
+					<div class="form-group">
+						<input class="btn btn-primary" type="button" value="nova data" id='adicionar_data' onclick='adicionar()'>
+					</div>
 					<div class="form-group">
 						<label for="local">Local</label>
 						<input type="text" class="form-control" id="local" name="local" placeholder="Local da atividade" required>

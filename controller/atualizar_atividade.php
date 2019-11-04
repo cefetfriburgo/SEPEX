@@ -83,13 +83,14 @@
             }
             else{
                 $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
-                header('location: ./../view/admin/atividade/listar.php');
+                // header('location: ./../view/admin/atividade/listar.php');
                 
             }
         }
 
         public function adicionarEtiqueta($idAtividade, $etiqueta){
             $this->atividade->atualizarEtiqueta($idAtividade, $etiqueta);
+            header('location: ./../view/admin/atividade/listar.php');
         }
     }
 

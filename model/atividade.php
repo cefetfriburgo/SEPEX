@@ -57,19 +57,31 @@ require_once dirname(__FILE__)."./../conexao.php";
             }
         }
 
-        public function atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){       
-            $pd = $this->pdo->prepare("UPDATE atividade SET nome_atividade=? , descricao=?, 
-            capacidade=?, evento_id=?, tipo_atividade_id=?, hora_inicio = ?, hora_fim = ?, atividade.data = ?, local = ? WHERE atividade_id = ?");
+        public function atualizarAtividade($idDataAtividade, $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){       
+            $pd = $this->pdo->prepare("SELECT atividade_id FROM atividade_data WHERE atividade_data_id=?");
+            $pd->execute(array($idDataAtividade));
+            $p = $pd->fetch();
+            $i = $p[0];
 
-            $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $local, $idAtividade));
+            $pd = $this->pdo->prepare("UPDATE atividade SET nome_atividade=? , descricao=?, 
+            capacidade=?, evento_id=?, tipo_atividade_id=?, local = ? WHERE atividade_id = ?");
+            $pd->execute(array($nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $local, $i));
 
             $pd = $this->pdo->prepare("DELETE FROM etiqueta WHERE atividade_id = ?");
-            $pd->execute(array($idAtividade));         
+            $pd->execute(array($i));
+
+            $pd = $this->pdo->prepare("UPDATE atividade_data SET hora_inicio = ?, hora_fim = ?, data = ? WHERE atividade_data_id=?");
+            $pd->execute(array($hora_inicio, $hora_fim, $data, $idDataAtividade));
+            //echo $idAtividade;
         }
 
-        public function atualizarEtiqueta($idAtividade, $etiqueta){
+        public function atualizarEtiqueta($idDataAtividade, $etiqueta){
+            $pd = $this->pdo->prepare("SELECT atividade_id FROM atividade_data WHERE atividade_data_id=?");
+            $pd->execute(array($idDataAtividade));
+            $p = $pd->fetch();
+            $i = $p[0];
             $pd = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?, ?)");
-            $pd->execute(array($idAtividade, $etiqueta));
+            $pd->execute(array($i, $etiqueta));
         }
 
         public function excluirAtividade($idDataAtividade){
@@ -108,8 +120,8 @@ require_once dirname(__FILE__)."./../conexao.php";
         }
         
         public function nomeAtividade($id){
-            $pd = $this->pdo->prepare("SELECT * FROM atividade a JOIN atividade_data ad ON a.atividade_id=ad.atividade_id
-            WHERE a.atividade_id = ?");
+            $pd = $this->pdo->prepare("SELECT * FROM atividade a JOIN atividade_data ad ON a.atividade_id=ad.atividade_id 
+            WHERE ad.atividade_data_id = ?");
             $pd->execute(array($id));
             $p = $pd->fetch();
             
@@ -134,8 +146,13 @@ require_once dirname(__FILE__)."./../conexao.php";
        }
 
        public function listarEtiqueta($id){
-            $pd = $this->pdo->prepare("SELECT * FROM etiqueta e WHERE e.atividade_id = ?");
+            $pd = $this->pdo->prepare("SELECT atividade_id FROM atividade_data WHERE atividade_data_id=?");
             $pd->execute(array($id));
+            $p = $pd->fetch();
+            $i=$p[0];
+
+            $pd = $this->pdo->prepare("SELECT * FROM etiqueta e WHERE e.atividade_id = ?");
+            $pd->execute(array($i));
             $p = $pd->fetchAll();
             return $p;
         }
