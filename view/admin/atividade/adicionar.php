@@ -62,23 +62,7 @@ if( isset($_GET['erro']) ){
 						<textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
 					</div>
 					<div id="conteudo">
-						<!-- <div id="div0"class="form-group form-row">
-							<div class="col">
-								<label for="data">Data</label>
-								<input type="date" class="form-control" id="data" name="data">
-							</div>
-							<div class="col">
-								<label for="hora_inicio">Hora de início</label>
-								<input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
-							</div>
-							<div class="col">
-								<label for="hora_termino">Hora de término</label>
-								<input type="time" class="form-control" id="hora_termino" name="hora_termino">
-							</div>
-							<div class="col">
-								<input type="button" class="btn btn-primary form-control" value="excluir" id=0 onclick="remove(0)" name="excluir">
-							</div>
-						</div> -->
+						
 					</div>
 					<div class="form-group">
 						<input class="btn btn-primary" type="button" value="nova data" id='adicionar_data' onclick='adicionar()'>
@@ -114,8 +98,8 @@ if( isset($_GET['erro']) ){
 						</select>
 					</div>
 					<div class="form-group">
-						<label for='capacidade'>Vagas</label>
-						<input type="number" min='0' class="form-control" id="capacidade" name="capacidade">
+						<label for="capacidade">Vagas</label>
+						<input type="number" min="0" max="200" class="form-control" id="capacidade" name="capacidade">
 					</div>
 					<!-- <div class="form-group">
 						<div id='bloco' class='form-group'>

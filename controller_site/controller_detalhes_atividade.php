@@ -22,12 +22,7 @@
                     'descricao' => $registro['descricao'],
                     'local' => $registro['local'],
                     'tipo' => $registro['tipo'],
-                    'evento' => $registro['evento'],
-                    'inicio' => date('H:i', strtotime($registro['inicio'])),
-                    'termino' => date('H:i', strtotime($registro['termino'])),
-                    'dia' => $m[0],
-                    'mes' => $mes[$m[1]-1],
-                    'ano' => $m[2]                 
+                    'evento' => $registro['evento']                
                 ));
                 
             } 
@@ -41,6 +36,7 @@
             $lista2 = $this->detalhesAtividade->exibirColaboradoresAtividade($id);
             
             
+            
             if(count($lista2) > 1){
             	$colaboradores = [];
             	foreach ($lista2 as $l2){
@@ -52,6 +48,9 @@
             		foreach ($lista2 as $l2){
                     	$colaboradores = $l2['nome_colaborador'];
                  	}
+                }
+                if(!$lista2){
+                    $colaboradores = '';
                 }
 
             return $colaboradores;

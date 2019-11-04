@@ -19,7 +19,10 @@ class Publico{
     }
 
     public function exibirAtividade(){
-        $pd = $this->pdo->query("SELECT a.nome_atividade, a.capacidade, a.hora_inicio, a.hora_fim, a.atividade_id FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id WHERE e.publicado = 1");
+        $pd = $this->pdo->query("SELECT a.nome_atividade, a.capacidade, ad.hora_inicio, ad.hora_fim, a.atividade_id, ad.data 
+        FROM atividade a JOIN evento e ON a.evento_id = e.evento_id JOIN tipo_atividade ta ON a.tipo_atividade_id=ta.tipo_atividade_id 
+        JOIN atividade_data ad ON ad.atividade_id=a.atividade_id WHERE e.publicado = 1 
+        ORDER BY ad.data, FIELD(ta.nome_tipo_atividade, 'minicurso','palestra')");
         $p = $pd->fetchAll();
 
         return $p;
@@ -99,10 +102,11 @@ class Publico{
         $nome = $pd3[0];
         
         $p3 = $this->pdo->prepare("SELECT atividade.atividade_id as 'id', atividade.nome_atividade as 'nome', atividade.descricao 
-        as 'descricao', atividade.data as data, atividade.hora_inicio as 'inicio', atividade.hora_fim as 'termino', atividade.capacidade 
-        as 'capacidade', tipo_atividade.nome_tipo_atividade 'tipo', evento.nome_evento as 'evento' 
+        as 'descricao', atividade_data.data as data, atividade_data.hora_inicio as 'inicio', atividade_data.hora_fim 
+        as 'termino', atividade.capacidade as 'capacidade', tipo_atividade.nome_tipo_atividade 'tipo', evento.nome_evento as 'evento' 
         FROM atividade JOIN evento ON atividade.evento_id=evento.evento_id JOIN tipo_atividade 
-        ON atividade.tipo_atividade_id=tipo_atividade.tipo_atividade_id WHERE evento.publicado=1 AND nome_atividade=?");
+        ON atividade.tipo_atividade_id=tipo_atividade.tipo_atividade_id JOIN atividade_data ON atividade_data.atividade_id=atividade.atividade_id 
+        WHERE evento.publicado=1 AND atividade.nome_atividade=?");
 
         $p3->execute(array($nome));
 
