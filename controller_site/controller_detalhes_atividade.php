@@ -50,7 +50,7 @@
                  	}
                 }
                 if(!$lista2){
-                    $colaboradores = '';
+                    $colaboradores = 'Sem colaboradores';
                 }
 
             return $colaboradores;
