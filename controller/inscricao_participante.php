@@ -89,8 +89,20 @@ $nascimento = $_POST['data'];
 $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
+    function validaNome($nome_aluno) {
+        $pattern ="/[A-Za-z]+\s/";
+        $pattern2 ="/[.,!?:…]/";
 
-if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
+        if (preg_match($pattern, $nome_aluno) && !preg_match($pattern2, $nome_aluno))
+            echo "true";      
+        else
+            echo "false";
+
+       }
+$nome_aluno = 'Pedro herty';
+$valida_nome = validaNome($nome_aluno);
+
+if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno) || validaNome($nome_aluno == false)) {
     header("location: ../view/admin/inscricao/adicionar.php?id=$atividade_id&erro=2");
 }else{
     $c = new ControllerInscricao();
