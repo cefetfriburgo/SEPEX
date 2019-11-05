@@ -99,6 +99,7 @@ $valida_email = validaEmail($email);
             echo "false";
 
        }
+       
 $nome_aluno = 'Pedro herty';
 $valida_nome = validaNome($nome_aluno);
 
