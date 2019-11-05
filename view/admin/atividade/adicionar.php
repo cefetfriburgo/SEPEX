@@ -18,17 +18,22 @@ if( isset($_GET['erro']) ){
   
 
 	function cadastrado(){
+		let conteudo = $d.getElementById('conteudo');
         bloco = $d.getElementById('bloco');
 		e = $d.getElementById('colaborador');
 		nome = e.selectedOptions[0].text;
         input = $d.createElement('input');
 		select = $d.createElement('select');
 
+		
+
         input.type = 'text';
         input.name = 'colaborador' + id;
         input.id = 'colaborador' + id;
         input.classList.add('form-control');
 		input.value = nome;
+
+		
 
 		select.id="papel" + id;
 		select.name ="papel" + id;		
@@ -38,6 +43,7 @@ if( isset($_GET['erro']) ){
 		
 
         bloco.append('Nome do colaborador');
+        conteudo.innerHTML = '<input type=hidden value='+id+' name=hide2 />';
         bloco.append(input);
 		bloco.append(select);
         id++;        
@@ -65,7 +71,7 @@ if( isset($_GET['erro']) ){
 						
 					</div>
 					<div class="form-group">
-						<input class="btn btn-primary" type="button" value="nova data" id='adicionar_data' onclick='adicionar()'>
+						<input class="btn btn-primary" type="button" value="Nova data" id='adicionar_data' onclick='adicionar()'>
 					</div>
 					<div class="form-group">
 						<label for="local">Local</label>
@@ -101,19 +107,20 @@ if( isset($_GET['erro']) ){
 						<label for="capacidade">Vagas</label>
 						<input type="number" min="0" max="200" class="form-control" id="capacidade" name="capacidade">
 					</div>
-					<!-- <div class="form-group">
+					<div class="form-group">
+						<div id="conteudo"></div>
 						<div id='bloco' class='form-group'>
 						</div>
 						<label for="colaborador">Colaboradores</label>
-                        <select class="form-control" id="colaborador" name="colaborador">
-							<option disabled selected>colaboradores já cadastrados</option>
+                        <select class="form-control" id="colaborador" >
+							<option disabled selected>Colaboradores já cadastrados</option>
 							<?php 
 								$c = new Atividade();
 								$lista = $c->listarColaborador();
 								foreach($lista as $l){
 							?>
-									<option id='cadastrado' name=<?php echo $l['nome']; ?> value = <?php echo $l['nome']; ?> ><?php echo $l['nome']; ?></option>
-								<?php } ?>							
+							<option id='cadastrado' name=<?php echo $l['nome_colaborador']; ?> value = <?php echo $l['nome_colaborador']; ?> ><?php echo $l['nome_colaborador']; ?></option>
+							<?php } ?>							
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
 					</div>
@@ -121,7 +128,7 @@ if( isset($_GET['erro']) ){
 						<a href='./colaborador.php'>
 							<input type='button' value='Cadastrar colaborador' id='colaborador' name='colaborador'/>
 						</a>
-					</div> -->
+					</div>
 					<div class="form-group">
 						<label for="etiqueta">Palavras-chave</label>
 						<input type="text" class="form-control" id="etiqueta" name="etiqueta" placeholder="Palavras-chave da atividade">
