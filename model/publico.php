@@ -170,7 +170,7 @@ class Publico{
     }
 
     public function exibirDataInicio($id){
-        $pd = $this->pdo->prepare("SELECT date_format(a.data, '%d/%m/%Y') as 'data', a.hora_inicio as 'hora' FROM atividade_data a WHERE a.atividade_id = ? ORDER BY a.data LIMIT 1");
+        $pd = $this->pdo->prepare("SELECT a.data as 'data', a.hora_inicio as 'hora' FROM atividade_data a WHERE a.atividade_id = ? ORDER BY a.data LIMIT 1");
         $pd->execute(array($id));
         $p = $pd->fetch();
         return $p;

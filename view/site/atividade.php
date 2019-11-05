@@ -1,5 +1,5 @@
 <?php 
-
+date_default_timezone_set('America/Sao_Paulo');
 $titulo = "Atividades";
 $id = $_GET['id'];
 
@@ -75,10 +75,11 @@ foreach($lista1['detalhes'] as $l){
                 <p>Inscreva-se nesta atividade clicando no botão abaixo. As inscrições estarão disponíveis apenas enquanto houver vagas e após atingir o limite, não será mais possível se inscrever para esta atividade.</p>
                 <p>A emissão do certificado estará sujeita a confirmação de presença, mediante assinatura do participante.</p>
                 <?php if($lista3['total'] == $l['capacidade']){
-                        echo "<br><strong>Capacidade de inscritos esgotada.</strong>";
-                    } else if($lista5['data'] <= date("d/m/Y")){
+                         echo "<br><strong>Capacidade de inscritos esgotada.</strong>";
+                    } 
+                    else if((strtotime($lista5['data']) < strtotime(date('Y-m-d'))) || ((strtotime($lista5['data']) == strtotime(date('Y-m-d'))) and (strtotime($lista5['hora']) <= strtotime(date('H:i'))))){
                         echo "<br><strong>Prazo de inscrição encerrado.</strong>";
-                    } else{
+                     } else{
                 ?>
                     <a href="/inscricoes/<?php echo $id; ?>" class="btn btn-rounded btn-primary">Inscrever-se</a>
                 <?php } ?>
