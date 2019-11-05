@@ -14,7 +14,7 @@
             $dados = [];
             $mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
             foreach($registros as $i => $registro){
-                $m = explode('/', $registro['data']);
+                $m = date('m', strtotime($registro['data']));
                 array_push($dados, array(
                     'id' => $registro['id'],
                     'nome' => $registro['nome'],
@@ -22,7 +22,13 @@
                     'descricao' => $registro['descricao'],
                     'local' => $registro['local'],
                     'tipo' => $registro['tipo'],
-                    'evento' => $registro['evento']                
+                    'evento' => $registro['evento'],
+                    'inicio' => date('H:i', strtotime($registro['hora_inicio'])),
+                    'termino' => date('H:i', strtotime($registro['hora_fim'])),
+                    'dia' => date('d', strtotime($registro['data'])),
+                    'mes' => $mes[$m-1],
+                    'ano' => date('Y', strtotime($registro['data']))   
+                                    
                 ));
                 
             } 
@@ -88,6 +94,11 @@
     }
 
      $c = new ControllerDetalhesAtividade();
+    //  $lista = $c->detalhesAtividade(4);
+
+    //  foreach($lista['detalhes'] as $l){
+    //      echo $l['mes'];
+    //  }
 
 ?>
 

@@ -42,7 +42,8 @@ class Publico{
 
 
     public function exibirDetalhesAtividade($id){
-        $pd2 = $this->pdo->prepare("SELECT * FROM  listar_atividades_disponiveis WHERE id=?");
+        $pd2 = $this->pdo->prepare("SELECT * FROM  listar_atividades_disponiveis lad JOIN atividade_data ad ON lad.id=ad.atividade_id
+        WHERE lad.id=?");
 
         $pd2->execute(array($id));
 
@@ -74,8 +75,8 @@ class Publico{
     }
 
     public function exibirRelatorio($email){
-        $pd = $this->pdo->prepare("SELECT a.nome_atividade, a.data, a.hora_inicio, a.hora_fim FROM inscricao i JOIN atividade a ON 
-        a.atividade_id=i.atividade_id WHERE email=? order by a.data asc");
+        $pd = $this->pdo->prepare("SELECT a.nome_atividade, ad.data, ad.hora_inicio, ad.hora_fim FROM inscricao i JOIN atividade a ON 
+        a.atividade_id=i.atividade_id JOIN atividade_data ad ON ad.atividade_id=a.atividade_id WHERE email=? order by ad.data asc");
 
         $pd->execute(array($email));
 
@@ -177,9 +178,14 @@ class Publico{
     }
 }
 
-//   $c = new Publico();
+   $c = new Publico();
 
 //   // echo $c->inscricaoAtividade('42226692029', 'Testando');
 //   $c->registrarInscricao(10, 'dentoso', 'dentoso@cefet-rj.br', '24009075015', '1', '2003-02-01');
+    // $lista = $c->exibirRelatorio('pedro@cefet-rj.br');
+
+    // foreach($lista as $l){
+    //     echo $l['nome_atividade'] . ' ' . $l['data'] . ' ' . $l['hora_inicio'] . ' ' . $l['hora_fim'] . '<br>';
+    // }
 
 ?>
