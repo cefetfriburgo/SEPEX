@@ -47,7 +47,20 @@ require_once("../../../controller/listar_evento.php");?>
                 </button>
                 <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
                   <a class='dropdown-item' href='editar.php?id=<?php echo $l['evento_id']; ?>'>Editar</a>
-                  <a class='dropdown-item' href='./../../../controller/excluir_evento.php?id=<?php echo $l['evento_id']; ?>'>Excluir</a>
+
+                  <button class='dropdown-item' id="excluir" onclick="confirmar()">Excluir</button>
+
+                  <script>
+                    function confirmar(){
+                      r=confirm("Deseja realmente excluir esse evento?");
+
+                      if(r==true){
+                        $.ajax({url: "./../../../controller/excluir_evento.php?id=<?php echo $l['evento_id']; ?>", success: function(result){
+                          location.href = "./listar.php";
+                        }});
+                      }
+                    }
+                  </script>
                 </div>
               </div>
             </td>

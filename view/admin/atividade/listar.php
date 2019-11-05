@@ -53,7 +53,7 @@ require_once("../../../controller/listar_atividade.php"); ?>
             			<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                   <a class='dropdown-item' href='editar.php?id=<?php echo $l['atividade_data_id']; ?>'>Editar</a>
 
-                  <button class='dropdown-item' id= "excluir" class="dropdown-item"  onclick = "confirmar()">Excluir </button>
+                  <button class='dropdown-item' id= "excluir"  onclick = "confirmar()">Excluir </button>
 
                   <script>
             				
