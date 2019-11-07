@@ -91,7 +91,6 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <a class="dropdown-item" href="../principal/adicionar_usuario.php">Novo usuário</a>
-            <a class="dropdown-item" href="../atividade/colaborador.php">Novo colaborador</a>
           </div>      
         </li>
       <?php } ?>  
