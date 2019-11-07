@@ -9,7 +9,7 @@
 
     $hide = $_POST['hide'];
     $datas = [];
-    $err='';
+    
    
     
     
@@ -38,7 +38,9 @@
 
     for($i=1; $i<= sizeof($_POST); $i++){
         if(isset($_POST['colaborador'.$i])){
-            $array[$i] = $_POST['colaborador'.$i];
+            array_push($array, array(
+                'nome' => $_POST['colaborador'.$i]
+            ));
         }
         if(isset($_POST['papel'.$i])){
             $papel[] = $_POST['papel'.$i];
@@ -51,6 +53,7 @@
     
     class ControllerAtividade{
         private $atividade;
+        private $err;
 
         public function __construct(){            
             $this->atividade = new Atividade();
@@ -129,7 +132,8 @@
                 $erro = 'Selecione um tipo de atividade que já esteja disponível.';
             }
                        
-            if ($erro) {               
+            if ($erro) {
+                $err = 1;              
                 header('location: ./../view/admin/atividade/adicionar.php?erro="'.$erro.'"');
             } else{
                 $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $papel, $local);
@@ -139,10 +143,11 @@
         }
 
         public function etiqueta($etiqueta){
-            if($err == 1){}
-            else{ $this->atividade->adicionarEtiqueta($etiqueta);
+            // if($err == 1){}
+            //else{ 
+                $this->atividade->adicionarEtiqueta($etiqueta);
                 //header('location: ./../view/admin/atividade/listar.php');
-            }
+            //}
         }
 
     }

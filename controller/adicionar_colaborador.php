@@ -15,7 +15,7 @@
 
         public function adicionar($nome, $sobre){            
             $this->colaborador->adicionarColaborador($nome, $sobre);
-            header('location:./../view\admin\principal');
+            header('location:./../view/admin/atividade/adicionar.php');
         }
     }
 
