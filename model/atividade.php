@@ -23,15 +23,21 @@ require_once dirname(__FILE__)."./../conexao.php";
 
                 // $pd3 = $this->pdo->prepare("INSERT INTO etiqueta(atividade_id, etiqueta) VALUES(?,?)");
                 // $pd3->execute(array($id, $etiqueta));
+
+                $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
+                $id = $pd1->fetch();
+                $id = $id[0];
+                //$t = 0;
+
                 foreach($datas as $dat){
                     $pd = $this->pdo->prepare("INSERT INTO atividade_data(atividade_id,	data, hora_inicio, hora_fim)
                     VALUES (?,?,?,?)");
                     $pd->execute(array($id, $dat['data'], $dat['hora_inicio'], $dat['hora_fim']));
                 }//$dat['hora_inicio'], $dat['hora_fim'],
                 
-                $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
-                $id = $pd1->fetch();
-                $id = $id[0];
+                // $pd1 = $this->pdo->query("SELECT MAX(atividade_id) FROM atividade");
+                // $id = $pd1->fetch();
+                // $id = $id[0];
                 //$t = 0;
                 foreach($colab as $c){
                     $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");

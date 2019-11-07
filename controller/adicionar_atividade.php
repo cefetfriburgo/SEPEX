@@ -133,7 +133,7 @@
                 header('location: ./../view/admin/atividade/adicionar.php?erro="'.$erro.'"');
             } else{
                 $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $papel, $local);
-                //header('location: ./../view/admin/atividade/listar.php');
+                header('location: ./../view/admin/atividade/listar.php');
               
             }
         }
