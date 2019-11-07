@@ -66,6 +66,7 @@ $nascimento = $_POST['nascimento'];
         for ($t = 9; $t < 11; $t++) {
             
             for ($d = 0, $c = 0; $c < $t; $c++) {
+
                 $d += $cpf{$c} * (($t + 1) - $c);
             }
             $d = ((10 * $d) % 11) % 10;
@@ -79,11 +80,7 @@ $nascimento = $_POST['nascimento'];
     }
 
     function validaEmail($email) {
-        $conta = "^[a-zA-Z0-9\._-]+@";
-        $domino = "[a-zA-Z0-9\._-]+.";
-        $extensao = "([a-zA-Z]{2,4})$";
-        $pattern = $conta.$domino.$extensao;
-        if (preg_match($pattern, $email) || !isset($email) || empty($email))
+        if ((var_dump(filter_var($email, FILTER_VALIDATE_EMAIL))) == 'bool(false)') 
             return false;
         else
             return true;
@@ -92,7 +89,27 @@ $nascimento = $_POST['nascimento'];
 $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
-if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
+    function validaNome($nome_aluno) {
+        $retorno = "";
+        $nome = explode(" ",$nome_aluno);
+        if(count($nome)<2) $retorno = "erro";
+        else{
+            foreach ($nome as $n) {
+                $n = str_split($n);
+                if(in_array(".", $n)){
+                    $retorno = "erro";   
+                }else{
+                    $retorno = "ok";
+                }
+            }   
+        }
+        return $retorno;
+    }
+          
+           
+    $valida_nome = validaNome($nome_aluno);
+
+if(($valida_cpf == false) || ($valida_email == false) || ($valida_nome == "erro")) {
     header("location: /inscricoes/$atividade_id?erro=2");
 }else{
     $c = new ControllerInscricao();
