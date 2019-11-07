@@ -23,6 +23,7 @@ if( isset($_GET['erro']) ){
 		e = $d.getElementById('colaborador');
 		nome = e.selectedOptions[0].text;
         input = $d.createElement('input');
+        input2 = $d.createElement('input');
 		select = $d.createElement('select');
 
 		
@@ -33,6 +34,9 @@ if( isset($_GET['erro']) ){
         input.classList.add('form-control');
 		input.value = nome;
 
+		input2.type = 'hidden';
+        input2.name = 'hide2';
+		input2.value = id;
 		
 
 		select.id="papel" + id;
@@ -43,8 +47,8 @@ if( isset($_GET['erro']) ){
 		
 
         bloco.append('Nome do colaborador');
-        conteudo.innerHTML = '<input type=hidden value='+id+' name=hide2 />';
         bloco.append(input);
+        bloco.append(input2);
 		bloco.append(select);
         id++;        
     }
