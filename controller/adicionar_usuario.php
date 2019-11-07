@@ -28,7 +28,7 @@
                 header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroTamanho');
              } else if(ctype_alpha($senha) == true){
                 header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroQtdLetra');
-             } else if(ctype_alpha($senha) == false){
+             } else if(ctype_digit($senha) == true){
                 header('location:./../view/admin/principal/adicionar_usuario.php?erro=erroQtdNumero');
              }
              else{     
