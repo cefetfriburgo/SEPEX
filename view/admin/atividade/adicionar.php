@@ -22,8 +22,11 @@ if( isset($_GET['erro']) ){
         bloco = $d.getElementById('bloco');
 		e = $d.getElementById('colaborador');
 		nome = e.selectedOptions[0].text;
+		val = e.selectedOptions[0].value;
         input = $d.createElement('input');
 		input2 = $d.createElement('input');
+		input3 = $d.createElement('input');
+
 		
 		select = $d.createElement('select');
 
@@ -31,12 +34,18 @@ if( isset($_GET['erro']) ){
         input.name = 'colaborador' + id;
         input.id = 'colaborador' + id;
         input.classList.add('form-control');
+        input.disabled = 'disabled';
 		input.value = nome;
 
 		input2.type = 'hidden';
         input2.name = 'hide2';
         input2.id = 'hide2';
-		input2.value = id;		
+		input2.value = id;
+
+		input3.type = 'hidden';
+        input3.name = 'oculto'+id;
+        input3.id = 'oculto'+id;
+		input3.value = val;
 
 		select.id="papel" + id;
 		select.name ="papel" + id;		
@@ -48,6 +57,7 @@ if( isset($_GET['erro']) ){
         bloco.append('Nome do colaborador');
         bloco.append(input);
 		bloco.append(input2);
+		bloco.append(input3);
 		bloco.append(select);
         id++;        
     }
@@ -122,7 +132,7 @@ if( isset($_GET['erro']) ){
 								$lista = $c->listarColaborador();
 								foreach($lista as $l){
 							?>
-							<option id='cadastrado' name=<?php echo $l['nome_colaborador']; ?> value = <?php echo $l['nome_colaborador']; ?> ><?php echo $l['nome_colaborador']; ?></option>
+							<option id='cadastrado' name=<?php echo $l['nome_colaborador']; ?> value = <?php echo $l['colaborador_id']; ?> ><?php echo $l['nome_colaborador']; ?></option>
 							<?php } ?>							
 						</select>
 						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>

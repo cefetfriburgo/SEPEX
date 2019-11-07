@@ -15,7 +15,7 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;            
         }
 
-        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $datas, $colab, $papel, $local){
+        public function adicionarAtividade( $nome_atividade, $descricao, $capacidade, $evento_id, $idTipoAtividade, $datas, $colab, $local){
             
                 $pd = $this->pdo->prepare("INSERT INTO atividade (evento_id, tipo_atividade_id, nome_atividade, descricao, local,  
                 capacidade) VALUES (?,?,?,?,?,?)");
@@ -40,20 +40,10 @@ require_once dirname(__FILE__)."./../conexao.php";
                 // $id = $id[0];
                 //$t = 0;
                 foreach($colab as $c){
-                    $pd = $this->pdo->prepare("SELECT colaborador_id FROM colaborador WHERE nome=?");
-                    $pd->execute(array($c));
-                    $p = $pd->fetch();
-                    $n = $p[0];
-                    //$paper = $papel[$t];
-                    $paper = "colaborador";
-                    $p = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) VALUES(?, ?, ?)");
-                    $p->execute(array($n, $id, $paper));
-                    $t++;                    
+                    $pd = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id)
+                        VALUES(?,?,?)");
+                        $pd->execute(array($c['nome'], $id, $c['papel']));            
                 }
-            
-            // foreach($datas as $dat){
-            //     echo $dat['data'] . ' ' . $dat['hora_inicio'] . ' ' . $dat['hora_fim'] . '<br>' ;
-            // }
         }
 
         public function adicionarEtiqueta($etiqueta){
@@ -107,6 +97,9 @@ require_once dirname(__FILE__)."./../conexao.php";
 
             if($p == 0){
                 $pd = $this->pdo->prepare("DELETE FROM atividade WHERE atividade_id=?");
+                $pd->execute(array($excluir_id));
+
+                $pd = $this->pdo->prepare("DELETE FROM colaborador_atividade WHERE atividade_id=?");
                 $pd->execute(array($excluir_id));
             }
             return $p;

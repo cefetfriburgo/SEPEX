@@ -36,16 +36,16 @@
     $array = [];
     $papel = [];
 
-    for($i=1; $i<= sizeof($_POST); $i++){
-        if(isset($_POST['colaborador'.$i])){
+    for($i=0; $i<= sizeof($_POST); $i++){
+        if(isset($_POST['oculto'.$i])){
             array_push($array, array(
-                'nome' => $_POST['colaborador'.$i]
+                'nome' => $_POST['oculto'.$i],
+                'papel' => $_POST['papel'.$i]
             ));
         }
-        if(isset($_POST['papel'.$i])){
-            $papel[] = $_POST['papel'.$i];
-        }
     }
+
+    //foreach($array as $ar){ echo $ar['nome']; }
 
     // if(isset($palavra_chave)){
     //     $etiqueta = explode(",", $palavra_chave);
@@ -59,7 +59,7 @@
             $this->atividade = new Atividade();
         }
 
-        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $papel, $local){
+        public function adicionar( $nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $local){
             if(!isset($nome_atividade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($descricao) || !isset($capacidade) || !isset($datas) || !isset($local)){
                 header('location: ./../view/admin/atividade/adicionar.php');
             }
@@ -134,26 +134,25 @@
                        
             if ($erro) {
                 $err = 1;              
-                header('location: ./../view/admin/atividade/adicionar.php?erro="'.$erro.'"');
+                 header('location: ./../view/admin/atividade/adicionar.php?erro="'.$erro.'"');
             } else{
-                $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $papel, $local);
-                header('location: ./../view/admin/atividade/listar.php');
-              
+                $this->atividade->adicionarAtividade( $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $datas, $array, $local);
+                    header('location: ./../view/admin/atividade/listar.php');              
             }
         }
 
         public function etiqueta($etiqueta){
             // if($err == 1){}
             //else{ 
-                $this->atividade->adicionarEtiqueta($etiqueta);
-                //header('location: ./../view/admin/atividade/listar.php');
+               $this->atividade->adicionarEtiqueta($etiqueta);
+               // header('location: ./../view/admin/atividade/listar.php');
             //}
         }
 
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $papel, $local);
+    $ctrlAtividade->adicionar($nome_atividade, $idEvento, $idTipoAtividade, $descricao, $capacidade, $datas, $array, $local);
     $ctrlAtividade->etiqueta($palavra_chave);
 
     //$nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $array, $papel, $local
