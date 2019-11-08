@@ -26,9 +26,7 @@ require_once dirname(__FILE__)."./../conexao.php";
 				}else if($nova_senha != $confirmar_nova_senha){
 					header('location:./../view/admin/principal/usuario.php?erro=senhaNova');
 				}else{
-					// session_start();
-					// $_SESSION['email'] = $email;
-					// $_SESSION['senha'] = $senha;
+					
 
 					$nova = sha1($nova_senha);
 					$alteracao = $this->pdo->query("UPDATE usuario SET senha='$nova' where email='$email'");

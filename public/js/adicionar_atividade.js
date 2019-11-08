@@ -25,7 +25,6 @@
     function adicionar(){
         id++;
         let conteudo = document.getElementById('conteudo');
-        //let registro = '<div id="div'+id+'"class="form-group form-row">';
         let div = document.createElement('div');
         registro = '<div class="col">';
         registro += '<label for="data">Data</label>';
@@ -47,7 +46,6 @@
         div.id = "div"+id;
         div.classList = "form-group form-row";
         div.innerHTML += registro;        
-        //conteudo.innerHTML += registro;
         conteudo.append(div);
         
     };
@@ -59,8 +57,4 @@
     }
     
 
-    
-
-// function dados(){
-
-// }
+   

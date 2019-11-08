@@ -13,10 +13,8 @@
 		public function gerenciar($id_novo, $id_atual){
 
 			if($id_novo != $id_atual){
-				// $d = new Evento();
 				$despublicar = $this->evento->despublicarEvento($id_atual);
 				
-				// $p = new Evento();
 				$publicado = $this->evento->publicarEvento($id_novo);
 			}
 			header("Location: ./../view/admin/evento/listar.php");

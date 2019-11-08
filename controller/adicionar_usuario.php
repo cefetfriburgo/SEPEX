@@ -37,12 +37,8 @@
              }
         }
 
-        // public function validar ($senha, $confirmar_senha){
-        //     $this->model->validarUsuario($senha, $confirmar_senha);
-        // }
     }
 
     $ctrlUsuario = new ControllerUsuario();
     $ctrlUsuario->adicionar($email, $senha, $perfil, $confirmar_senha);
-    // $ctrlUsuario->validar($senha,$confirmar_senha);
 ?>

@@ -20,18 +20,7 @@
 
             console.log(obj);
         });
-    //     $.get( "https://clienteweb2017.000webhostapp.com/loja/categoria/getCategorias.php?loja=bugigangas", function(data){
-    //         var obj = JSON.parse(data);
-    //         console.log(obj);
-    //         for(var categoria of obj.categorias){
-    //               $item = $("<a />").attr({"href": "./lista.html?codigo="+ categoria.codigo, "class": "collection-item"}).html(categoria.nome);
-    //               $('.collection').append($item);
-    //         }
-    //   });
-    }
-    //{"categorias":[{"codigo":"40","nome":"Carros"},{"codigo":"42","nome":"Servi\u00e7os"}]}
-    //{"atividades":[{"nome_atividade":"work","data":"2019-08-22","inicio":"13:00:00","termino":"14:30:00"},{"nome_atividade":"Caseiro","data":"2019-08-22","inicio":"13:00:00","termino":"14:30:00"}]}
-
+  
 </script>
 
 

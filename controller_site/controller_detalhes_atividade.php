@@ -94,11 +94,6 @@
     }
 
      $c = new ControllerDetalhesAtividade();
-    //  $lista = $c->detalhesAtividade(4);
-
-    //  foreach($lista['detalhes'] as $l){
-    //      echo $l['mes'];
-    //  }
-
+    
 ?>
 

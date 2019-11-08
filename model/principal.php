@@ -13,8 +13,7 @@ require_once dirname(__FILE__)."./../conexao.php";
             if(isset($pd) && !empty($pd)){
                 $p = $pd->fetch();
                 return $p;
-            }else{ return 0;}
-            //echo $p;            
+            }else{ return 0;}    
         }
 
         public function contarAtividade(){            

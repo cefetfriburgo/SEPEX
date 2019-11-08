@@ -90,7 +90,7 @@ $valida_cpf = validaCPF($cpf);
 $valida_email = validaEmail($email);
 
 
-if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno))) {
+if(($valida_cpf == false) || ($valida_email == false) || empty($nome_aluno) || !isset($nome_aluno)) {
     header("location: ../view/admin/inscricao/adicionar.php?id=$atividade_id&erro=2");
 }else{
     $c = new ControllerInscricao();

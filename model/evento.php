@@ -128,11 +128,4 @@ require_once dirname(__FILE__)."./../conexao.php";
 
    $lista = $c->gerenciarInscricao();
 
-   // foreach($lista as $l){
-   //     echo $l['nome_atividade'];
-   // }
-    
-    // echo $lista['data'];
-
-    //$c->confirmarPresenca(1);
 ?>

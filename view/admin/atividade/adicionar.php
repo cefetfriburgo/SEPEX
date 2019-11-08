@@ -23,43 +23,47 @@ if( isset($_GET['erro']) ){
 		e = $d.getElementById('colaborador');
 		nome = e.selectedOptions[0].text;
 		val = e.selectedOptions[0].value;
-        input = $d.createElement('input');
-		input2 = $d.createElement('input');
-		input3 = $d.createElement('input');
 
-		
-		select = $d.createElement('select');
+		if(nome == 'Colaboradores já cadastrados'){}
+		else{
+			input = $d.createElement('input');
+			input2 = $d.createElement('input');
+			input3 = $d.createElement('input');
 
-        input.type = 'text';
-        input.name = 'colaborador' + id;
-        input.id = 'colaborador' + id;
-        input.classList.add('form-control');
-        input.disabled = 'disabled';
-		input.value = nome;
+			
+			select = $d.createElement('select');
 
-		input2.type = 'hidden';
-        input2.name = 'hide2';
-        input2.id = 'hide2';
-		input2.value = id;
+			input.type = 'text';
+			input.name = 'colaborador' + id;
+			input.id = 'colaborador' + id;
+			input.classList.add('form-control');
+			input.disabled = 'disabled';
+			input.value = nome;
 
-		input3.type = 'hidden';
-        input3.name = 'oculto'+id;
-        input3.id = 'oculto'+id;
-		input3.value = val;
+			input2.type = 'hidden';
+			input2.name = 'hide2';
+			input2.id = 'hide2';
+			input2.value = id;
 
-		select.id="papel" + id;
-		select.name ="papel" + id;		
-		select.classList.add('form-control');
+			input3.type = 'hidden';
+			input3.name = 'oculto'+id;
+			input3.id = 'oculto'+id;
+			input3.value = val;
 
-		select.innerHTML = "<option selected value='xxx'>Função para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
-		
+			select.id="papel" + id;
+			select.name ="papel" + id;		
+			select.classList.add('form-control');
 
-        bloco.append('Nome do colaborador');
-        bloco.append(input);
-		bloco.append(input2);
-		bloco.append(input3);
-		bloco.append(select);
-        id++;        
+			select.innerHTML = "<option selected value='xxx'>Função para esta atividade</option><?php $c = new Atividade(); $lista = $c->listarPapel(); foreach($lista as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+			
+
+			bloco.append('Nome do colaborador');
+			bloco.append(input);
+			bloco.append(input2);
+			bloco.append(input3);
+			bloco.append(select);
+			id++;  
+		}      
     }
 
 </script>
