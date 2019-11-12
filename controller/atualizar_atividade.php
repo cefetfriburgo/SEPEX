@@ -12,6 +12,7 @@
     $data = $_POST['data'];
     $etiqueta = $_POST['etiqueta'];
     $local = $_POST['local'];
+    $colaboradores = $_POST['colab'];
 
     class ControllerAtividade{
         private $atividade;
@@ -82,7 +83,7 @@
                 echo $erro. "<br>";
             }
             else{
-                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
+                $this->atividade->atualizarAtividade($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local, $colaboradores);
                 
             }
         }
@@ -94,7 +95,7 @@
     }
 
     $ctrlAtividade = new ControllerAtividade();
-    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local);
+    $ctrlAtividade->atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local, $colaboradores);
 
     $palavras_chave = explode(", ", $etiqueta);
     foreach($palavras_chave as $pc){ 

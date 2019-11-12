@@ -93,6 +93,44 @@ $ida = $lista['tipo_atividade_id'];
 							<?php } } ?>
 						</select>
 					</div>
+					<div class="form-group">	
+						<?php 
+							$c = new Atividade();
+							$lista = $c->listarColaboradorAtividade($id);
+							$lista2 = $c->listarColaborador();
+							$nomes = [];
+						?>
+						<label for="colab">Colaboradores</label><br>
+						<?php
+							foreach($lista as $l){
+								if($id == $l['id_ativ']){
+								array_push($nomes, $l['colaborador']);
+						?>
+							<!-- <option disabled selected>Colaborador para esta atividade</option>
+							<option value = "<?= $l['id_colab'];?>" selected><?= $l['colaborador']; ?></option> -->
+							<input type="checkbox" name="colab[]" value="<?php echo $l['colaborador_id'];?>" checked><?php echo $l['colaborador'];?><br>
+						<?php }} 
+							foreach ($lista2 as $l2) {
+								if(!in_array($l2['nome_colaborador'], $nomes)){
+							?>
+							<input type="checkbox" name="colab[]" value="<?php echo $l2['colaborador_id'];?>" ><?php echo $l2['nome_colaborador'];?><br>
+							<?php
+							
+						 }}  ?>
+						
+						<!-- <label for="papel">Papel</label>
+						<select class="form-control" id="papel" name="papel">
+						<?php
+							foreach($lista as $l){
+								if($id == $l['id_ativ']){
+						?>
+							<option disabled selected>Papel do colaborador</option>
+							<option value = "<?= $l['id_papel'];?>" selected><?= $l['papel']; ?></option>
+						<?php }else{ ?>				
+							<option value = "<?= $l['id_papel'];?>" ><?= $l['papel']; ?></option>
+						<?php } } ?>
+						</select> -->
+					</div>
 					<div class="form-group">
 						<?php 
 							$c = new Atividade();
