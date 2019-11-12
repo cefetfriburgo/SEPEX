@@ -20,6 +20,7 @@ $lista = $c->detalhesAtividade($id);
 
 foreach($lista['detalhes'] as $l){
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 function formatar(mascara, documento){
   var i = documento.value.length;
@@ -85,7 +86,37 @@ function formatar(mascara, documento){
                     <input type="hidden" value="<?php echo $id; ?>" name="id" id="id">
                     <label for="nome">Nome</label>
                     <div class="form-group">
-                        <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo (não use abreviações)">
+                        <input id="nome" name="nome" type="text" class="form-control" placeholder="Nome completo (não use abreviações)" required>
+                        <script>
+                           $(document).ready(function(){
+                                var retorno = "";
+                                $("#nome").blur(function(){
+                                     
+                                     var nome_aluno = $("#nome").val();
+                                     console.log(nome_aluno);
+
+                                      var nome = nome_aluno.split(" ");
+                                      if(nome.length < 2) 
+                                         $(this).css("background-color", "#F08080"); 
+                                      else{
+                                         for(var n of nome) {
+                                           n = n.split('');
+                                           if(n.indexOf(".")!= -1)
+                                             $(this).css("background-color", "#F08080"); 
+                                           
+                                         }   
+                                      }
+                                    
+                                   // if(retorno == "erro"){
+                                   //   $("#nome").blur(function(){
+                                   //      $(this).css("background-color", "red");
+                                   //   });
+                                   // }
+                                });
+
+
+                            });
+                        </script>
                     </div>
                     <label for="email">Endereço de e-mail</label>
                     <div class="form-group">
