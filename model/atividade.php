@@ -61,12 +61,16 @@ require_once dirname(__FILE__)."./../conexao.php";
             $pd = $this->pdo->prepare("DELETE FROM etiqueta WHERE atividade_id = ?");
             $pd->execute(array($i));
 
+            $pd = $this->pdo->prepare("DELETE FROM colaborador_atividade WHERE atividade_id = ?");
+            $pd->execute(array($i));
+
             $pd = $this->pdo->prepare("UPDATE atividade_data SET hora_inicio = ?, hora_fim = ?, data = ? WHERE atividade_data_id=?");
             $pd->execute(array($hora_inicio, $hora_fim, $data, $idDataAtividade));
 
-            for($i=0; $i<sizeof($colaboradores); $i++){
-                $pd = $this->pdo->prepare("UPDATE colaborador_atividade SET colaborador_id = ?, atividade_id = ? WHERE atividade_id = ?");
-                $pd->execute(array($colaboradores[$i], $idDataAtividade, $idDataAtividade));
+            for($id=0; $id<sizeof($colaboradores); $id++){
+                $pd = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id, papel_id) 
+                    VALUES(?,?,1)");
+                $pd->execute(array($colaboradores[$id], $i));
             }
         }
 
@@ -126,6 +130,11 @@ require_once dirname(__FILE__)."./../conexao.php";
             return $p;
         }
 
+        public function adicionarColaborador($nome, $sobre){
+            $pd = $this->pdo->prepare("INSERT INTO colaborador(nome_colaborador, sobre) VALUES(?, ?)");
+            $pd->execute(array($nome, $sobre));         
+        }
+
        public function listarColaborador(){
             $pd = $this->pdo->query("SELECT * FROM colaborador");
             $p = $pd->fetchAll();
@@ -133,16 +142,20 @@ require_once dirname(__FILE__)."./../conexao.php";
        }
 
        public function listarColaboradorAtividade($id){
-            $pd = $this->pdo->prepare("SELECT colaborador.colaborador_id as 'colaborador_id', colaborador.nome_colaborador as 'colaborador', atividade_data.atividade_data_id as 'id_ativ' FROM colaborador_atividade JOIN colaborador ON colaborador_atividade.colaborador_id=colaborador.colaborador_id JOIN atividade ON colaborador_atividade.atividade_id=atividade.atividade_id JOIN atividade_data ON atividade.atividade_id=atividade_data.atividade_id WHERE atividade_data.atividade_data_id = ?");
+            $pd = $this->pdo->prepare("SELECT colaborador.colaborador_id as 'colaborador_id', colaborador.nome_colaborador as 'colaborador', atividade_data.atividade_data_id as 'id_ativ', papel.papel as 'papel' FROM colaborador_atividade JOIN colaborador ON colaborador_atividade.colaborador_id=colaborador.colaborador_id JOIN atividade ON colaborador_atividade.atividade_id=atividade.atividade_id JOIN papel ON papel.papel_id=colaborador_atividade.papel_id JOIN atividade_data ON atividade.atividade_id=atividade_data.atividade_id WHERE atividade_data.atividade_data_id = ?");
             $pd->execute(array($id));
             $p = $pd->fetchAll();
             return $p;           
        }
 
-       public function adicionarColaborador($nome, $sobre){
-            $pd = $this->pdo->prepare("INSERT INTO colaborador(nome_colaborador, sobre) VALUES(?, ?)");
-            $pd->execute(array($nome, $sobre));         
-       }
+       public function atualizarColaborador($colaboradores, $idAtividade/*, $papel_id*/){
+            $pd = $this->pdo->prepare("SELECT atividade_id FROM colaborador_atividade WHERE colaborador_atividade_id=?");
+            $pd->execute(array($colaboradores));
+            $p = $pd->fetch();
+            $i = $p[0];
+            $pd = $this->pdo->prepare("INSERT INTO colaborador_atividade(colaborador_id, atividade_id/*, papel_id*/) VALUES(?, ?/*, ?*/)");
+            $pd->execute(array($i, $colaboradores, $idAtividade/*, $papel_id*/));
+        }
 
        public function listarPapel(){
            $pd = $this->pdo->query("SELECT * FROM papel");

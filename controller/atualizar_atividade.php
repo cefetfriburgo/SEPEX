@@ -12,7 +12,28 @@
     $data = $_POST['data'];
     $etiqueta = $_POST['etiqueta'];
     $local = $_POST['local'];
-    $colaboradores = $_POST['colab'];
+    $hide = $_POST['oculto'];
+
+    $colaboradores = [];
+
+    for($i=0; $i<$hide; $i++){
+        // array_push($colaboradores, array(
+        //     'colab' => $_POST['colab'.$i]
+        // ));
+        if(isset($_POST['colab'.$i])){
+            $colaboradores[] = $_POST['colab'.$i];
+        }
+        
+    }
+
+    // $str = implode(", ", $colaboradores);
+    // echo $str;
+    // if(is_array($str)){
+    //     foreach($str as $c){
+    //         echo $c['colab'];
+    //     }
+    // }
+   
 
     class ControllerAtividade{
         private $atividade;
@@ -21,7 +42,7 @@
             $this->atividade = new Atividade();
         }
 
-        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local){
+        public function atualizar($idAtividade, $nome_atividade, $descricao, $capacidade, $idEvento, $idTipoAtividade, $hora_inicio, $hora_fim, $data, $etiqueta, $local, $colaboradores){
 
             if(!isset($idAtividade) || !isset($nome_atividade) || !isset($descricao) || !isset($capacidade) || !isset($idEvento) || !isset($idTipoAtividade) || !isset($hora_inicio) || !isset($hora_fim) || !isset($data) || !isset($local)){
                 header('location: ./../view/admin/atividade/editar.php');
@@ -90,7 +111,11 @@
 
         public function adicionarEtiqueta($idAtividade, $etiqueta){
             $this->atividade->atualizarEtiqueta($idAtividade, $etiqueta);
-            header('location: ./../view/admin/atividade/listar.php');
+            //header('location: ./../view/admin/atividade/listar.php');
+        }
+
+        public function adicionarColaborador($colaboradores, $idAtividade/*, $papel_id*/){
+            $this->atividade->atualizarColaborador($colaboradores, $idAtividade/*, $papel_id*/);
         }
     }
 

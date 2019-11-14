@@ -9,7 +9,8 @@ $categoria = "Atividades";
 $local = "Editar atividade";
 
 require_once("../base/header.php"); 
-require_once("./../../../controller/editar_atividade.php"); 
+require_once("./../../../controller/editar_atividade.php");
+require_once("../../../model/atividade.php"); 
 
 
 $lista = $ctrlAtividade->nome($id);
@@ -18,6 +19,61 @@ $evento_id = $lista['evento_id'];
 $ida = $lista['tipo_atividade_id'];
 
 ?>
+<script >
+
+    $d = document;
+    id = 1;
+  
+
+	function cadastrado(){
+		let conteudo = $d.getElementById('conteudo');
+        bloco = $d.getElementById('bloco');
+		e = $d.getElementById('colaborador');
+		nome = e.selectedOptions[0].text;
+		val = e.selectedOptions[0].value;
+
+		if(nome == 'Colaboradores já cadastrados'){}
+		else{
+			input = $d.createElement('input');
+			input2 = $d.createElement('input');
+			input3 = $d.createElement('input');
+
+			select = $d.createElement('select');
+
+			input.type = 'text';
+			input.name = 'colaborador' + id;
+			input.id = 'colaborador' + id;
+			input.classList.add('form-control');
+			input.disabled = 'disabled';
+			input.value = nome;
+
+			input2.type = 'hidden';
+			input2.name = 'hide2';
+			input2.id = 'hide2';
+			input2.value = id;
+
+			input3.type = 'hidden';
+			input3.name = 'oculto'+id;
+			input3.id = 'oculto'+id;
+			input3.value = val;
+
+			select.id="papel" + id;
+			select.name ="papel" + id;		
+			select.classList.add('form-control');
+
+			select.innerHTML = "<option selected value='xxx'>Função para esta atividade</option><?php $a = new Atividade(); $listap = $a->listarPapel(); foreach($listap as $l){ ?><option value = <?php echo $l['papel_id']; ?> ><?php echo $l['papel']; ?></option><?php } ?>";							
+			
+
+			bloco.append('Nome do colaborador');
+			bloco.append(input);
+			bloco.append(input2);
+			bloco.append(input3);
+			bloco.append(select);
+			id++;  
+		}      
+    }
+
+</script>
 
 <div class="row">
 	<div class="col-md-8">
@@ -101,22 +157,41 @@ $ida = $lista['tipo_atividade_id'];
 							$nomes = [];
 						?>
 						<label for="colab">Colaboradores</label><br>
-						<?php
+						
+						<?php $i = 0; 
 							foreach($lista as $l){
 								if($id == $l['id_ativ']){
 								array_push($nomes, $l['colaborador']);
 						?>
-							<!-- <option disabled selected>Colaborador para esta atividade</option>
-							<option value = "<?= $l['id_colab'];?>" selected><?= $l['colaborador']; ?></option> -->
-							<input type="checkbox" name="colab[]" value="<?php echo $l['colaborador_id'];?>" checked><?php echo $l['colaborador'];?><br>
-						<?php }} 
-							foreach ($lista2 as $l2) {
-								if(!in_array($l2['nome_colaborador'], $nomes)){
+							<input class='form-control' type="text" name="colab<?php echo $i; ?>" value="<?php echo $l['colaborador'];?>" disabled>
+							<select class='form-control'>
+								
+								<?php $c3 = new Atividade(); $lista3 = $c3->listarPapel(); foreach($lista3 as $l3){ ?>
+									<?php if($l3['papel'] == $l['papel']){ ?>
+									<option selected value = <?php echo $l3['papel_id']; ?> ><?php echo $l3['papel']; ?></option>
+								<?php }else{ ?>
+									<option value = <?php echo $l3['papel_id']; ?> ><?php echo $l3['papel']; ?></option>
+								<?php }} ?>
+							</select><br>
+						<?php $i++;} }  ?>
+						 <input type="hidden" value="<?php echo $i; ?>" name="oculto">
+						 <div class="form-group">
+						<div id="conteudo"></div>
+						<div id='bloco' class='form-group'>
+						</div>
+						<label for="colaborador">Colaboradores</label>
+                        <select class="form-control" id="colaborador" >
+							<option disabled selected>Colaboradores já cadastrados</option>
+							<?php 
+								$c = new Atividade();
+								$lista = $c->listarColaborador();
+								foreach($lista as $l){
 							?>
-							<input type="checkbox" name="colab[]" value="<?php echo $l2['colaborador_id'];?>" ><?php echo $l2['nome_colaborador'];?><br>
-							<?php
-							
-						 }}  ?>
+							<option id='cadastrado' name=<?php echo $l['nome_colaborador']; ?> value = <?php echo $l['colaborador_id']; ?> ><?php echo $l['nome_colaborador']; ?></option>
+							<?php } ?>							
+						</select>
+						<input class="btn btn-primary btn-block" type="button" value='Incluir' onclick='cadastrado()'>
+					</div>
 						
 						<!-- <label for="papel">Papel</label>
 						<select class="form-control" id="papel" name="papel">
